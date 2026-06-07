@@ -1,0 +1,87 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Biscuit Pet Co.",
+    "theme_version": "1.0.0",
+    "theme_author": "Biscuit Atelier",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_navy",
+        "label": "Navy",
+        "default": "#000040"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream",
+        "default": "#F2EAD3"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold",
+        "default": "#D4AF37"
+      },
+      {
+        "type": "color",
+        "id": "color_page_bg",
+        "label": "Page background",
+        "default": "#FBF7EC"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_display",
+        "label": "Display font (headings)",
+        "default": "playfair_display_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "montserrat_n4"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "range",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold ($)",
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "default": 60,
+        "info": "Set to 0 to hide the free shipping progress bar."
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram handle",
+        "default": "@biscuitpetco"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok handle"
+      }
+    ]
+  }
+]

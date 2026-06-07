@@ -1,0 +1,169 @@
+{%- assign fp = all_products[section.settings.product] -%}
+{%- assign fv = fp.first_available_variant | default: fp.variants.first -%}
+
+<section class="feature section">
+  <div class="wrap inner">
+
+    <!-- Product image -->
+    <div class="visual" data-reveal>
+      <span class="badge">{{ section.settings.badge_text }}</span>
+      {%- if fp != blank and fp.featured_image -%}
+        {{ fp.featured_image | image_url: width: 900 | image_tag: class: 'shot', alt: fp.title }}
+      {%- else -%}
+        <img class="shot" src="{{ 'litter-vanilla-cutout.png' | asset_url }}" alt="{{ section.settings.heading }}">
+      {%- endif -%}
+    </div>
+
+    <!-- Product details -->
+    <div data-reveal data-delay="1">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+
+      <div class="price">
+        {%- if fp != blank and fv -%}
+          <span class="now">{{ fv.price | money }}</span>
+          {%- if fv.compare_at_price > fv.price -%}
+            <span class="was">{{ fv.compare_at_price | money }}</span>
+            {%- assign savings = fv.compare_at_price | minus: fv.price | times: 100 | divided_by: fv.compare_at_price -%}
+            <span class="save">Save {{ savings }}%</span>
+          {%- endif -%}
+        {%- else -%}
+          <span class="now">{{ section.settings.dummy_price }}</span>
+          <span class="was">{{ section.settings.dummy_was }}</span>
+          <span class="save">{{ section.settings.dummy_save }}</span>
+        {%- endif -%}
+      </div>
+
+      <p class="desc">{{ section.settings.description }}</p>
+
+      {%- if fp != blank and fp.variants.size > 1 -%}
+        <div class="vlabel">Choose your size</div>
+        <div class="size-pills">
+          {%- for v in fp.variants -%}
+            <button class="size-pill{% if forloop.first %} on{% endif %}"
+              data-variant-id="{{ v.id }}"
+              data-price="{{ v.price }}">{{ v.title }}</button>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="vlabel">Choose your size</div>
+        <div class="size-pills">
+          <button class="size-pill on">5 kg</button>
+          <button class="size-pill">10 kg</button>
+        </div>
+      {%- endif -%}
+
+      <div class="ftags" id="feat-tags"></div>
+
+      <div class="buy">
+        {%- if fv -%}
+          <button class="btn btn--lg bpc-atc" data-variant-id="{{ fv.id }}">
+            Add to Cart · {{ fv.price | money }}
+          </button>
+        {%- else -%}
+          <button class="btn btn--lg bpc-atc" data-variant-id="">
+            Add to Cart · {{ section.settings.dummy_price }}
+          </button>
+        {%- endif -%}
+        {%- if fp != blank -%}
+          <a href="{{ fp.url }}" class="btn btn--ghost btn--lg">View Details</a>
+        {%- else -%}
+          <a href="{{ routes.collections_url }}/all" class="btn btn--ghost btn--lg">View Details</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.feature{background:var(--page-2)}
+.feature .inner{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
+.feature .visual{position:relative;display:grid;place-items:center;aspect-ratio:1/1;background:radial-gradient(120% 100% at 50% 20%,#fff,var(--page-2));border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 0 #fff,var(--shadow-sm)}
+.feature .visual img.shot{height:84%;filter:drop-shadow(0 34px 40px rgba(0,0,64,.3))}
+.feature .visual .badge{position:absolute;top:22px;left:22px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:30px}
+.feature h2{font-size:clamp(32px,4.4vw,52px);margin:14px 0 0;letter-spacing:-.02em}
+.feature .price{display:flex;align-items:baseline;gap:12px;margin-top:18px}
+.feature .price .now{font-family:var(--display);font-size:30px;font-weight:700}
+.feature .price .was{color:var(--ink-35);text-decoration:line-through;font-size:18px}
+.feature .price .save{background:rgba(212,175,55,.18);color:var(--gold-deep);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px}
+.feature .desc{margin-top:18px;color:var(--ink-70);font-size:16px;line-height:1.7;max-width:48ch}
+.feature .vlabel{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-50);margin:26px 0 12px}
+.size-pills{display:flex;gap:10px}
+.size-pill{border:1.5px solid var(--line);border-radius:6px;padding:12px 22px;font-weight:600;font-size:14px;color:var(--ink-70);transition:.2s;font-family:inherit;cursor:pointer;background:none}
+.size-pill.on{border-color:var(--navy);background:var(--navy);color:var(--cream)}
+.feature .ftags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.feature .ftags span{font-size:12px;color:var(--ink-70);background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:8px 14px;display:flex;align-items:center;gap:7px}
+.feature .ftags svg{width:15px;height:15px;color:var(--gold-deep)}
+.feature .buy{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+@media(max-width:960px){
+  .feature .inner{grid-template-columns:1fr;text-align:center}
+  .feature .desc{margin-inline:auto}
+  .feature .buy,.feature .ftags{justify-content:center}
+  .feature .vlabel,.feature .price{text-align:center}
+  .size-pills{justify-content:center}
+  .feature .visual{aspect-ratio:1/0.7}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Select your featured bestseller. If left blank, dummy content is shown."
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge label",
+      "default": "Bestseller"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Vanilla Bean · Cat Litter"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The litter everyone keeps re-ordering."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Natural mineral granules clump on contact and trap odour for days — with 99.9% less dust for clearer air and tidier floors. The vanilla finish is subtle, never synthetic."
+    },
+    {
+      "type": "header",
+      "content": "Dummy prices (shown when no product is selected)"
+    },
+    {
+      "type": "text",
+      "id": "dummy_price",
+      "label": "Current price",
+      "default": "$34"
+    },
+    {
+      "type": "text",
+      "id": "dummy_was",
+      "label": "Original price",
+      "default": "$39"
+    },
+    {
+      "type": "text",
+      "id": "dummy_save",
+      "label": "Save label",
+      "default": "Save 13%"
+    }
+  ],
+  "presets": [{ "name": "Featured Product" }]
+}
+{% endschema %}
