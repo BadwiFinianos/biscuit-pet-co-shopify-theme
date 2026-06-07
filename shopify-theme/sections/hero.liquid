@@ -1,0 +1,313 @@
+{%- assign packshot_url = section.settings.packshot | image_url: width: 1200 -%}
+{%- unless packshot_url -%}
+  {%- assign packshot_url = 'litter-vanilla-cutout.png' | asset_url -%}
+{%- endunless -%}
+
+<section class="hero">
+
+  <!-- Hero A: Split editorial -->
+  <div class="hero-variant hv-a">
+    <div class="wrap inner">
+      <div class="copy">
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+        <h1>{{ section.settings.hero_a_h1 | newline_to_br }}<br><em>{{ section.settings.hero_a_em }}</em></h1>
+        <p class="lead">{{ section.settings.lead }}</p>
+        <div class="cta">
+          <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--lg">
+            {{ section.settings.cta1_text }} <span class="arw" id="a-arw"></span>
+          </a>
+          <a href="{{ section.settings.cta2_url | default: routes.collections_url | append: '/all' }}" class="btn btn--ghost btn--lg">
+            {{ section.settings.cta2_text }}
+          </a>
+        </div>
+        <div class="rate-chip"><span class="stars" id="a-stars"></span><b>4.9</b>&nbsp;{{ section.settings.rating_text }}</div>
+      </div>
+      <div class="stage">
+        <div class="arc"></div>
+        <div class="arc-ring"></div>
+        <div class="float-note" id="a-note"></div>
+        <img class="packshot" src="{{ packshot_url }}" alt="{{ section.settings.packshot_alt | default: shop.name }}">
+        <img class="seal-badge" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved">
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero B: Centered editorial -->
+  <div class="hero-variant hv-b">
+    <div class="wrap inner">
+      <img class="watermark" src="{{ 'monogram-navy.png' | asset_url }}" alt="">
+      <span class="eyebrow" style="position:relative;z-index:2">{{ section.settings.hero_b_eyebrow }}</span>
+      <h1>{{ section.settings.hero_b_h1 }}<br><em>{{ section.settings.hero_b_em }}</em></h1>
+      <p class="lead">{{ section.settings.hero_b_lead }}</p>
+      <div class="cta">
+        <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--lg">{{ section.settings.cta1_text }}</a>
+        <a href="{{ section.settings.cta2_url | default: routes.collections_url | append: '/all' }}" class="btn btn--ghost btn--lg">{{ section.settings.cta2_text }}</a>
+      </div>
+      <div class="stage">
+        <div class="chips">
+          <span class="chip" id="b-c1"></span>
+          <span class="chip" id="b-c2"></span>
+        </div>
+        <img class="packshot" src="{{ packshot_url }}" alt="{{ section.settings.packshot_alt | default: shop.name }}">
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero C: Navy showcase -->
+  <div class="hero-variant hv-c">
+    <div class="glow"></div>
+    <div class="wrap inner">
+      <div class="copy">
+        <img class="wordmark" src="{{ 'wordmark-cream.png' | asset_url }}" alt="{{ shop.name }}">
+        <h1>
+          <span>{{ section.settings.hero_c_h1 }}</span>
+          <span class="it"><em>{{ section.settings.hero_c_em }}</em></span>
+        </h1>
+        <p class="lead">{{ section.settings.hero_c_lead }}</p>
+        <div class="cta">
+          <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--gold btn--lg">{{ section.settings.hero_c_cta1 }}</a>
+          <a href="{{ section.settings.cta2_url | default: routes.collections_url | append: '/all' }}" class="btn btn--ghost on-dark btn--lg">{{ section.settings.cta2_text }}</a>
+        </div>
+        <div class="rate-chip"><span class="stars" id="c-stars"></span><b>4.9</b>&nbsp;{{ section.settings.hero_c_rating }}</div>
+      </div>
+      <div class="stage">
+        <div class="spot"></div>
+        <img class="packshot" src="{{ packshot_url }}" alt="{{ section.settings.packshot_alt | default: shop.name }}">
+        <img class="seal-badge" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+/* Hero CSS — copied from design system */
+.hero{position:relative;overflow:hidden}
+.hero-variant{display:none}
+body[data-hero="a"] .hv-a,
+body[data-hero="b"] .hv-b,
+body[data-hero="c"] .hv-c{display:block}
+.rate-chip{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-70)}
+.rate-chip .stars svg{width:15px;height:15px}
+.rate-chip b{color:var(--navy);font-weight:600}
+.hv-a .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;min-height:clamp(560px,82vh,820px);padding-block:40px}
+.hv-a .copy{max-width:540px}
+.hv-a h1{font-size:clamp(46px,6.4vw,88px);line-height:.98;letter-spacing:-.025em;margin:22px 0 0}
+.hv-a h1 em{font-style:italic;font-weight:500}
+.hv-a .lead{margin-top:26px;font-size:18px;color:var(--ink-70);line-height:1.7;max-width:46ch}
+.hv-a .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.hv-a .rate-chip{margin-top:30px}
+.hv-a .stage{position:relative;display:grid;place-items:center;height:100%}
+.hv-a .arc{position:absolute;width:min(82%,460px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fff 0%,var(--page-2) 55%,rgba(244,236,218,0) 72%);z-index:0}
+.hv-a .arc-ring{position:absolute;width:min(74%,420px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold);opacity:.4;z-index:0}
+.hv-a .packshot{position:relative;z-index:2;height:min(72vh,640px);width:auto;filter:drop-shadow(0 40px 50px rgba(0,0,64,.34))}
+.hv-a .seal-badge{position:absolute;z-index:3;right:6%;bottom:8%;width:118px;animation:bpc-spin 26s linear infinite}
+.hv-a .float-note{position:absolute;z-index:3;left:0;top:14%;background:var(--card);border:1px solid var(--line-soft);border-radius:8px;padding:14px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;font-size:13px;max-width:210px}
+.hv-a .float-note svg{width:26px;height:26px;color:var(--gold-deep);flex-shrink:0}
+.hv-a .float-note b{display:block;font-size:14px;color:var(--navy)}
+@keyframes bpc-spin{to{transform:rotate(360deg)}}
+.hv-b{text-align:center;background:radial-gradient(120% 80% at 50% -10%,#fff 0%,var(--page) 60%)}
+.hv-b .inner{position:relative;padding-block:clamp(60px,9vw,96px) 0}
+.hv-b .watermark{position:absolute;top:8%;left:50%;transform:translateX(-50%);width:min(60%,560px);opacity:.05;z-index:0}
+.hv-b h1{position:relative;z-index:2;font-size:clamp(54px,10vw,150px);line-height:.9;letter-spacing:-.03em}
+.hv-b h1 em{font-style:italic;font-weight:500;color:var(--gold-deep)}
+.hv-b .lead{position:relative;z-index:2;max-width:50ch;margin:26px auto 0;font-size:18px;color:var(--ink-70)}
+.hv-b .cta{position:relative;z-index:2;display:flex;gap:14px;justify-content:center;margin-top:32px}
+.hv-b .stage{position:relative;z-index:2;margin-top:-2%;display:grid;place-items:end center}
+.hv-b .packshot{height:min(58vh,560px);width:auto;filter:drop-shadow(0 40px 50px rgba(0,0,64,.32))}
+.hv-b .chips{position:absolute;z-index:3;bottom:16%;left:0;right:0;display:flex;justify-content:space-between;pointer-events:none;max-width:760px;margin:0 auto}
+.hv-b .chip{background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:10px 18px;box-shadow:var(--shadow-sm);font-size:12px;font-weight:600;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.hv-b .chip svg{width:18px;height:18px;color:var(--gold-deep)}
+.hv-c{background:linear-gradient(160deg,#000045 0%,var(--navy) 55%,#000031 100%);color:var(--cream)}
+.hv-c .inner{display:grid;grid-template-columns:1fr .9fr;gap:48px;align-items:center;min-height:clamp(560px,84vh,820px);padding-block:48px}
+.hv-c .glow{position:absolute;width:760px;height:760px;border-radius:50%;right:-6%;top:50%;transform:translateY(-50%);background:radial-gradient(circle,rgba(212,175,55,.16),transparent 62%);z-index:0}
+.hv-c .copy{position:relative;z-index:2;max-width:540px;display:flex;flex-direction:column;align-items:flex-start}
+.hv-c .wordmark{height:54px;width:auto;margin-bottom:30px}
+.hv-c h1{font-size:clamp(40px,5.1vw,70px);line-height:1.06;letter-spacing:-.02em;color:var(--cream)}
+.hv-c h1 span{display:block;white-space:nowrap}
+.hv-c h1 em{font-style:italic;font-weight:500;color:var(--gold-light)}
+.hv-c .lead{margin-top:24px;font-size:18px;color:rgba(242,234,211,.72);line-height:1.7;max-width:44ch}
+.hv-c .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hv-c .rate-chip{margin-top:28px;color:rgba(242,234,211,.7)}
+.hv-c .rate-chip b{color:var(--cream)}
+.hv-c .stage{position:relative;z-index:2;display:grid;place-items:center}
+.hv-c .spot{position:absolute;width:min(80%,440px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,rgba(212,175,55,.22),transparent 60%);z-index:0}
+.hv-c .packshot{position:relative;z-index:2;height:min(70vh,640px);filter:drop-shadow(0 44px 54px rgba(0,0,0,.5))}
+.hv-c .seal-badge{position:absolute;z-index:3;right:4%;bottom:8%;width:116px;animation:bpc-spin 26s linear infinite}
+.hero-picker{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:70;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:40px;padding:7px 8px 7px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);font-size:12px}
+.hero-picker .lab{font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-50);font-size:11px}
+.hero-picker .opts{display:flex;gap:4px}
+.hero-picker button{width:34px;height:34px;border-radius:50%;font-weight:700;font-size:13px;color:var(--ink-70);transition:.25s}
+.hero-picker button.on{background:var(--navy);color:var(--cream)}
+.hero-picker button:not(.on):hover{background:rgba(0,0,64,.07)}
+@media(max-width:960px){
+  .hv-a .inner,.hv-c .inner{grid-template-columns:1fr;text-align:center}
+  .hv-a .copy,.hv-c .copy{max-width:none;margin-inline:auto}
+  .hv-a .lead,.hv-c .lead{margin-inline:auto}
+  .hv-a .cta,.hv-c .cta{justify-content:center}
+  .hv-a .rate-chip,.hv-c .rate-chip{justify-content:center}
+  .hv-a .stage,.hv-c .stage{order:-1;min-height:46vh}
+  .hv-a .float-note{display:none}
+  .hv-a .packshot{height:min(54vh,460px)}
+  .hv-b .packshot{height:min(48vh,400px)}
+  .hv-c .packshot{height:min(54vh,460px)}
+}
+@media(max-width:560px){
+  .hv-b .chips{display:none}
+  .hv-a .packshot{height:min(44vh,320px)}
+  .hv-b .packshot{height:min(40vh,300px)}
+  .hv-c .packshot{height:min(44vh,320px)}
+  .hv-a .stage,.hv-c .stage{min-height:30vh}
+  .hv-a .inner,.hv-c .inner{padding-block:32px}
+  .hero-picker{bottom:calc(14px + env(safe-area-inset-bottom,0px));padding:6px 8px 6px 14px;font-size:11px;gap:8px}
+  .hero-picker button{width:30px;height:30px;font-size:12px}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Shared settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "packshot",
+      "label": "Product packshot",
+      "info": "Use a transparent PNG cutout for best results. Shown in all 3 hero variants."
+    },
+    {
+      "type": "text",
+      "id": "packshot_alt",
+      "label": "Image alt text",
+      "default": "Biscuit Pet Co. Vanilla Bean Cat Litter"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow (Hero A)",
+      "default": "Premium Cat Litter · Vanilla Bean"
+    },
+    {
+      "type": "text",
+      "id": "cta1_text",
+      "label": "Primary button text",
+      "default": "Shop the Litter"
+    },
+    {
+      "type": "url",
+      "id": "cta1_url",
+      "label": "Primary button URL"
+    },
+    {
+      "type": "text",
+      "id": "cta2_text",
+      "label": "Secondary button text",
+      "default": "Explore All"
+    },
+    {
+      "type": "url",
+      "id": "cta2_url",
+      "label": "Secondary button URL"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating label",
+      "default": "from 1,200+ pet parents"
+    },
+    {
+      "type": "header",
+      "content": "Hero A — Split editorial"
+    },
+    {
+      "type": "text",
+      "id": "hero_a_h1",
+      "label": "Headline (line 1)",
+      "default": "Litter,"
+    },
+    {
+      "type": "text",
+      "id": "hero_a_em",
+      "label": "Headline italic (line 2)",
+      "default": "elevated."
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Lead paragraph",
+      "default": "99.9% dust-free, ultra-clumping natural mineral litter — finished with a soft vanilla bouquet your home will actually love."
+    },
+    {
+      "type": "header",
+      "content": "Hero B — Centred editorial"
+    },
+    {
+      "type": "text",
+      "id": "hero_b_eyebrow",
+      "label": "Eyebrow",
+      "default": "For pets with standards"
+    },
+    {
+      "type": "text",
+      "id": "hero_b_h1",
+      "label": "Headline (line 1)",
+      "default": "The litter box,"
+    },
+    {
+      "type": "text",
+      "id": "hero_b_em",
+      "label": "Headline italic (line 2)",
+      "default": "refined."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_b_lead",
+      "label": "Lead paragraph",
+      "default": "A natural mineral litter engineered to clump fast, lock odour, and keep the air clear — wrapped in warm vanilla."
+    },
+    {
+      "type": "header",
+      "content": "Hero C — Navy showcase"
+    },
+    {
+      "type": "text",
+      "id": "hero_c_h1",
+      "label": "Headline (line 1)",
+      "default": "Premium care,"
+    },
+    {
+      "type": "text",
+      "id": "hero_c_em",
+      "label": "Headline italic (line 2)",
+      "default": "head to paw."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_c_lead",
+      "label": "Lead paragraph",
+      "default": "From ultra-clumping vanilla litter to slow-cooked cuisine — a considered collection for the pets who run the household."
+    },
+    {
+      "type": "text",
+      "id": "hero_c_cta1",
+      "label": "Primary button text",
+      "default": "Shop Bestseller"
+    },
+    {
+      "type": "text",
+      "id": "hero_c_rating",
+      "label": "Rating label",
+      "default": "· 3,000+ five-star reviews"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

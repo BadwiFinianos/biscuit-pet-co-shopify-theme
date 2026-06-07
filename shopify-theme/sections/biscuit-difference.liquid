@@ -1,0 +1,51 @@
+<section class="diff section wrap">
+  <div class="section-head center" data-reveal>
+    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2 class="section-title" style="margin-top:14px">{{ section.settings.heading }}</h2>
+    <p class="section-sub">{{ section.settings.subheading }}</p>
+  </div>
+  <!-- Steps are rendered by biscuit.js (icon set lives in JS) -->
+  <div class="steps" id="diff-steps"></div>
+</section>
+
+<style>
+.diff .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:54px;counter-reset:s}
+.step{position:relative;padding-top:28px}
+.step .num{font-family:var(--display);font-size:15px;color:var(--gold-deep);font-weight:600;letter-spacing:.1em}
+.step .ic{width:58px;height:58px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;margin:14px 0 18px;color:var(--gold-deep)}
+.step .ic svg{width:28px;height:28px}
+.step h3{font-size:22px;letter-spacing:-.01em}
+.step p{margin-top:9px;color:var(--ink-70);font-size:14.5px;line-height:1.65}
+.step::after{content:"";position:absolute;top:48px;right:-12px;width:24px;height:1px;background:var(--line)}
+.step:last-child::after{display:none}
+@media(max-width:960px){.diff .steps{grid-template-columns:1fr 1fr;gap:36px 24px}.step::after{display:none}}
+@media(max-width:560px){.diff .steps{grid-template-columns:1fr}}
+</style>
+
+{% schema %}
+{
+  "name": "The Biscuit Difference",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why it works"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Biscuit difference"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Four things every Biscuit litter does — measurably better."
+    }
+  ],
+  "presets": [{ "name": "The Biscuit Difference" }]
+}
+{% endschema %}

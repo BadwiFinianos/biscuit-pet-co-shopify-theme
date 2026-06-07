@@ -1,0 +1,26 @@
+<div class="topbar">
+  {%- if section.settings.link != blank -%}
+    <a href="{{ section.settings.link }}" style="color:inherit">{{ section.settings.text }}</a>
+  {%- else -%}
+    {{ section.settings.text }}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "Complimentary shipping over $60 · Crafted for pets with standards"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link (optional)"
+    }
+  ]
+}
+{% endschema %}
