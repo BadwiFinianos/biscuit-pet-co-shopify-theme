@@ -370,23 +370,6 @@
       });
     });
 
-    /* Hero picker (design demo tool — shows A/B/C variants) */
-    const saved = localStorage.getItem('bpc_hero') || 'a';
-    document.body.setAttribute('data-hero', saved);
-    const picker = document.createElement('div');
-    picker.className = 'hero-picker';
-    picker.innerHTML = '<span class="lab">Hero style</span><div class="opts">' +
-      ['a','b','c'].map(k => '<button data-h="' + k + '">' + k.toUpperCase() + '</button>').join('') + '</div>';
-    document.body.appendChild(picker);
-    const syncPicker = () => picker.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.h === document.body.getAttribute('data-hero')));
-    picker.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
-      document.body.setAttribute('data-hero', b.dataset.h);
-      localStorage.setItem('bpc_hero', b.dataset.h);
-      syncPicker();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }));
-    syncPicker();
-
     /* Newsletter */
     document.querySelectorAll('.newsletter').forEach(form => {
       form.addEventListener('submit', e => {
