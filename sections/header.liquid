@@ -4,7 +4,7 @@
       {%- if section.settings.logo != blank -%}
         {{ section.settings.logo | image_url: height: 76 | image_tag: class: '', alt: shop.name }}
       {%- else -%}
-        <img src="{{ 'wordmark-navy.png' | asset_url }}" alt="{{ shop.name }}" style="height:38px;width:auto">
+        <img src="{{ 'wordmark-navy.png' | asset_url }}" alt="{{ shop.name }}" style="height:76px;width:auto" width="auto" height="76px">
       {%- endif -%}
     </a>
 

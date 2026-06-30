@@ -132,7 +132,7 @@ p{margin:0}
 .header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;
   height:80px;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.brand img{height:38px;width:auto}
+.brand img{height:128px;width:auto}
 .nav{display:flex;align-items:center;gap:34px}
 .nav a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink-70);position:relative;padding-block:6px;transition:color .25s}
