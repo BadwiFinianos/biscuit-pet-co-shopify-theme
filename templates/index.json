@@ -1,19 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
+        "packshot_alt": "Biscuit Pet Co. Vanilla Bean Cat Litter",
         "eyebrow": "Premium Cat Litter · Vanilla Bean",
+        "cta1_text": "Shop the Litter",
+        "cta1_url": "",
+        "cta2_text": "Explore All",
+        "cta2_url": "",
+        "rating_text": "from 1,200+ pet parents",
         "hero_a_h1": "Premium Pet Lifestyle for Pets With",
         "hero_a_em": "Standards.",
         "lead": "Our journey begins with premium cat litter — and continues with thoughtfully selected essentials made for pets who deserve more.",
-        "cta1_text": "Shop the Litter",
-        "cta2_text": "Explore All",
-        "rating_text": "from 1,200+ pet parents",
+        "hero_a_note_title": "99.9% dust-free",
+        "hero_a_note_sub": "clearer air, tidier floors",
         "hero_b_eyebrow": "For pets with standards",
         "hero_b_h1": "The litter box,",
         "hero_b_em": "refined.",
         "hero_b_lead": "A natural mineral litter engineered to clump fast, lock odour, and keep the air clear — wrapped in warm vanilla.",
+        "hero_b_chip1_text": "Ultra-clumping",
+        "hero_b_chip2_text": "Odour locked",
         "hero_c_h1": "Premium care,",
         "hero_c_em": "head to paw.",
         "hero_c_lead": "From ultra-clumping vanilla litter to slow-cooked cuisine — a considered collection for the pets who run the household.",
@@ -27,7 +43,9 @@
     },
     "featured-product": {
       "type": "featured-product",
+      "disabled": true,
       "settings": {
+        "product": "",
         "badge_text": "Bestseller",
         "eyebrow": "Vanilla Bean · Cat Litter",
         "heading": "The litter everyone keeps re-ordering.",
@@ -39,6 +57,7 @@
     },
     "shop-by-companion": {
       "type": "shop-by-companion",
+      "disabled": true,
       "settings": {
         "heading": "Shop by companion",
         "subheading": "Considered essentials for every member of the household.",
@@ -46,14 +65,17 @@
         "tile1_title": "Litter & Cuisine",
         "tile1_desc": "Ultra-clumping litter and gently-cooked food.",
         "tile1_cta": "Shop Cat",
+        "tile1_url": "",
         "tile2_eyebrow": "For Dogs",
         "tile2_title": "Food & Chews",
         "tile2_desc": "Grain-free meals and slow-baked treats.",
         "tile2_cta": "Shop Dog",
+        "tile2_url": "",
         "tile3_eyebrow": "For Home",
         "tile3_title": "The Atelier",
         "tile3_desc": "Heirloom bowls and bouclé beds.",
-        "tile3_cta": "Shop Home"
+        "tile3_cta": "Shop Home",
+        "tile3_url": ""
       }
     },
     "bestsellers": {
@@ -61,6 +83,7 @@
       "settings": {
         "eyebrow": "Most loved",
         "heading": "Bestsellers",
+        "collection": "",
         "products_count": 4
       }
     },
@@ -89,8 +112,8 @@
     "trust-strip",
     "featured-product",
     "shop-by-companion",
-    "bestsellers",
+    "biscuit-difference",
     "brand-story",
-    "biscuit-difference"
+    "bestsellers"
   ]
 }
