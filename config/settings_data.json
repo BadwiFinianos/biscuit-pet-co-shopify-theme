@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_navy": "#000040",
@@ -5,7 +14,35 @@
     "color_gold": "#D4AF37",
     "color_page_bg": "#FBF7EC",
     "free_shipping_threshold": 60,
-    "social_instagram": "@biscuitpetco"
+    "social_instagram": "@biscuitpetco",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "text": "Complimentary shipping over $60 · Crafted for pets with standards",
+          "link": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "cta_eyebrow": "Join the household",
+          "cta_heading": "Become Biscuit Approved.",
+          "cta_subtext": "Early access to new scents and restock alerts.",
+          "email_placeholder": "you@email.com",
+          "subscribe_text": "Subscribe",
+          "brand_blurb": "Ultra-premium pet care, crafted in considered detail and held to one standard — Biscuit Approved.",
+          "copyright": "© 2026 Biscuit Pet Co. · For pets with standards."
+        }
+      }
+    },
+    "content_for_index": []
   },
   "presets": {}
 }

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "header": {
@@ -8,8 +17,22 @@
       }
     },
     "main": {
-      "type": "contact-form"
+      "type": "contact-form",
+      "settings": {
+        "eyebrow": "We'd love to hear from you",
+        "heading": "Get in touch.",
+        "description": "Whether you have a question about our products, your order, future availability, or Biscuit Pet Co., our team is here to help.\nPlease fill out the form below and we’ll get back to you as soon as possible.",
+        "email": "hello@biscuitpetco.com",
+        "phone": "",
+        "address": "",
+        "hours": "Mon–Fri, 9am–5pm",
+        "submit_text": "Send Message",
+        "success_message": "Thank you — your message has been sent. We'll be in touch soon."
+      }
     }
   },
-  "order": ["header", "main"]
+  "order": [
+    "header",
+    "main"
+  ]
 }
