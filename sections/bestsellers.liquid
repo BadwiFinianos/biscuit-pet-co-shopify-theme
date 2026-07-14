@@ -1,4 +1,17 @@
 {%- assign bs_collection = collections[section.settings.collection] -%}
+{%- if bs_collection == blank -%}
+  {%- assign bs_collection = collections['all'] -%}
+{%- endif -%}
+
+{%- assign bs_products = "" | split: "," -%}
+{%- for product in bs_collection.products -%}
+  {%- if product.tags contains 'bestseller' or product.tags contains 'new' -%}
+    {%- assign bs_products = bs_products | push: product -%}
+  {%- endif -%}
+  {%- if bs_products.size >= section.settings.products_count -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
 
 <section class="section wrap">
   <div class="reviews-head" style="margin-bottom:48px" data-reveal>
@@ -12,11 +25,9 @@
   </div>
 
   <div class="grid grid-4" data-reveal>
-    {%- if bs_collection != blank -%}
-      {%- for product in bs_collection.products limit: section.settings.products_count -%}
+    {%- if bs_products.size > 0 -%}
+      {%- for product in bs_products -%}
         {%- render 'product-card', product: product -%}
-      {%- else -%}
-        {%- render 'dummy-product-cards' -%}
       {%- endfor -%}
     {%- else -%}
       <!-- Dummy cards shown until a collection is selected -->
@@ -79,7 +90,7 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection",
-      "info": "Choose a collection to pull products from. If left blank, dummy cards are shown."
+      "info": "Only products tagged 'bestseller' or 'new' are shown. Choose a collection to narrow the search, or leave blank to search all products."
     },
     {
       "type": "range",
