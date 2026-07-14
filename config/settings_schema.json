@@ -3,7 +3,9 @@
     "name": "theme_info",
     "theme_name": "Biscuit Pet Co.",
     "theme_version": "1.0.0",
-    "theme_author": "Biscuit Atelier"
+    "theme_author": "Biscuit Atelier",
+    "theme_documentation_url": "https://biscuitpetco.com",
+    "theme_support_email": "support@biscuitpetco.com"
   },
   {
     "name": "Colors",
