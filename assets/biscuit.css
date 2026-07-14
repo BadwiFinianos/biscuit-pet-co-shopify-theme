@@ -118,6 +118,12 @@ p{margin:0}
 .link-underline .arw{transition:transform .35s}
 .link-underline:hover .arw{transform:translateX(5px)}
 
+.promobar{
+  background:var(--gold);color:var(--navy);font-size:12px;letter-spacing:.1em;
+  font-weight:700;text-align:center;padding:10px 16px;
+}
+.promobar a,.promobar span{color:inherit}
+
 /* ---------- Header ---------- */
 .topbar{
   background:var(--navy);color:var(--cream);font-size:12px;letter-spacing:.14em;
@@ -367,6 +373,15 @@ p{margin:0}
 .drawer-foot .subtotal{font-size:14px;color:var(--ink-50)}
 .drawer-foot .subtotal b{font-family:var(--display);font-size:24px;color:var(--navy);font-weight:700}
 .drawer-foot .note{font-size:11px;color:var(--ink-35);margin:10px 0 16px;text-align:center}
+.discount-form{display:flex;gap:8px;margin-bottom:14px}
+.discount-form input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:var(--radius);
+  padding:0 14px;font-size:13px;color:var(--navy);background:var(--page)}
+.discount-form .btn{padding:0 18px;height:42px;font-size:11px}
+.discount-row{color:var(--gold-deep);font-weight:600}
+.discount-row .lbl{color:var(--gold-deep) !important}
+.discount-remove{display:block;font-size:11px;color:var(--ink-35);letter-spacing:.06em;
+  text-decoration:underline;text-underline-offset:2px;margin:-2px 0 12px}
+.discount-remove:hover{color:var(--navy)}
 
 /* toast */
 .toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,20px);z-index:120;pointer-events:none;

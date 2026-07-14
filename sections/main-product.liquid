@@ -28,6 +28,12 @@
         {%- endif -%}
       </div>
 
+      {%- if section.settings.promo_message != blank -%}
+        <div style="margin-top:14px;font-size:13px;font-weight:600;color:var(--gold-deep)">
+          🎉 {{ section.settings.promo_message }}
+        </div>
+      {%- endif -%}
+
       {%- if product.description != blank -%}
         <div class="desc" style="margin-top:18px;color:var(--ink-70);font-size:16px;line-height:1.7;max-width:48ch">
           {{ product.description }}
@@ -106,6 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
   "name": "Product",
   "tag": "div",
   "settings": [
+    {
+      "type": "text",
+      "id": "promo_message",
+      "label": "Promo message",
+      "info": "e.g. \"Buy 3, get 30% off — automatically applied at checkout\". Leave blank to hide.",
+      "default": ""
+    },
     {
       "type": "text",
       "id": "trust_badge_1",

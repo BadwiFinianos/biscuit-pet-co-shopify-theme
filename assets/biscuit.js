@@ -101,6 +101,51 @@
   }
   window.BPC_ADD_VARIANT = addToCart;
 
+  /* ---- Discounts ---- */
+  function getDiscountSummary() {
+    const map = new Map();
+    (cart.items || []).forEach(item => {
+      (item.discounts || []).forEach(d => {
+        map.set(d.title, (map.get(d.title) || 0) + (d.amount || 0));
+      });
+    });
+    (cart.cart_level_discount_applications || []).forEach(app => {
+      if (app.target_type === 'shipping_line' && !map.has(app.title)) {
+        map.set(app.title, 0);
+      }
+    });
+    return Array.from(map, ([title, amount]) => ({ title, amount }));
+  }
+
+  async function applyDiscountCode(code) {
+    code = (code || '').trim();
+    if (!code) return;
+    const prevDiscount = cart.total_discount || 0;
+    const prevTitles = new Set(getDiscountSummary().map(d => d.title));
+    try {
+      await fetch('/discount/' + encodeURIComponent(code) + '?redirect=/cart', { credentials: 'same-origin' });
+      await fetchCart();
+      const nowTitles = getDiscountSummary();
+      const grew = (cart.total_discount || 0) > prevDiscount;
+      const newTitle = nowTitles.some(d => !prevTitles.has(d.title));
+      if (grew || newTitle) {
+        toast('Discount applied');
+      } else {
+        toast("That code didn't apply — check it and try again");
+      }
+    } catch (e) {
+      toast('Could not apply code');
+    }
+  }
+
+  async function removeDiscountCodes() {
+    try {
+      await fetch('/discount/?redirect=/cart', { credentials: 'same-origin' });
+      await fetchCart();
+      toast('Discount removed');
+    } catch (e) { /* silent */ }
+  }
+
   /* ---- Cart drawer ---- */
   function buildDrawer() {
     if (document.getElementById('bpc-scrim')) return;
@@ -156,6 +201,7 @@
 
     foot.style.display = 'block';
     const sub = cart.total_price;
+    const discounts = getDiscountSummary();
 
     body.innerHTML = cart.items.map(item => {
       const img = item.image ? '<img src="' + item.image + '" alt="' + (item.product_title || '') + '">' : '';
@@ -181,6 +227,17 @@
     }).join('');
 
     foot.innerHTML =
+      '<form class="discount-form" id="bpc-discount-form">' +
+        '<input type="text" id="bpc-discount-code" placeholder="Discount code" autocomplete="off">' +
+        '<button type="submit" class="btn btn--ghost">Apply</button>' +
+      '</form>' +
+      (discounts.length
+        ? discounts.map(d =>
+            '<div class="row discount-row"><span class="lbl">🏷 ' + d.title + '</span>' +
+              '<span>' + (d.amount > 0 ? '−' + fmtPrice(d.amount) : 'Applied') + '</span></div>'
+          ).join('') +
+          '<button type="button" class="discount-remove" id="bpc-discount-remove">Remove discount</button>'
+        : '') +
       '<div class="row"><span class="subtotal">Subtotal</span>' +
         '<span class="subtotal"><b>' + fmtPrice(sub) + '</b></span></div>' +
       '<div class="note">Shipping &amp; taxes calculated at checkout</div>' +
@@ -189,6 +246,19 @@
     body.querySelectorAll('.bpc-q').forEach(btn =>
       btn.addEventListener('click', () => changeQty(btn.dataset.key, +btn.dataset.qty))
     );
+
+    const discountForm = document.getElementById('bpc-discount-form');
+    if (discountForm) {
+      discountForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const input = document.getElementById('bpc-discount-code');
+        const btn = discountForm.querySelector('button');
+        btn.disabled = true;
+        applyDiscountCode(input.value).finally(() => { btn.disabled = false; });
+      });
+    }
+    const removeBtn = document.getElementById('bpc-discount-remove');
+    if (removeBtn) removeBtn.addEventListener('click', removeDiscountCodes);
   }
 
   /* ---- Toast ---- */
