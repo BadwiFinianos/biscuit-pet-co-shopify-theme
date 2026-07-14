@@ -37,16 +37,20 @@
         {%- endif -%}
         {{ fv.price | money }}
       </span>
-      <span class="pcard-rating">
-        <span class="stars" style="--r:4.9">
-          {%- for i in (1..5) -%}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3l2.6 5.7 6.1.7-4.5 4.2 1.2 6L12 17.8 6.6 19.6l1.2-6L3.3 9.4l6.1-.7L12 3Z" fill="currentColor" stroke="none"/>
-            </svg>
-          {%- endfor -%}
+      {%- assign product_rating = product.metafields.reviews.rating.value -%}
+      {%- assign product_rating_count = product.metafields.reviews.rating_count.value | default: 0 -%}
+      {%- if product_rating != blank and product_rating_count > 0 -%}
+        <span class="pcard-rating">
+          <span class="stars" style="--r:{{ product_rating.rating }}">
+            {%- for i in (1..5) -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l2.6 5.7 6.1.7-4.5 4.2 1.2 6L12 17.8 6.6 19.6l1.2-6L3.3 9.4l6.1-.7L12 3Z" fill="currentColor" stroke="none"/>
+              </svg>
+            {%- endfor -%}
+          </span>
+          <span>{{ product_rating.rating }}</span>
         </span>
-        <span>4.9</span>
-      </span>
+      {%- endif -%}
     </div>
   </div>
 </article>
