@@ -1,0 +1,67 @@
+<section class="section wrap">
+  <div class="section-head" style="margin-bottom:48px" data-reveal>
+    <span class="eyebrow">{{ 'sections.list_collections.eyebrow' | t }}</span>
+    <h1 class="section-title" style="margin-top:14px">{{ section.settings.title | default: 'sections.list_collections.title' | t }}</h1>
+  </div>
+
+  {%- paginate collections by section.settings.collections_per_page -%}
+    <div class="grid grid-3">
+      {%- for collection in collections -%}
+        <a class="ccard" href="{{ collection.url }}" data-reveal>
+          <div class="ccard-media">
+            {%- if collection.featured_image -%}
+              {{ collection.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: collection.title }}
+            {%- else -%}
+              <img src="{{ 'mascot-navy.png' | asset_url }}" alt="{{ collection.title }}" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="ccard-body">
+            <h3 class="ccard-name">{{ collection.title }}</h3>
+            <span class="ccard-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:56px">
+        {{- paginate | default_pagination -}}
+      </div>
+    {%- endif -%}
+  {%- endpaginate -%}
+</section>
+
+<style>
+.ccard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .4s}
+.ccard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--line)}
+.ccard-media{position:relative;aspect-ratio:1/1;display:grid;place-items:center;background:var(--page-2);overflow:hidden}
+.ccard-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ccard:hover .ccard-media img{transform:scale(1.05)}
+.ccard-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:6px}
+.ccard-name{font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.ccard:hover .ccard-name{color:var(--gold-deep)}
+.ccard-count{font-size:12px;color:var(--ink-50)}
+</style>
+
+{% schema %}
+{
+  "name": "List collections",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "collections_per_page",
+      "label": "Collections per page",
+      "min": 6,
+      "max": 48,
+      "step": 6,
+      "default": 24
+    }
+  ]
+}
+{% endschema %}

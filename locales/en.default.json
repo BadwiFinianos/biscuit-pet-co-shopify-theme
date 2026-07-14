@@ -131,6 +131,10 @@
       "optional": "(optional)",
       "message_field": "Message",
       "generic_error": "Something went wrong — please check your details and try again."
+    },
+    "list_collections": {
+      "eyebrow": "Shop",
+      "title": "All Collections"
     }
   }
 }
