@@ -8,7 +8,13 @@
       }
     },
     "story": {
-      "type": "brand-story"
+      "type": "brand-story",
+      "settings": {
+        "quote_text": "Because pets are not just pets.",
+        "quote_em": "They are family.",
+        "paragraph1": "At Biscuit Pet Co, we believe pets deserve more than ordinary essentials. Our journey begins with premium cat litter and continues with thoughtfully selected products made for pets who deserve more. Every item we bring into the Biscuit world is chosen with care, quality, comfort, and everyday pet wellbeing in mind.",
+        "paragraph2": "We are building Biscuit Pet Co. for pet owners who value cleaner homes, better routines, and products that feel as considered as the pets they love. From litter and nutrition to grooming, beds, toys, and lifestyle essentials, our goal is to become a trusted destination for premium pet care — starting with cats and growing with purpose."
+      }
     },
     "main": {
       "type": "main-page"
