@@ -13,6 +13,8 @@
     "color_cream": "#F2EAD3",
     "color_gold": "#D4AF37",
     "color_page_bg": "#FBF7EC",
+    "social_instagram_link": "https://www.instagram.com/biscuitpetco/",
+    "social_tiktok_link": "https://www.tiktok.com/@biscuitpetco",
     "social_instagram": "@biscuitpetco",
     "sections": {
       "announcement-bar": {
@@ -37,7 +39,19 @@
           "email_placeholder": "you@email.com",
           "subscribe_text": "Subscribe",
           "brand_blurb": "Ultra-premium pet care, crafted in considered detail and held to one standard — Biscuit Approved.",
+          "menu_heading": "Shop",
+          "footer_menu": "main-menu",
+          "connect_heading": "Connect",
+          "phone_number": "",
           "copyright": "© 2026 Biscuit Pet Co. · For pets with standards."
+        }
+      },
+      "promo-bar": {
+        "type": "promo-bar",
+        "settings": {
+          "enabled": false,
+          "text": "Buy 3, get 30% off — automatically applied at checkout",
+          "link": ""
         }
       }
     },
