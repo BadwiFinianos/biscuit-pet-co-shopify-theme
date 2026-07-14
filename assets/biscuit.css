@@ -374,7 +374,7 @@ p{margin:0}
 .drawer-foot .note{font-size:11px;color:var(--ink-35);margin:10px 0 16px;text-align:center}
 
 /* toast */
-.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,20px);z-index:120;
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,20px);z-index:120;pointer-events:none;
   background:var(--navy);color:var(--cream);padding:14px 22px;border-radius:6px;font-size:13.5px;
   display:flex;align-items:center;gap:11px;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;
   transition:opacity .3s,transform .3s,visibility .3s}
