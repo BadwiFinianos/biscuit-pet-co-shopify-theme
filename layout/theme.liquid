@@ -41,9 +41,9 @@
     window.bpcData = {
       cart: {{ cart | json }},
       routes: {
-        cart_add:    '{{ routes.cart_add_url }}',
-        cart:        '{{ routes.cart_url }}',
-        cart_change: '{{ routes.cart_change_url }}'
+        cart_add:    '{{ routes.cart_add_url }}.js',
+        cart:        '{{ routes.cart_url }}.js',
+        cart_change: '{{ routes.cart_change_url }}.js'
       },
       assets: {
         mascotNavy:   '{{ "mascot-navy.png"    | asset_url }}',
