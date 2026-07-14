@@ -10,9 +10,34 @@
 
     <nav class="nav" aria-label="Primary">
       {%- for link in linklists[section.settings.menu].links -%}
-        <a href="{{ link.url }}"{% if link.active %} class="active"{% endif %}>{{ link.title }}</a>
+        {%- if link.links.size > 0 -%}
+          <div class="nav-item has-dropdown" data-nav-item>
+            <button type="button" class="nav-trigger{% if link.active %} active{% endif %}" aria-expanded="false" aria-haspopup="true">
+              {{ link.title }}
+              <span class="nav-caret" aria-hidden="true"></span>
+            </button>
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-inner">
+                {%- for child in link.links -%}
+                  <div class="nav-col">
+                    <a href="{{ child.url }}" class="nav-col-heading{% if child.active %} active{% endif %}">{{ child.title }}</a>
+                    {%- if child.links.size > 0 -%}
+                      <ul class="nav-col-list">
+                        {%- for grandchild in child.links -%}
+                          <li><a href="{{ grandchild.url }}"{% if grandchild.active %} class="active"{% endif %}>{{ grandchild.title }}</a></li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </div>
+                {%- endfor -%}
+              </div>
+            </div>
+          </div>
+        {%- else -%}
+          <a href="{{ link.url }}"{% if link.active %} class="active"{% endif %}>{{ link.title }}</a>
+        {%- endif -%}
       {%- else -%}
-        <a href="{{ routes.collections_url }}/all">Shop All</a>
+        <a href="{{ routes.collections_url }}/all">Products</a>
         <a href="{{ routes.collections_url }}/cat-litter">Cat Litter</a>
         <a href="{{ routes.collections_url }}/food-treats">Food &amp; Treats</a>
         <a href="{{ routes.collections_url }}/dog">Dog</a>
@@ -36,9 +61,37 @@
 
 <nav id="mobile-nav" aria-label="Mobile">
   {%- for link in linklists[section.settings.menu].links -%}
-    <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- if link.links.size > 0 -%}
+      <div class="mnav-item" data-mnav-item>
+        <div class="mnav-row">
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          <button type="button" class="mnav-toggle" aria-expanded="false" aria-label="Toggle {{ link.title }} submenu"></button>
+        </div>
+        <div class="mnav-sub">
+          {%- for child in link.links -%}
+            {%- if child.links.size > 0 -%}
+              <div class="mnav-subitem" data-mnav-item>
+                <div class="mnav-row">
+                  <a href="{{ child.url }}">{{ child.title }}</a>
+                  <button type="button" class="mnav-toggle" aria-expanded="false" aria-label="Toggle {{ child.title }} submenu"></button>
+                </div>
+                <div class="mnav-sub">
+                  {%- for grandchild in child.links -%}
+                    <a href="{{ grandchild.url }}">{{ grandchild.title }}</a>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- else -%}
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- else -%}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- endif -%}
   {%- else -%}
-    <a href="{{ routes.collections_url }}/all">Shop All</a>
+    <a href="{{ routes.collections_url }}/all">Products</a>
     <a href="{{ routes.collections_url }}/cat-litter">Cat Litter</a>
     <a href="{{ routes.collections_url }}/food-treats">Food &amp; Treats</a>
     <a href="{{ routes.collections_url }}/dog">Dog</a>

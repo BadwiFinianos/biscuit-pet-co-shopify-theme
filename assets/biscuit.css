@@ -141,6 +141,31 @@ p{margin:0}
 .nav a:hover{color:var(--navy)}
 .nav a:hover::after,.nav a.active::after{transform:scaleX(1)}
 .nav a.active{color:var(--navy)}
+.nav-item{position:relative}
+.nav-trigger{display:inline-flex;align-items:center;gap:6px;font-family:var(--body);
+  font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-70);position:relative;padding-block:6px;transition:color .25s;cursor:pointer}
+.nav-trigger::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-trigger:hover,.nav-item.open .nav-trigger{color:var(--navy)}
+.nav-trigger:hover::after,.nav-trigger.active::after,.nav-item.open .nav-trigger::after{transform:scaleX(1)}
+.nav-trigger.active{color:var(--navy)}
+.nav-caret{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translateY(-2px);transition:transform .25s}
+.nav-item.open .nav-caret{transform:rotate(225deg) translateY(2px)}
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translate(-50%,8px);z-index:70;
+  min-width:560px;padding-top:18px;opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .25s,transform .25s,visibility .25s}
+.nav-item.open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+.nav-dropdown-inner{display:flex;gap:36px;background:var(--card);border:1px solid var(--line-soft);
+  border-radius:6px;box-shadow:var(--shadow);padding:28px 32px}
+.nav-col{display:flex;flex-direction:column;gap:10px;min-width:150px}
+.nav-col-heading{font-family:var(--display);font-size:16px;font-weight:600;color:var(--navy);
+  letter-spacing:-.01em;padding-bottom:8px;border-bottom:1px solid var(--line-soft)}
+.nav-col-heading:hover,.nav-col-heading.active{color:var(--gold-deep)}
+.nav-col-list{display:flex;flex-direction:column;gap:9px;margin-top:2px}
+.nav-col-list a{font-size:13px;color:var(--ink-70);transition:color .2s}
+.nav-col-list a:hover,.nav-col-list a.active{color:var(--gold-deep)}
 .header-actions{display:flex;align-items:center;gap:8px}
 .icon-btn{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;
   color:var(--navy);transition:background .25s}
@@ -246,7 +271,27 @@ p{margin:0}
   background:var(--page);box-shadow:var(--shadow-lg);transform:translateX(100%);
   transition:transform .45s cubic-bezier(.5,0,.1,1);padding:90px 30px 30px;flex-direction:column;gap:4px}
 #mobile-nav.open{transform:none}
-#mobile-nav a{font-family:var(--display);font-size:24px;padding:14px 0;border-bottom:1px solid var(--line-soft);color:var(--navy)}
+#mobile-nav{overflow-y:auto}
+#mobile-nav > a{font-family:var(--display);font-size:24px;padding:14px 0;border-bottom:1px solid var(--line-soft);color:var(--navy)}
+.mnav-item{border-bottom:1px solid var(--line-soft)}
+.mnav-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mnav-row a{font-family:var(--display);font-size:24px;padding:14px 0;color:var(--navy);flex:1;border-bottom:none}
+.mnav-toggle{width:34px;height:34px;flex-shrink:0;position:relative}
+.mnav-toggle::before,.mnav-toggle::after{content:"";position:absolute;top:50%;left:50%;
+  background:var(--navy);transition:transform .25s}
+.mnav-toggle::before{width:14px;height:1.5px;transform:translate(-50%,-50%)}
+.mnav-toggle::after{width:1.5px;height:14px;transform:translate(-50%,-50%)}
+.mnav-toggle[aria-expanded="true"]::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.mnav-sub{max-height:0;overflow:hidden;transition:max-height .35s ease;display:flex;flex-direction:column;padding-left:14px}
+.mnav-item.open > .mnav-sub{max-height:2000px}
+.mnav-sub a{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:.02em;
+  padding:11px 0;color:var(--ink-70);border-bottom:1px solid var(--line-soft)}
+.mnav-subitem{border-bottom:none}
+.mnav-subitem .mnav-row a{font-family:var(--body);font-size:15px;font-weight:600;color:var(--navy);padding:11px 0}
+.mnav-subitem .mnav-toggle{width:28px;height:28px}
+.mnav-subitem .mnav-toggle::before,.mnav-subitem .mnav-toggle::after{width:11px}
+.mnav-subitem .mnav-toggle::after{height:11px}
+.mnav-subitem .mnav-sub a{padding-left:10px;font-weight:400}
 @media (max-width:820px){ #mobile-nav{display:flex} }
 
 /* ---------- Reviews ---------- */

@@ -262,7 +262,60 @@
       burger.addEventListener('click', () => mnav.classList.contains('open') ? closeNav() : openNav());
       navScrim.addEventListener('click', closeNav);
       mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+      /* Mobile accordion for nested "Products" style menus */
+      mnav.querySelectorAll('.mnav-toggle').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          const item = btn.closest('[data-mnav-item]');
+          const isOpen = item.classList.contains('open');
+          item.classList.toggle('open', !isOpen);
+          btn.setAttribute('aria-expanded', String(!isOpen));
+        });
+      });
     }
+
+    /* Desktop mega-menu dropdowns */
+    document.querySelectorAll('[data-nav-item]').forEach(item => {
+      const trigger = item.querySelector('.nav-trigger');
+      const dropdown = item.querySelector('.nav-dropdown');
+      if (!trigger || !dropdown) return;
+      let closeTimer = null;
+
+      const open = () => {
+        clearTimeout(closeTimer);
+        document.querySelectorAll('[data-nav-item].open').forEach(other => {
+          if (other !== item) closeDropdown(other);
+        });
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      };
+      const close = () => {
+        item.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      };
+      const closeDropdown = el => {
+        el.classList.remove('open');
+        const t = el.querySelector('.nav-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      };
+      const scheduleClose = () => { closeTimer = setTimeout(close, 150); };
+
+      item.addEventListener('mouseenter', open);
+      item.addEventListener('mouseleave', scheduleClose);
+      trigger.addEventListener('click', () => item.classList.contains('open') ? close() : open());
+      trigger.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); trigger.blur(); } });
+      dropdown.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+    });
+    document.addEventListener('click', e => {
+      document.querySelectorAll('[data-nav-item].open').forEach(item => {
+        if (!item.contains(e.target)) {
+          item.classList.remove('open');
+          const t = item.querySelector('.nav-trigger');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
 
     /* Header icon injection */
     [['ic-search','search'],['ic-user','user'],['ic-cart','cart'],['ic-menu','menu']].forEach(([id, name]) => {
