@@ -4,12 +4,52 @@
     <h2 class="section-title" style="margin-top:14px">{{ section.settings.heading }}</h2>
     <p class="section-sub">{{ section.settings.subheading }}</p>
   </div>
-  <!-- Steps are rendered by biscuit.js (icon set lives in JS) -->
-  <div class="steps" id="diff-steps"></div>
+  {%- liquid
+    assign step_count = section.blocks.size
+    if step_count == 0
+      assign step_count = 4
+    endif
+  -%}
+  <div class="steps" style="--count:{{ step_count }}">
+    {%- for block in section.blocks -%}
+      <div class="step" data-reveal data-delay="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+        <div class="num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+        <div class="ic">{%- render 'icon', icon: block.settings.icon -%}</div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.description }}</p>
+      </div>
+    {%- else -%}
+      <!-- Default steps (shown until blocks are configured) -->
+      <div class="step" data-reveal data-delay="0">
+        <div class="num">01</div>
+        <div class="ic">{%- render 'icon', icon: 'mineral' -%}</div>
+        <h3>Natural mineral base</h3>
+        <p>Sourced bentonite-style minerals — no synthetic fillers, ever.</p>
+      </div>
+      <div class="step" data-reveal data-delay="1">
+        <div class="num">02</div>
+        <div class="ic">{%- render 'icon', icon: 'clump' -%}</div>
+        <h3>Clumps on contact</h3>
+        <p>Tight, scoopable clumps form instantly so waste lifts clean.</p>
+      </div>
+      <div class="step" data-reveal data-delay="2">
+        <div class="num">03</div>
+        <div class="ic">{%- render 'icon', icon: 'dust' -%}</div>
+        <h3>99.9% dust-free</h3>
+        <p>Triple-screened granules keep the air — and your floors — clear.</p>
+      </div>
+      <div class="step" data-reveal data-delay="3">
+        <div class="num">04</div>
+        <div class="ic">{%- render 'icon', icon: 'odor' -%}</div>
+        <h3>Odour sealed</h3>
+        <p>A mineral + scent system traps odour at the source for days.</p>
+      </div>
+    {%- endfor -%}
+  </div>
 </section>
 
 <style>
-.diff .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:54px;counter-reset:s}
+.diff .steps{display:grid;grid-template-columns:repeat(var(--count,4),1fr);gap:24px;margin-top:54px;counter-reset:s}
 .step{position:relative;padding-top:28px}
 .step .num{font-family:var(--display);font-size:15px;color:var(--gold-deep);font-weight:600;letter-spacing:.1em}
 .step .ic{width:58px;height:58px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;margin:14px 0 18px;color:var(--gold-deep)}
@@ -44,6 +84,42 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "Four things every Biscuit litter does — measurably better."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "mineral", "label": "Mineral" },
+            { "value": "clump", "label": "Clumping" },
+            { "value": "dust", "label": "Dust" },
+            { "value": "absorb", "label": "Absorbency" },
+            { "value": "odor", "label": "Odour" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ],
+          "default": "mineral"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Natural mineral base"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Sourced bentonite-style minerals — no synthetic fillers, ever."
+        }
+      ]
     }
   ],
   "presets": [{ "name": "The Biscuit Difference" }]

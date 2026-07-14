@@ -53,7 +53,16 @@
         </div>
       {%- endif -%}
 
-      <div class="ftags" id="feat-tags"></div>
+      <div class="ftags">
+        {%- for block in section.blocks -%}
+          <span {{ block.shopify_attributes }}>{%- render 'icon', icon: block.settings.icon -%}{{ block.settings.label }}</span>
+        {%- else -%}
+          <!-- Default tags (shown until blocks are configured) -->
+          <span>{%- render 'icon', icon: 'leaf' -%}Natural minerals</span>
+          <span>{%- render 'icon', icon: 'sparkle' -%}Vanilla finish</span>
+          <span>{%- render 'icon', icon: 'shield' -%}Odour shield</span>
+        {%- endfor -%}
+      </div>
 
       <div class="buy">
         {%- if fv -%}
@@ -162,6 +171,36 @@
       "id": "dummy_save",
       "label": "Save label",
       "default": "Save 13%"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tag",
+      "name": "Feature tag",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "sparkle", "label": "Sparkle" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "clump", "label": "Clumping" },
+            { "value": "dust", "label": "Dust" },
+            { "value": "absorb", "label": "Absorbency" },
+            { "value": "odor", "label": "Odour" },
+            { "value": "mineral", "label": "Mineral" }
+          ],
+          "default": "leaf"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Natural minerals"
+        }
+      ]
     }
   ],
   "presets": [{ "name": "Featured Product" }]

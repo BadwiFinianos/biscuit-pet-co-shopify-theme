@@ -1,11 +1,68 @@
+{%- liquid
+  assign item_count = section.blocks.size
+  if item_count == 0
+    assign item_count = 5
+  endif
+-%}
 <section class="trust">
-  <div class="trust-row" id="trust-row"></div>
+  <div class="trust-row" style="--count:{{ item_count }}">
+    {%- for block in section.blocks -%}
+      <div class="trust-item" {{ block.shopify_attributes }}>
+        {%- render 'icon', icon: block.settings.icon -%}
+        <span class="t">{{ block.settings.label }}</span>
+        <span class="s">{{ block.settings.subtext }}</span>
+      </div>
+    {%- else -%}
+      <!-- Default trust items (shown until blocks are configured) -->
+      <div class="trust-item">{%- render 'icon', icon: 'clump' -%}<span class="t">Ultra Clumping</span><span class="s">Locks on contact</span></div>
+      <div class="trust-item">{%- render 'icon', icon: 'dust' -%}<span class="t">99.9% Dust-Free</span><span class="s">Clearer air</span></div>
+      <div class="trust-item">{%- render 'icon', icon: 'absorb' -%}<span class="t">Super Absorbent</span><span class="s">Days of dryness</span></div>
+      <div class="trust-item">{%- render 'icon', icon: 'odor' -%}<span class="t">Odour Control</span><span class="s">Sealed away</span></div>
+      <div class="trust-item">{%- render 'icon', icon: 'mineral' -%}<span class="t">Natural Mineral</span><span class="s">Nothing synthetic</span></div>
+    {%- endfor -%}
+  </div>
 </section>
 
 {% schema %}
 {
   "name": "Trust Strip",
   "tag": "div",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "clump", "label": "Clumping" },
+            { "value": "dust", "label": "Dust" },
+            { "value": "absorb", "label": "Absorbency" },
+            { "value": "odor", "label": "Odour" },
+            { "value": "mineral", "label": "Mineral" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ],
+          "default": "clump"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Ultra Clumping"
+        },
+        {
+          "type": "text",
+          "id": "subtext",
+          "label": "Subtext",
+          "default": "Locks on contact"
+        }
+      ]
+    }
+  ],
   "presets": [{ "name": "Trust Strip" }]
 }
 {% endschema %}

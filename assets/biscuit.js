@@ -270,85 +270,14 @@
       if (el) el.innerHTML = icon(name);
     });
 
-    /* Hero injected content */
+    /* Hero injected content (decorative icons only — copy is rendered server-side in Liquid) */
     const heroMap = {
       'a-arw':  () => icon('arrow'),
       'a-stars':() => stars(4.9),
-      'c-stars':() => stars(4.9),
-      'a-note': () => icon('dust') + '<div><b>99.9% dust-free</b>clearer air, tidier floors</div>',
-      'b-c1':   () => icon('clump') + 'Ultra-clumping',
-      'b-c2':   () => icon('odor')  + 'Odour locked'
+      'c-stars':() => stars(4.9)
     };
     Object.entries(heroMap).forEach(([id, fn]) => { const el = document.getElementById(id); if (el) el.innerHTML = fn(); });
     ['cat-arw1','cat-arw2','cat-arw3','bs-arw'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = icon('arrow'); });
-
-    /* Trust strip */
-    const trustRow = document.getElementById('trust-row');
-    if (trustRow) {
-      trustRow.innerHTML = [
-        ['clump',  'Ultra Clumping',   'Locks on contact'],
-        ['dust',   '99.9% Dust-Free',  'Clearer air'],
-        ['absorb', 'Super Absorbent',  'Days of dryness'],
-        ['odor',   'Odour Control',    'Sealed away'],
-        ['mineral','Natural Mineral',  'Nothing synthetic']
-      ].map(([ic, label, sub]) =>
-        '<div class="trust-item">' + icon(ic) + '<span class="t">' + label + '</span><span class="s">' + sub + '</span></div>'
-      ).join('');
-    }
-
-    /* Feature section tags */
-    const featTags = document.getElementById('feat-tags');
-    if (featTags) {
-      featTags.innerHTML = [
-        ['leaf','Natural minerals'], ['sparkle','Vanilla finish'], ['shield','Odour shield']
-      ].map(([ic, lbl]) => '<span>' + icon(ic) + lbl + '</span>').join('');
-    }
-
-    /* Review stars */
-    const revStars = document.getElementById('rev-stars');
-    if (revStars) revStars.innerHTML = stars(4.9);
-
-    /* Difference steps (JS-rendered) */
-    const diffSteps = document.getElementById('diff-steps');
-    if (diffSteps) {
-      const steps = [
-        ['mineral','01','Natural mineral base',  'Sourced bentonite-style minerals — no synthetic fillers, ever.'],
-        ['clump',  '02','Clumps on contact',      'Tight, scoopable clumps form instantly so waste lifts clean.'],
-        ['dust',   '03','99.9% dust-free',         'Triple-screened granules keep the air — and your floors — clear.'],
-        ['odor',   '04','Odour sealed',            'A mineral + scent system traps odour at the source for days.']
-      ];
-      diffSteps.innerHTML = steps.map((s, i) =>
-        '<div class="step" data-reveal data-delay="' + i + '">' +
-          '<div class="num">' + s[1] + '</div>' +
-          '<div class="ic">' + icon(s[0]) + '</div>' +
-          '<h3>' + s[2] + '</h3><p>' + s[3] + '</p>' +
-        '</div>'
-      ).join('');
-      diffSteps.querySelectorAll('[data-reveal]').forEach(el => revealIO.observe(el));
-    }
-
-    /* Reviews (JS-rendered) */
-    const reviewsGrid = document.getElementById('reviews-grid');
-    if (reviewsGrid) {
-      const reviews = [
-        ['My flat has never smelled better. Guests genuinely cannot tell I have two cats.','Amelia R.','Vanilla Bean Litter'],
-        ['The dust-free claim is real — no more grey film on the floor by the box. Worth every penny.','Daniel K.','Charcoal Pure Litter'],
-        ['Packaging so beautiful I leave it on the shelf. The litter itself clumps like a dream.','Sofia M.','Lavender Calm Litter']
-      ];
-      reviewsGrid.innerHTML = reviews.map((r, i) =>
-        '<div class="review" data-reveal data-delay="' + i + '">' +
-          stars(5) +
-          '<p class="review-q">"' + r[0] + '"</p>' +
-          '<div class="review-by">' +
-            '<div class="review-av">' + r[1][0] + '</div>' +
-            '<div><div class="nm">' + r[1] + '</div>' +
-              '<div class="vf">' + icon('check') + 'Verified · ' + r[2] + '</div>' +
-            '</div>' +
-          '</div>' +
-        '</div>'
-      ).join('');
-      reviewsGrid.querySelectorAll('[data-reveal]').forEach(el => revealIO.observe(el));
-    }
 
     /* Size pill → variant switcher */
     document.querySelectorAll('.size-pills').forEach(pills => {

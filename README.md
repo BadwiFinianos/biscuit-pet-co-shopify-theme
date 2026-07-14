@@ -24,8 +24,7 @@ Navy · Cream · Gold · Playfair Display + Montserrat.
 # Install Shopify CLI if you don't have it
 npm install -g @shopify/cli @shopify/theme
 
-# From the shopify-theme/ folder
-cd shopify-theme
+# From the root of this repo
 shopify theme push --store=YOUR-STORE.myshopify.com
 ```
 
@@ -33,7 +32,7 @@ This uploads the entire theme and opens the theme editor automatically.
 
 **Option B — Zip upload (no CLI needed)**
 
-1. Zip the entire `shopify-theme/` folder → `biscuit-theme.zip`
+1. Zip the theme folders (`assets/`, `config/`, `layout/`, `locales/`, `sections/`, `snippets/`, `templates/`) → `biscuit-theme.zip`
 2. In your store admin go to **Online Store → Themes**
 3. Click **Add theme → Upload zip file** and select your zip
 4. Click **Customize** or **Publish**
@@ -122,7 +121,6 @@ Walk through these in order:
 ## File structure
 
 ```
-shopify-theme/
 ├── assets/
 │   ├── biscuit.css          ← Full design system (colours, type, layout, components)
 │   ├── biscuit.js           ← Cart AJAX, mini-drawer, icons, hero picker, animations

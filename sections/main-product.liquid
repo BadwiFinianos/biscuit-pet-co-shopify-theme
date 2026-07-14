@@ -61,9 +61,15 @@
 
       <!-- Trust badges -->
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
-        <span style="font-size:12px;color:var(--ink-70);background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:8px 14px">✓ Free shipping over $60</span>
-        <span style="font-size:12px;color:var(--ink-70);background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:8px 14px">✓ Easy returns</span>
-        <span style="font-size:12px;color:var(--ink-70);background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:8px 14px">✓ Biscuit Approved quality</span>
+        {%- if section.settings.trust_badge_1 != blank -%}
+          <span style="font-size:12px;color:var(--ink-70);background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:8px 14px">✓ {{ section.settings.trust_badge_1 }}</span>
+        {%- endif -%}
+        {%- if section.settings.trust_badge_2 != blank -%}
+          <span style="font-size:12px;color:var(--ink-70);background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:8px 14px">✓ {{ section.settings.trust_badge_2 }}</span>
+        {%- endif -%}
+        {%- if section.settings.trust_badge_3 != blank -%}
+          <span style="font-size:12px;color:var(--ink-70);background:var(--card);border:1px solid var(--line-soft);border-radius:30px;padding:8px 14px">✓ {{ section.settings.trust_badge_3 }}</span>
+        {%- endif -%}
       </div>
     </div>
 
@@ -98,6 +104,26 @@ document.addEventListener('DOMContentLoaded', function() {
 {% schema %}
 {
   "name": "Product",
-  "tag": "div"
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "trust_badge_1",
+      "label": "Trust badge 1",
+      "default": "Free shipping over $60"
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_2",
+      "label": "Trust badge 2",
+      "default": "Easy returns"
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_3",
+      "label": "Trust badge 3",
+      "default": "Biscuit Approved quality"
+    }
+  ]
 }
 {% endschema %}

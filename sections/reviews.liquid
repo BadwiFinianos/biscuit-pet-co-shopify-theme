@@ -6,15 +6,59 @@
         <h2 class="section-title" style="margin-top:14px">{{ section.settings.heading }}</h2>
       </div>
       <div class="score">
-        <span class="big foil-text">4.9</span>
+        <span class="big foil-text">{{ section.settings.average_rating }}</span>
         <div>
-          <span class="stars" id="rev-stars"></span>
+          <span class="stars">
+            {%- for i in (1..5) -%}{%- render 'icon', icon: 'star' -%}{%- endfor -%}
+          </span>
           <div class="sub">{{ section.settings.verified_label }}</div>
         </div>
       </div>
     </div>
-    <!-- Reviews rendered by biscuit.js; swap for a review app embed in production -->
-    <div class="grid grid-3" id="reviews-grid"></div>
+    <!-- Swap this grid for a review app embed (e.g. Judge.me, Loox) in production -->
+    <div class="grid grid-3">
+      {%- for block in section.blocks -%}
+        <div class="review" data-reveal data-delay="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <span class="stars">
+            {%- for i in (1..5) -%}{%- render 'icon', icon: 'star' -%}{%- endfor -%}
+          </span>
+          <p class="review-q">&ldquo;{{ block.settings.quote }}&rdquo;</p>
+          <div class="review-by">
+            <div class="review-av">{{ block.settings.name | slice: 0, 1 }}</div>
+            <div>
+              <div class="nm">{{ block.settings.name }}</div>
+              <div class="vf">{%- render 'icon', icon: 'check' -%}Verified · {{ block.settings.source }}</div>
+            </div>
+          </div>
+        </div>
+      {%- else -%}
+        <!-- Default reviews (shown until blocks are configured) -->
+        <div class="review" data-reveal data-delay="0">
+          <span class="stars">{%- for i in (1..5) -%}{%- render 'icon', icon: 'star' -%}{%- endfor -%}</span>
+          <p class="review-q">&ldquo;My flat has never smelled better. Guests genuinely cannot tell I have two cats.&rdquo;</p>
+          <div class="review-by">
+            <div class="review-av">A</div>
+            <div><div class="nm">Amelia R.</div><div class="vf">{%- render 'icon', icon: 'check' -%}Verified · Vanilla Bean Litter</div></div>
+          </div>
+        </div>
+        <div class="review" data-reveal data-delay="1">
+          <span class="stars">{%- for i in (1..5) -%}{%- render 'icon', icon: 'star' -%}{%- endfor -%}</span>
+          <p class="review-q">&ldquo;The dust-free claim is real — no more grey film on the floor by the box. Worth every penny.&rdquo;</p>
+          <div class="review-by">
+            <div class="review-av">D</div>
+            <div><div class="nm">Daniel K.</div><div class="vf">{%- render 'icon', icon: 'check' -%}Verified · Charcoal Pure Litter</div></div>
+          </div>
+        </div>
+        <div class="review" data-reveal data-delay="2">
+          <span class="stars">{%- for i in (1..5) -%}{%- render 'icon', icon: 'star' -%}{%- endfor -%}</span>
+          <p class="review-q">&ldquo;Packaging so beautiful I leave it on the shelf. The litter itself clumps like a dream.&rdquo;</p>
+          <div class="review-by">
+            <div class="review-av">S</div>
+            <div><div class="nm">Sofia M.</div><div class="vf">{%- render 'icon', icon: 'check' -%}Verified · Lavender Calm Litter</div></div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
   </div>
 </section>
 
@@ -51,6 +95,38 @@
       "id": "verified_label",
       "label": "Verified label",
       "default": "Verified Biscuit customers"
+    },
+    {
+      "type": "text",
+      "id": "average_rating",
+      "label": "Average rating",
+      "default": "4.9"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "My flat has never smelled better. Guests genuinely cannot tell I have two cats."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer name",
+          "default": "Amelia R."
+        },
+        {
+          "type": "text",
+          "id": "source",
+          "label": "Product purchased",
+          "default": "Vanilla Bean Litter"
+        }
+      ]
     }
   ],
   "presets": [{ "name": "Reviews" }]

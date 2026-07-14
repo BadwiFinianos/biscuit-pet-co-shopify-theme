@@ -155,7 +155,7 @@ p{margin:0}
 
 /* ---------- Trust strip ---------- */
 .trust{background:var(--navy);color:var(--cream)}
-.trust-row{display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+.trust-row{display:grid;grid-template-columns:repeat(var(--count,5),1fr);gap:0;
   max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
 .trust-item{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
   padding:34px 18px;border-right:1px solid var(--cream-line)}

@@ -25,7 +25,10 @@
       <div class="stage">
         <div class="arc"></div>
         <div class="arc-ring"></div>
-        <div class="float-note" id="a-note"></div>
+        <div class="float-note">
+          {%- render 'icon', icon: 'dust' -%}
+          <div><b>{{ section.settings.hero_a_note_title }}</b>{{ section.settings.hero_a_note_sub }}</div>
+        </div>
         <img class="packshot" src="{{ packshot_url }}" alt="{{ section.settings.packshot_alt | default: shop.name }}">
         <img class="seal-badge" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved">
       </div>
@@ -45,8 +48,8 @@
       </div>
       <div class="stage">
         <div class="chips">
-          <span class="chip" id="b-c1"></span>
-          <span class="chip" id="b-c2"></span>
+          <span class="chip">{%- render 'icon', icon: 'clump' -%}{{ section.settings.hero_b_chip1_text }}</span>
+          <span class="chip">{%- render 'icon', icon: 'odor' -%}{{ section.settings.hero_b_chip2_text }}</span>
         </div>
         <img class="packshot" src="{{ packshot_url }}" alt="{{ section.settings.packshot_alt | default: shop.name }}">
       </div>
@@ -233,6 +236,18 @@
       "default": "99.9% dust-free, ultra-clumping natural mineral litter — finished with a soft vanilla bouquet your home will actually love."
     },
     {
+      "type": "text",
+      "id": "hero_a_note_title",
+      "label": "Floating note — title",
+      "default": "99.9% dust-free"
+    },
+    {
+      "type": "text",
+      "id": "hero_a_note_sub",
+      "label": "Floating note — subtext",
+      "default": "clearer air, tidier floors"
+    },
+    {
       "type": "header",
       "content": "Hero B — Centred editorial"
     },
@@ -259,6 +274,18 @@
       "id": "hero_b_lead",
       "label": "Lead paragraph",
       "default": "A natural mineral litter engineered to clump fast, lock odour, and keep the air clear — wrapped in warm vanilla."
+    },
+    {
+      "type": "text",
+      "id": "hero_b_chip1_text",
+      "label": "Chip 1 text",
+      "default": "Ultra-clumping"
+    },
+    {
+      "type": "text",
+      "id": "hero_b_chip2_text",
+      "label": "Chip 2 text",
+      "default": "Odour locked"
     },
     {
       "type": "header",
