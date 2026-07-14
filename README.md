@@ -5,6 +5,7 @@ Navy · Cream · Gold · Playfair Display + Montserrat.
 
 ---
 
+
 ## Quick-start (for your client demo)
 
 ### Step 1 — Create a Shopify development store
