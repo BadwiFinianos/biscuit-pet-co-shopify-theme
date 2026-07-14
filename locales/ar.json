@@ -1,0 +1,132 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "أدخل كلمة مرور المتجر",
+      "login_form_password_label": "كلمة المرور",
+      "login_form_password_placeholder": "كلمة المرور الخاصة بك",
+      "login_form_submit": "دخول",
+      "admin_link_html": "هل أنت صاحب المتجر؟ <a href=\"/admin\" title=\"إدارة متجرك\">سجّل الدخول من هنا</a>."
+    }
+  },
+  "layout": {
+    "navigation": {
+      "search": "بحث",
+      "account": "الحساب",
+      "cart": "السلة",
+      "mobile_menu_toggle": "القائمة",
+      "primary": "الرئيسية",
+      "mobile": "الجوال",
+      "toggle_submenu": "فتح القائمة الفرعية لـ {{ title }}",
+      "products": "المنتجات",
+      "cat_litter": "رمل القطط",
+      "food_treats": "الطعام والوجبات الخفيفة",
+      "dog": "الكلاب",
+      "home": "المنزل",
+      "about": "من نحن",
+      "contact": "تواصل معنا"
+    },
+    "cart": {
+      "title": "سلتك",
+      "items_count": {
+        "one": "منتج واحد",
+        "other": "{{ count }} منتجات"
+      },
+      "close": "إغلاق",
+      "empty_title": "سلتك فارغة",
+      "empty_subtext": "دلّل رفيقك بشيء مميز.",
+      "empty_cta": "تسوّق المجموعة",
+      "decrease": "إنقاص",
+      "increase": "زيادة",
+      "remove": "إزالة",
+      "discount_placeholder": "رمز الخصم",
+      "discount_apply": "تطبيق",
+      "discount_remove": "إزالة الخصم",
+      "discount_applied_label": "تم التطبيق",
+      "subtotal": "المجموع الفرعي",
+      "shipping_note": "يتم احتساب الشحن والضرائب عند إتمام الطلب",
+      "checkout": "إتمام الطلب",
+      "item_added": "تمت إضافة {{ product }}",
+      "item_fallback": "المنتج",
+      "error_prefix": "خطأ",
+      "could_not_add": "تعذّرت إضافة المنتج",
+      "discount_applied_toast": "تم تطبيق الخصم",
+      "discount_not_applied_toast": "لم يتم تطبيق هذا الرمز — تحقّق منه وحاول مرة أخرى",
+      "discount_error_toast": "تعذّر تطبيق الرمز",
+      "discount_removed_toast": "تمت إزالة الخصم",
+      "newsletter_success": "أهلًا بك في العائلة — تحقّق من بريدك الإلكتروني."
+    },
+    "footer": {
+      "email_address_label": "البريد الإلكتروني",
+      "shop_heading": "المتجر",
+      "cat_litter": "رمل القطط",
+      "food_treats": "الطعام والوجبات الخفيفة",
+      "dog": "الكلاب",
+      "home_accessories": "المنزل والإكسسوارات",
+      "all_products": "جميع المنتجات",
+      "company_heading": "الشركة",
+      "about_us": "من نحن",
+      "biscuit_approved": "معتمد من Biscuit",
+      "sustainability": "الاستدامة",
+      "stockists": "نقاط البيع",
+      "contact": "تواصل معنا",
+      "care_heading": "الرعاية",
+      "shipping_returns": "الشحن والإرجاع",
+      "subscribe_save": "اشترك ووفّر",
+      "faq": "الأسئلة الشائعة",
+      "track_order": "تتبّع الطلب"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "أضف إلى السلة",
+      "sold_out": "نفدت الكمية",
+      "unavailable": "غير متوفر",
+      "on_sale": "تخفيض",
+      "save_percent": "وفّر {{ percentage }}٪",
+      "choose_size": "اختر الحجم",
+      "continue_shopping": "متابعة التسوق",
+      "view_details": "عرض التفاصيل",
+      "quantity": {
+        "label": "الكمية"
+      },
+      "bestseller_tag": "الأكثر مبيعًا",
+      "new_tag": "جديد",
+      "sold_out_tag": "نفدت الكمية",
+      "verified_prefix": "موثّق"
+    },
+    "general": {
+      "from_text": "يبدأ من"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "لا توجد منتجات في هذه المجموعة.",
+      "items_with_count": {
+        "one": "منتج واحد",
+        "other": "{{ count }} منتجات"
+      }
+    }
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "current_page": "صفحة {{ current }} من {{ total }}"
+  },
+  "sections": {
+    "bestsellers": {
+      "view_all": "عرض الكل"
+    },
+    "contact_form": {
+      "email_label": "البريد الإلكتروني",
+      "phone_label": "الهاتف",
+      "address_label": "العنوان",
+      "hours_label": "ساعات العمل",
+      "name_field": "الاسم",
+      "email_field": "البريد الإلكتروني",
+      "phone_field": "الهاتف",
+      "optional": "(اختياري)",
+      "message_field": "الرسالة",
+      "generic_error": "حدث خطأ ما — يرجى التحقق من بياناتك والمحاولة مرة أخرى."
+    }
+  }
+}

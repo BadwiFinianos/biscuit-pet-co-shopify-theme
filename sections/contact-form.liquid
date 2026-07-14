@@ -8,25 +8,25 @@
       <ul class="contact-details">
         {%- if section.settings.email != blank -%}
           <li>
-            <span class="label">Email</span>
+            <span class="label">{{ 'sections.contact_form.email_label' | t }}</span>
             <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
           </li>
         {%- endif -%}
         {%- if section.settings.phone != blank -%}
           <li>
-            <span class="label">Phone</span>
+            <span class="label">{{ 'sections.contact_form.phone_label' | t }}</span>
             <a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a>
           </li>
         {%- endif -%}
         {%- if section.settings.address != blank -%}
           <li>
-            <span class="label">Address</span>
+            <span class="label">{{ 'sections.contact_form.address_label' | t }}</span>
             <span>{{ section.settings.address }}</span>
           </li>
         {%- endif -%}
         {%- if section.settings.hours != blank -%}
           <li>
-            <span class="label">Hours</span>
+            <span class="label">{{ 'sections.contact_form.hours_label' | t }}</span>
             <span>{{ section.settings.hours }}</span>
           </li>
         {%- endif -%}
@@ -40,27 +40,31 @@
         {%- endif -%}
         {%- if form.errors -%}
           <p class="form-message error">
-            {{ form.errors.messages['base'] | default: 'Something went wrong — please check your details and try again.' }}
+            {%- if form.errors.messages['base'] -%}
+              {{ form.errors.messages['base'] }}
+            {%- else -%}
+              {{ 'sections.contact_form.generic_error' | t }}
+            {%- endif -%}
           </p>
         {%- endif -%}
 
         <div class="field">
-          <label for="ContactFormName">Name</label>
+          <label for="ContactFormName">{{ 'sections.contact_form.name_field' | t }}</label>
           <input type="text" id="ContactFormName" name="contact[name]" value="{{ form.name }}" autocomplete="name" required>
         </div>
 
         <div class="field">
-          <label for="ContactFormEmail">Email</label>
+          <label for="ContactFormEmail">{{ 'sections.contact_form.email_field' | t }}</label>
           <input type="email" id="ContactFormEmail" name="contact[email]" value="{{ form.email }}" autocomplete="email" required>
         </div>
 
         <div class="field">
-          <label for="ContactFormPhone">Phone <span class="optional">(optional)</span></label>
+          <label for="ContactFormPhone">{{ 'sections.contact_form.phone_field' | t }} <span class="optional">{{ 'sections.contact_form.optional' | t }}</span></label>
           <input type="tel" id="ContactFormPhone" name="contact[phone]" value="{{ form.phone }}" autocomplete="tel">
         </div>
 
         <div class="field">
-          <label for="ContactFormMessage">Message</label>
+          <label for="ContactFormMessage">{{ 'sections.contact_form.message_field' | t }}</label>
           <textarea id="ContactFormMessage" name="contact[body]" rows="6" required>{{ form.body }}</textarea>
         </div>
 

@@ -8,7 +8,7 @@
   </div>
 
   {%- if collection.products_count == 0 -%}
-    <p style="text-align:center;padding:60px 0;color:var(--ink-50)">No products found in this collection.</p>
+    <p style="text-align:center;padding:60px 0;color:var(--ink-50)">{{ 'collections.general.no_matches' | t }}</p>
   {%- else -%}
     <div class="grid grid-4">
       {%- for product in collection.products -%}

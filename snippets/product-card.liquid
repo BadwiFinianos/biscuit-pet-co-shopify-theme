@@ -6,11 +6,11 @@
     {%- if product.metafields.custom.tag != blank -%}
       <span class="tag">{{ product.metafields.custom.tag }}</span>
     {%- elsif product.tags contains 'bestseller' -%}
-      <span class="tag">Bestseller</span>
+      <span class="tag">{{ 'products.product.bestseller_tag' | t }}</span>
     {%- elsif product.tags contains 'new' -%}
-      <span class="tag">New</span>
+      <span class="tag">{{ 'products.product.new_tag' | t }}</span>
     {%- elsif product.available == false -%}
-      <span class="tag sold">Sold out</span>
+      <span class="tag sold">{{ 'products.product.sold_out_tag' | t }}</span>
     {%- endif -%}
 
     {%- if product.featured_image -%}
@@ -22,7 +22,7 @@
     <div class="pcard-quick">
       {%- assign first_variant = product.first_available_variant | default: product.variants.first -%}
       <button class="btn btn--block" data-variant-id="{{ first_variant.id }}">
-        Add to Cart · {{ first_variant.price | money }}
+        {{ 'products.product.add_to_cart' | t }} · {{ first_variant.price | money }}
       </button>
     </div>
   </div>

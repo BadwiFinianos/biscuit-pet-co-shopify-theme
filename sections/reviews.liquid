@@ -27,7 +27,7 @@
             <div class="review-av">{{ block.settings.name | slice: 0, 1 }}</div>
             <div>
               <div class="nm">{{ block.settings.name }}</div>
-              <div class="vf">{%- render 'icon', icon: 'check' -%}Verified · {{ block.settings.source }}</div>
+              <div class="vf">{%- render 'icon', icon: 'check' -%}{{ 'products.product.verified_prefix' | t }} · {{ block.settings.source }}</div>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
           <p class="review-q">&ldquo;My flat has never smelled better. Guests genuinely cannot tell I have two cats.&rdquo;</p>
           <div class="review-by">
             <div class="review-av">A</div>
-            <div><div class="nm">Amelia R.</div><div class="vf">{%- render 'icon', icon: 'check' -%}Verified · Vanilla Bean Litter</div></div>
+            <div><div class="nm">Amelia R.</div><div class="vf">{%- render 'icon', icon: 'check' -%}{{ 'products.product.verified_prefix' | t }} · Vanilla Bean Litter</div></div>
           </div>
         </div>
         <div class="review" data-reveal data-delay="1">
@@ -46,7 +46,7 @@
           <p class="review-q">&ldquo;The dust-free claim is real — no more grey film on the floor by the box. Worth every penny.&rdquo;</p>
           <div class="review-by">
             <div class="review-av">D</div>
-            <div><div class="nm">Daniel K.</div><div class="vf">{%- render 'icon', icon: 'check' -%}Verified · Charcoal Pure Litter</div></div>
+            <div><div class="nm">Daniel K.</div><div class="vf">{%- render 'icon', icon: 'check' -%}{{ 'products.product.verified_prefix' | t }} · Charcoal Pure Litter</div></div>
           </div>
         </div>
         <div class="review" data-reveal data-delay="2">
@@ -54,7 +54,7 @@
           <p class="review-q">&ldquo;Packaging so beautiful I leave it on the shelf. The litter itself clumps like a dream.&rdquo;</p>
           <div class="review-by">
             <div class="review-av">S</div>
-            <div><div class="nm">Sofia M.</div><div class="vf">{%- render 'icon', icon: 'check' -%}Verified · Lavender Calm Litter</div></div>
+            <div><div class="nm">Sofia M.</div><div class="vf">{%- render 'icon', icon: 'check' -%}{{ 'products.product.verified_prefix' | t }} · Lavender Calm Litter</div></div>
           </div>
         </div>
       {%- endfor -%}

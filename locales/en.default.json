@@ -11,14 +11,69 @@
   "layout": {
     "navigation": {
       "search": "Search",
-      "mobile_menu_toggle": "Menu"
+      "account": "Account",
+      "cart": "Cart",
+      "mobile_menu_toggle": "Menu",
+      "primary": "Primary",
+      "mobile": "Mobile",
+      "toggle_submenu": "Toggle {{ title }} submenu",
+      "products": "Products",
+      "cat_litter": "Cat Litter",
+      "food_treats": "Food & Treats",
+      "dog": "Dog",
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact"
     },
     "cart": {
       "title": "Your Cart",
       "items_count": {
         "one": "{{ count }} item",
         "other": "{{ count }} items"
-      }
+      },
+      "close": "Close",
+      "empty_title": "Your cart is empty",
+      "empty_subtext": "Treat your companion to something premium.",
+      "empty_cta": "Shop the Collection",
+      "decrease": "Decrease",
+      "increase": "Increase",
+      "remove": "Remove",
+      "discount_placeholder": "Discount code",
+      "discount_apply": "Apply",
+      "discount_remove": "Remove discount",
+      "discount_applied_label": "Applied",
+      "subtotal": "Subtotal",
+      "shipping_note": "Shipping &amp; taxes calculated at checkout",
+      "checkout": "Checkout",
+      "item_added": "{{ product }} added",
+      "item_fallback": "Item",
+      "error_prefix": "Error",
+      "could_not_add": "Could not add item",
+      "discount_applied_toast": "Discount applied",
+      "discount_not_applied_toast": "That code didn't apply — check it and try again",
+      "discount_error_toast": "Could not apply code",
+      "discount_removed_toast": "Discount removed",
+      "newsletter_success": "Welcome to the household — check your inbox."
+    },
+    "footer": {
+      "email_address_label": "Email address",
+      "shop_heading": "Shop",
+      "cat_litter": "Cat Litter",
+      "food_treats": "Food & Treats",
+      "dog": "Dog",
+      "home_accessories": "Home & Accessories",
+      "all_products": "All Products",
+      "company_heading": "Company",
+      "about_us": "About Us",
+      "biscuit_approved": "Biscuit Approved",
+      "sustainability": "Sustainability",
+      "stockists": "Stockists",
+      "contact": "Contact",
+      "care_heading": "Care",
+      "shipping_returns": "Shipping & Returns",
+      "subscribe_save": "Subscribe & Save",
+      "faq": "FAQ",
+      "track_order": "Track Order"
     }
   },
   "products": {
@@ -27,9 +82,17 @@
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
       "on_sale": "Sale",
+      "save_percent": "Save {{ percentage }}%",
+      "choose_size": "Choose your size",
+      "continue_shopping": "Continue Shopping",
+      "view_details": "View Details",
       "quantity": {
         "label": "Quantity"
-      }
+      },
+      "bestseller_tag": "Bestseller",
+      "new_tag": "New",
+      "sold_out_tag": "Sold out",
+      "verified_prefix": "Verified"
     },
     "general": {
       "from_text": "From"
@@ -37,7 +100,7 @@
   },
   "collections": {
     "general": {
-      "no_matches": "Sorry, there are no products here.",
+      "no_matches": "No products found in this collection.",
       "items_with_count": {
         "one": "{{ count }} product",
         "other": "{{ count }} products"
@@ -48,5 +111,22 @@
     "previous": "Previous",
     "next": "Next",
     "current_page": "Page {{ current }} of {{ total }}"
+  },
+  "sections": {
+    "bestsellers": {
+      "view_all": "View all"
+    },
+    "contact_form": {
+      "email_label": "Email",
+      "phone_label": "Phone",
+      "address_label": "Address",
+      "hours_label": "Hours",
+      "name_field": "Name",
+      "email_field": "Email",
+      "phone_field": "Phone",
+      "optional": "(optional)",
+      "message_field": "Message",
+      "generic_error": "Something went wrong — please check your details and try again."
+    }
   }
 }

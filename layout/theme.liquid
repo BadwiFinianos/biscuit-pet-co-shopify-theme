@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ request.locale.iso_code }}">
+{%- assign bpc_is_rtl = false -%}
+{%- if request.locale.iso_code == 'ar' or request.locale.iso_code == 'he' or request.locale.iso_code == 'fa' or request.locale.iso_code == 'ur' -%}
+  {%- assign bpc_is_rtl = true -%}
+{%- endif -%}
+<html lang="{{ request.locale.iso_code }}" dir="{% if bpc_is_rtl %}rtl{% else %}ltr{% endif %}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -21,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap">
+  {%- if request.locale.iso_code == 'ar' -%}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap">
+  {%- endif -%}
   {{ 'biscuit.css' | asset_url | stylesheet_tag }}
 </head>
 <body class="template-{{ template.name }}">
@@ -55,6 +62,33 @@
         wordmarkNavy: '{{ "wordmark-navy.png"  | asset_url }}',
         seal:         '{{ "seal.png"           | asset_url }}',
         packshot:     '{{ "litter-vanilla-cutout.png" | asset_url }}'
+      },
+      strings: {
+        cartTitle:               {{ 'layout.cart.title' | t | json }},
+        close:                   {{ 'layout.cart.close' | t | json }},
+        cartEmptyTitle:          {{ 'layout.cart.empty_title' | t | json }},
+        cartEmptySubtext:        {{ 'layout.cart.empty_subtext' | t | json }},
+        cartEmptyCta:            {{ 'layout.cart.empty_cta' | t | json }},
+        decrease:                {{ 'layout.cart.decrease' | t | json }},
+        increase:                {{ 'layout.cart.increase' | t | json }},
+        remove:                  {{ 'layout.cart.remove' | t | json }},
+        discountPlaceholder:     {{ 'layout.cart.discount_placeholder' | t | json }},
+        discountApply:           {{ 'layout.cart.discount_apply' | t | json }},
+        discountRemove:          {{ 'layout.cart.discount_remove' | t | json }},
+        discountAppliedLabel:    {{ 'layout.cart.discount_applied_label' | t | json }},
+        subtotal:                {{ 'layout.cart.subtotal' | t | json }},
+        shippingNote:            {{ 'layout.cart.shipping_note' | t | json }},
+        checkout:                {{ 'layout.cart.checkout' | t | json }},
+        itemAddedTemplate:       {{ 'layout.cart.item_added' | t | json }},
+        itemFallback:            {{ 'layout.cart.item_fallback' | t | json }},
+        errorPrefix:             {{ 'layout.cart.error_prefix' | t | json }},
+        couldNotAdd:             {{ 'layout.cart.could_not_add' | t | json }},
+        discountAppliedToast:    {{ 'layout.cart.discount_applied_toast' | t | json }},
+        discountNotAppliedToast: {{ 'layout.cart.discount_not_applied_toast' | t | json }},
+        discountErrorToast:      {{ 'layout.cart.discount_error_toast' | t | json }},
+        discountRemovedToast:    {{ 'layout.cart.discount_removed_toast' | t | json }},
+        newsletterSuccess:       {{ 'layout.cart.newsletter_success' | t | json }},
+        addToCart:               {{ 'products.product.add_to_cart' | t | json }}
       }
     };
   </script>

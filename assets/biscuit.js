@@ -52,6 +52,7 @@
   let cart = bpc.cart || { items: [], item_count: 0, total_price: 0 };
   const routes = bpc.routes || {};
   const A = bpc.assets || {};
+  const S = bpc.strings || {};
 
   function updateBadge() {
     const c = cart.item_count || 0;
@@ -78,14 +79,15 @@
       });
       if (!r.ok) {
         const err = await r.json();
-        throw new Error(err.description || 'Could not add item');
+        throw new Error(err.description || S.couldNotAdd || 'Could not add item');
       }
       const item = await r.json();
       await fetchCart();
-      toast((item.product_title || 'Item') + ' added');
+      const addedTemplate = S.itemAddedTemplate || '{{ product }} added';
+      toast(addedTemplate.replace('{{ product }}', item.product_title || S.itemFallback || 'Item'));
       openCart();
     } catch (e) {
-      toast('Error: ' + e.message);
+      toast((S.errorPrefix || 'Error') + ': ' + e.message);
     }
   }
 
@@ -129,12 +131,12 @@
       const grew = (cart.total_discount || 0) > prevDiscount;
       const newTitle = nowTitles.some(d => !prevTitles.has(d.title));
       if (grew || newTitle) {
-        toast('Discount applied');
+        toast(S.discountAppliedToast || 'Discount applied');
       } else {
-        toast("That code didn't apply — check it and try again");
+        toast(S.discountNotAppliedToast || "That code didn't apply — check it and try again");
       }
     } catch (e) {
-      toast('Could not apply code');
+      toast(S.discountErrorToast || 'Could not apply code');
     }
   }
 
@@ -142,7 +144,7 @@
     try {
       await fetch('/discount/?redirect=/cart', { credentials: 'same-origin' });
       await fetchCart();
-      toast('Discount removed');
+      toast(S.discountRemovedToast || 'Discount removed');
     } catch (e) { /* silent */ }
   }
 
@@ -152,9 +154,9 @@
     const wrap = document.createElement('div');
     wrap.innerHTML =
       '<div class="scrim" id="bpc-scrim"></div>' +
-      '<aside class="drawer" id="bpc-drawer" aria-label="Cart">' +
-        '<div class="drawer-head"><h3>Your Cart</h3>' +
-          '<button class="close" id="bpc-close" aria-label="Close">' + icon('close') + '</button>' +
+      '<aside class="drawer" id="bpc-drawer" aria-label="' + (S.cartTitle || 'Cart') + '">' +
+        '<div class="drawer-head"><h3>' + (S.cartTitle || 'Your Cart') + '</h3>' +
+          '<button class="close" id="bpc-close" aria-label="' + (S.close || 'Close') + '">' + icon('close') + '</button>' +
         '</div>' +
         '<div class="drawer-body" id="bpc-body"></div>' +
         '<div class="drawer-foot" id="bpc-foot"></div>' +
@@ -191,9 +193,9 @@
       body.innerHTML =
         '<div class="cart-empty">' +
           (A.mascotNavy ? '<img class="em-cat" src="' + A.mascotNavy + '" alt="">' : '') +
-          '<p style="font-family:var(--display);font-size:22px;color:var(--navy);margin-bottom:6px">Your cart is empty</p>' +
-          '<p style="font-size:14px">Treat your companion to something premium.</p>' +
-          '<a href="/collections/all" class="btn btn--gold" style="margin-top:22px">Shop the Collection</a>' +
+          '<p style="font-family:var(--display);font-size:22px;color:var(--navy);margin-bottom:6px">' + (S.cartEmptyTitle || 'Your cart is empty') + '</p>' +
+          '<p style="font-size:14px">' + (S.cartEmptySubtext || 'Treat your companion to something premium.') + '</p>' +
+          '<a href="/collections/all" class="btn btn--gold" style="margin-top:22px">' + (S.cartEmptyCta || 'Shop the Collection') + '</a>' +
         '</div>';
       foot.style.display = 'none';
       return;
@@ -213,14 +215,14 @@
             (item.variant_title && item.variant_title !== 'Default Title'
               ? '<div class="citem-var">' + item.variant_title + '</div>' : '') +
             '<div class="qty">' +
-              '<button class="bpc-q" data-key="' + item.key + '" data-qty="' + (item.quantity - 1) + '" aria-label="Decrease">' + icon('minus') + '</button>' +
+              '<button class="bpc-q" data-key="' + item.key + '" data-qty="' + (item.quantity - 1) + '" aria-label="' + (S.decrease || 'Decrease') + '">' + icon('minus') + '</button>' +
               '<span>' + item.quantity + '</span>' +
-              '<button class="bpc-q" data-key="' + item.key + '" data-qty="' + (item.quantity + 1) + '" aria-label="Increase">' + icon('plus') + '</button>' +
+              '<button class="bpc-q" data-key="' + item.key + '" data-qty="' + (item.quantity + 1) + '" aria-label="' + (S.increase || 'Increase') + '">' + icon('plus') + '</button>' +
             '</div>' +
           '</div>' +
           '<div class="citem-right">' +
             '<div class="citem-price">' + fmtPrice(item.final_line_price) + '</div>' +
-            '<button class="citem-rm bpc-q" data-key="' + item.key + '" data-qty="0">Remove</button>' +
+            '<button class="citem-rm bpc-q" data-key="' + item.key + '" data-qty="0">' + (S.remove || 'Remove') + '</button>' +
           '</div>' +
         '</div>'
       );
@@ -228,20 +230,20 @@
 
     foot.innerHTML =
       '<form class="discount-form" id="bpc-discount-form">' +
-        '<input type="text" id="bpc-discount-code" placeholder="Discount code" autocomplete="off">' +
-        '<button type="submit" class="btn btn--ghost">Apply</button>' +
+        '<input type="text" id="bpc-discount-code" placeholder="' + (S.discountPlaceholder || 'Discount code') + '" autocomplete="off">' +
+        '<button type="submit" class="btn btn--ghost">' + (S.discountApply || 'Apply') + '</button>' +
       '</form>' +
       (discounts.length
         ? discounts.map(d =>
             '<div class="row discount-row"><span class="lbl">🏷 ' + d.title + '</span>' +
-              '<span>' + (d.amount > 0 ? '−' + fmtPrice(d.amount) : 'Applied') + '</span></div>'
+              '<span>' + (d.amount > 0 ? '−' + fmtPrice(d.amount) : (S.discountAppliedLabel || 'Applied')) + '</span></div>'
           ).join('') +
-          '<button type="button" class="discount-remove" id="bpc-discount-remove">Remove discount</button>'
+          '<button type="button" class="discount-remove" id="bpc-discount-remove">' + (S.discountRemove || 'Remove discount') + '</button>'
         : '') +
-      '<div class="row"><span class="subtotal">Subtotal</span>' +
+      '<div class="row"><span class="subtotal">' + (S.subtotal || 'Subtotal') + '</span>' +
         '<span class="subtotal"><b>' + fmtPrice(sub) + '</b></span></div>' +
-      '<div class="note">Shipping &amp; taxes calculated at checkout</div>' +
-      '<a href="/checkout" class="btn btn--block btn--lg">Checkout · ' + fmtPrice(sub) + '</a>';
+      '<div class="note">' + (S.shippingNote || 'Shipping &amp; taxes calculated at checkout') + '</div>' +
+      '<a href="/checkout" class="btn btn--block btn--lg">' + (S.checkout || 'Checkout') + ' · ' + fmtPrice(sub) + '</a>';
 
     body.querySelectorAll('.bpc-q').forEach(btn =>
       btn.addEventListener('click', () => changeQty(btn.dataset.key, +btn.dataset.qty))
@@ -403,7 +405,7 @@
             if (addBtn) {
               addBtn.dataset.variantId = btn.dataset.variantId;
               const price = btn.dataset.price;
-              if (price) addBtn.textContent = 'Add to Cart · ' + fmtPrice(+price);
+              if (price) addBtn.textContent = (S.addToCart || 'Add to Cart') + ' · ' + fmtPrice(+price);
             }
           }
         });
@@ -414,7 +416,7 @@
     document.querySelectorAll('.newsletter').forEach(form => {
       form.addEventListener('submit', e => {
         e.preventDefault();
-        toast('Welcome to the household — check your inbox.');
+        toast(S.newsletterSuccess || 'Welcome to the household — check your inbox.');
         form.reset();
       });
     });

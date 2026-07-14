@@ -6,7 +6,7 @@
     <h2 style="margin-top:14px">{{ section.settings.cta_heading }}</h2>
     <p class="lead">{{ section.settings.cta_subtext }}</p>
     <form class="newsletter" id="footer-newsletter">
-      <input type="email" placeholder="{{ section.settings.email_placeholder }}" required aria-label="Email address">
+      <input type="email" placeholder="{{ section.settings.email_placeholder }}" required aria-label="{{ 'layout.footer.email_address_label' | t }}">
       <button class="btn btn--gold" type="submit">{{ section.settings.subscribe_text }}</button>
     </form>
   </div>
@@ -39,27 +39,27 @@
     {%- else -%}
       <!-- Default nav columns (shown until blocks are configured) -->
       <div class="foot-col">
-        <h4>Shop</h4>
-        <a href="{{ routes.collections_url }}/cat-litter">Cat Litter</a>
-        <a href="{{ routes.collections_url }}/food-treats">Food &amp; Treats</a>
-        <a href="{{ routes.collections_url }}/dog">Dog</a>
-        <a href="{{ routes.collections_url }}/accessories">Home &amp; Accessories</a>
-        <a href="{{ routes.collections_url }}/all">All Products</a>
+        <h4>{{ 'layout.footer.shop_heading' | t }}</h4>
+        <a href="{{ routes.collections_url }}/cat-litter">{{ 'layout.footer.cat_litter' | t }}</a>
+        <a href="{{ routes.collections_url }}/food-treats">{{ 'layout.footer.food_treats' | t }}</a>
+        <a href="{{ routes.collections_url }}/dog">{{ 'layout.footer.dog' | t }}</a>
+        <a href="{{ routes.collections_url }}/accessories">{{ 'layout.footer.home_accessories' | t }}</a>
+        <a href="{{ routes.collections_url }}/all">{{ 'layout.footer.all_products' | t }}</a>
       </div>
       <div class="foot-col">
-        <h4>Company</h4>
-        <a href="/pages/about-us">About Us</a>
-        <a href="#">Biscuit Approved</a>
-        <a href="#">Sustainability</a>
-        <a href="#">Stockists</a>
-        <a href="/pages/contact">Contact</a>
+        <h4>{{ 'layout.footer.company_heading' | t }}</h4>
+        <a href="/pages/about-us">{{ 'layout.footer.about_us' | t }}</a>
+        <a href="#">{{ 'layout.footer.biscuit_approved' | t }}</a>
+        <a href="#">{{ 'layout.footer.sustainability' | t }}</a>
+        <a href="#">{{ 'layout.footer.stockists' | t }}</a>
+        <a href="/pages/contact">{{ 'layout.footer.contact' | t }}</a>
       </div>
       <div class="foot-col">
-        <h4>Care</h4>
-        <a href="#">Shipping &amp; Returns</a>
-        <a href="#">Subscribe &amp; Save</a>
-        <a href="#">FAQ</a>
-        <a href="#">Track Order</a>
+        <h4>{{ 'layout.footer.care_heading' | t }}</h4>
+        <a href="#">{{ 'layout.footer.shipping_returns' | t }}</a>
+        <a href="#">{{ 'layout.footer.subscribe_save' | t }}</a>
+        <a href="#">{{ 'layout.footer.faq' | t }}</a>
+        <a href="#">{{ 'layout.footer.track_order' | t }}</a>
       </div>
     {%- endfor -%}
   </div>

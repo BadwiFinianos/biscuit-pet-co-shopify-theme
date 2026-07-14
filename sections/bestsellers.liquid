@@ -7,7 +7,7 @@
       <h2 class="section-title" style="margin-top:14px">{{ section.settings.heading }}</h2>
     </div>
     <a href="{{ bs_collection.url | default: routes.collections_url | append: '/all' }}" class="link-underline">
-      View all <span id="bs-arw"></span>
+      {{ 'sections.bestsellers.view_all' | t }} <span id="bs-arw"></span>
     </a>
   </div>
 
@@ -33,7 +33,7 @@
             {%- endif -%}
             <img src="{{ 'litter-vanilla-cutout.png' | asset_url }}" alt="{{ name }}" loading="lazy">
             <div class="pcard-quick">
-              <button class="btn btn--block">Add to Cart · ${{ dummy_prices[idx] }}</button>
+              <button class="btn btn--block">{{ 'products.product.add_to_cart' | t }} · ${{ dummy_prices[idx] }}</button>
             </div>
           </div>
           <div class="pcard-body">

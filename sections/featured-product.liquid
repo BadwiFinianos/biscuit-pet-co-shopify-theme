@@ -25,7 +25,7 @@
           {%- if fv.compare_at_price > fv.price -%}
             <span class="was">{{ fv.compare_at_price | money }}</span>
             {%- assign savings = fv.compare_at_price | minus: fv.price | times: 100 | divided_by: fv.compare_at_price -%}
-            <span class="save">Save {{ savings }}%</span>
+            <span class="save">{{ 'products.product.save_percent' | t: percentage: savings }}</span>
           {%- endif -%}
         {%- else -%}
           <span class="now">{{ section.settings.dummy_price }}</span>
@@ -37,7 +37,7 @@
       <p class="desc">{{ section.settings.description }}</p>
 
       {%- if fp != blank and fp.variants.size > 1 -%}
-        <div class="vlabel">Choose your size</div>
+        <div class="vlabel">{{ 'products.product.choose_size' | t }}</div>
         <div class="size-pills">
           {%- for v in fp.variants -%}
             <button class="size-pill{% if forloop.first %} on{% endif %}"
@@ -46,7 +46,7 @@
           {%- endfor -%}
         </div>
       {%- else -%}
-        <div class="vlabel">Choose your size</div>
+        <div class="vlabel">{{ 'products.product.choose_size' | t }}</div>
         <div class="size-pills">
           <button class="size-pill on">5 kg</button>
           <button class="size-pill">10 kg</button>
@@ -67,17 +67,17 @@
       <div class="buy">
         {%- if fv -%}
           <button class="btn btn--lg bpc-atc" data-variant-id="{{ fv.id }}">
-            Add to Cart · {{ fv.price | money }}
+            {{ 'products.product.add_to_cart' | t }} · {{ fv.price | money }}
           </button>
         {%- else -%}
           <button class="btn btn--lg bpc-atc" data-variant-id="">
-            Add to Cart · {{ section.settings.dummy_price }}
+            {{ 'products.product.add_to_cart' | t }} · {{ section.settings.dummy_price }}
           </button>
         {%- endif -%}
         {%- if fp != blank -%}
-          <a href="{{ fp.url }}" class="btn btn--ghost btn--lg">View Details</a>
+          <a href="{{ fp.url }}" class="btn btn--ghost btn--lg">{{ 'products.product.view_details' | t }}</a>
         {%- else -%}
-          <a href="{{ routes.collections_url }}/all" class="btn btn--ghost btn--lg">View Details</a>
+          <a href="{{ routes.collections_url }}/all" class="btn btn--ghost btn--lg">{{ 'products.product.view_details' | t }}</a>
         {%- endif -%}
       </div>
     </div>
@@ -90,7 +90,7 @@
 .feature .inner{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
 .feature .visual{position:relative;display:grid;place-items:center;aspect-ratio:1/1;background:radial-gradient(120% 100% at 50% 20%,#fff,var(--page-2));border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 0 #fff,var(--shadow-sm)}
 .feature .visual img.shot{height:84%;filter:drop-shadow(0 34px 40px rgba(0,0,64,.3))}
-.feature .visual .badge{position:absolute;top:22px;left:22px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:30px}
+.feature .visual .badge{position:absolute;top:22px;inset-inline-start:22px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:30px}
 .feature h2{font-size:clamp(32px,4.4vw,52px);margin:14px 0 0;letter-spacing:-.02em}
 .feature .price{display:flex;align-items:baseline;gap:12px;margin-top:18px}
 .feature .price .now{font-family:var(--display);font-size:30px;font-weight:700}
