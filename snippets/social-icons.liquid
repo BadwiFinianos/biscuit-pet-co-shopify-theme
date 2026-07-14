@@ -2,8 +2,6 @@
   Renders icons for whichever social links are filled in under
   Theme settings → Social media. Usage: {% render 'social-icons' %}
 {%- endcomment -%}
-{%- comment -%} TEMP DEBUG — remove after confirming shop.brand.social_links {%- endcomment -%}
-<pre style="color:#fff;background:#000;padding:8px;font-size:11px;white-space:pre-wrap;">DEBUG shop.brand.social_links: {{ shop.brand.social_links | json }}</pre>
 <div class="social-icons">
   {%- if settings.social_facebook_link != blank -%}
     <a href="{{ settings.social_facebook_link }}" class="social-icon" aria-label="Facebook" target="_blank" rel="noopener">
