@@ -1,0 +1,16 @@
+{%- comment -%}
+  Usage: {%- render 'collection-card', collection: collection -%}
+{%- endcomment -%}
+<a class="ccard" href="{{ collection.url }}" data-reveal>
+  <div class="ccard-media">
+    {%- if collection.featured_image -%}
+      {{ collection.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: collection.title }}
+    {%- else -%}
+      <img src="{{ 'mascot-navy.png' | asset_url }}" alt="{{ collection.title }}" loading="lazy">
+    {%- endif -%}
+  </div>
+  <div class="ccard-body">
+    <h3 class="ccard-name">{{ collection.title }}</h3>
+    <span class="ccard-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span>
+  </div>
+</a>

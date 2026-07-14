@@ -7,7 +7,20 @@
     {%- endif -%}
   </div>
 
-  {%- if collection.products_count == 0 -%}
+  {%- assign sub_prefix = collection.handle | append: '-' -%}
+  {%- assign sub_prefix_size = sub_prefix.size -%}
+  {%- capture sub_collections_html -%}
+    {%- for c in collections -%}
+      {%- assign c_prefix = c.handle | slice: 0, sub_prefix_size -%}
+      {%- if c_prefix == sub_prefix -%}
+        {%- render 'collection-card', collection: c -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+
+  {%- if sub_collections_html != blank -%}
+    <div class="grid grid-3">{{ sub_collections_html }}</div>
+  {%- elsif collection.products_count == 0 -%}
     <p style="text-align:center;padding:60px 0;color:var(--ink-50)">{{ 'collections.general.no_matches' | t }}</p>
   {%- else -%}
     <div class="grid grid-4">
