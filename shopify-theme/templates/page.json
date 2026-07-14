@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": {
+        "eyebrow": "Biscuit Pet Co."
+      }
+    },
+    "main": {
+      "type": "main-page"
+    }
+  },
+  "order": ["header", "main"]
+}

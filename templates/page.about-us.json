@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "header": {
+      "type": "page-header",
+      "settings": {
+        "eyebrow": "Our Story",
+        "subtext": "The people (and one very opinionated cat) behind Biscuit Pet Co."
+      }
+    },
+    "story": {
+      "type": "brand-story"
+    },
+    "main": {
+      "type": "main-page"
+    }
+  },
+  "order": ["header", "story", "main"]
+}

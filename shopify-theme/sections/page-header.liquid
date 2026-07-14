@@ -1,0 +1,36 @@
+<section class="page-header">
+  <div class="wrap">
+    <span class="eyebrow on-dark">{{ section.settings.eyebrow }}</span>
+    <h1 class="page-header-title">{{ page.title }}</h1>
+    {%- if section.settings.subtext != blank -%}
+      <p class="page-header-sub">{{ section.settings.subtext }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+.page-header{background:var(--navy);color:var(--cream);padding-block:clamp(56px,8vw,96px);text-align:center}
+.page-header-title{font-family:var(--display);font-size:clamp(34px,5vw,58px);letter-spacing:-.02em;color:var(--cream);margin-top:14px}
+.page-header-sub{margin:18px auto 0;max-width:56ch;color:rgba(242,234,211,.75);font-size:17px;line-height:1.7}
+</style>
+
+{% schema %}
+{
+  "name": "Page header",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Biscuit Pet Co."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext (optional)"
+    }
+  ],
+  "presets": [{ "name": "Page header" }]
+}
+{% endschema %}
