@@ -57,6 +57,7 @@
     },
     "shop-by-companion": {
       "type": "shop-by-companion",
+      "disabled": true,
       "settings": {
         "heading": "Shop by companion",
         "subheading": "Considered essentials for every member of the household.",
@@ -111,8 +112,8 @@
     "trust-strip",
     "featured-product",
     "shop-by-companion",
-    "bestsellers",
+    "biscuit-difference",
     "brand-story",
-    "biscuit-difference"
+    "bestsellers"
   ]
 }
