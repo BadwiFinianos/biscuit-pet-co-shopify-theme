@@ -7,7 +7,7 @@
   {%- liquid
     assign step_count = section.blocks.size
     if step_count == 0
-      assign step_count = 4
+      assign step_count = 3
     endif
   -%}
   <div class="steps" style="--count:{{ step_count }}">
@@ -22,27 +22,21 @@
       <!-- Default steps (shown until blocks are configured) -->
       <div class="step" data-reveal data-delay="0">
         <div class="num">01</div>
-        <div class="ic">{%- render 'icon', icon: 'mineral' -%}</div>
-        <h3>Natural mineral base</h3>
-        <p>Sourced bentonite-style minerals — no synthetic fillers, ever.</p>
+        <div class="ic">{%- render 'icon', icon: 'sparkle' -%}</div>
+        <h3>Thoughtfully Selected</h3>
+        <p>Every product we introduce is chosen with care, quality, and everyday pet comfort in mind.</p>
       </div>
       <div class="step" data-reveal data-delay="1">
         <div class="num">02</div>
-        <div class="ic">{%- render 'icon', icon: 'clump' -%}</div>
-        <h3>Clumps on contact</h3>
-        <p>Tight, scoopable clumps form instantly so waste lifts clean.</p>
+        <div class="ic">{%- render 'icon', icon: 'leaf' -%}</div>
+        <h3>Cleaner Homes</h3>
+        <p>Our journey begins with premium cat litter designed to support fresher spaces and calmer routines.</p>
       </div>
       <div class="step" data-reveal data-delay="2">
         <div class="num">03</div>
-        <div class="ic">{%- render 'icon', icon: 'dust' -%}</div>
-        <h3>99.9% dust-free</h3>
-        <p>Triple-screened granules keep the air — and your floors — clear.</p>
-      </div>
-      <div class="step" data-reveal data-delay="3">
-        <div class="num">04</div>
-        <div class="ic">{%- render 'icon', icon: 'odor' -%}</div>
-        <h3>Odour sealed</h3>
-        <p>A mineral + scent system traps odour at the source for days.</p>
+        <div class="ic">{%- render 'icon', icon: 'shield' -%}</div>
+        <h3>A Higher Standard</h3>
+        <p>We are building a premium pet lifestyle brand for pets who deserve more than ordinary essentials.</p>
       </div>
     {%- endfor -%}
   </div>
@@ -111,13 +105,13 @@
           "type": "text",
           "id": "title",
           "label": "Title",
-          "default": "Natural mineral base"
+          "default": "Thoughtfully Selected"
         },
         {
           "type": "textarea",
           "id": "description",
           "label": "Description",
-          "default": "Sourced bentonite-style minerals — no synthetic fillers, ever."
+          "default": "Every product we introduce is chosen with care, quality, and everyday pet comfort in mind."
         }
       ]
     }
