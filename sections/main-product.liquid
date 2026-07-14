@@ -86,9 +86,21 @@
 /* Variant switcher for product page */
 document.addEventListener('DOMContentLoaded', function() {
   var addToCartLabel = {{ 'products.product.add_to_cart' | t | json }};
+  var shopCurrency = {{ shop.currency | json }};
   var pills = document.querySelectorAll('.size-pill');
   var priceEl = document.getElementById('product-price');
   var atcBtn = document.querySelector('.bpc-atc');
+
+  function fmtPrice(cents) {
+    var amount = cents / 100;
+    var currency = (window.bpcData && window.bpcData.cart && window.bpcData.cart.currency && window.bpcData.cart.currency.iso_code) || shopCurrency;
+    try {
+      return new Intl.NumberFormat(document.documentElement.lang || undefined, { style: 'currency', currency: currency }).format(amount);
+    } catch (e) {
+      return currency + ' ' + amount.toFixed(2);
+    }
+  }
+
   pills.forEach(function(btn) {
     btn.addEventListener('click', function() {
       pills.forEach(function(x) { x.classList.remove('on'); });
@@ -96,9 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (atcBtn && btn.dataset.variantId) {
         atcBtn.dataset.variantId = btn.dataset.variantId;
         if (btn.dataset.price && priceEl) {
-          var cents = parseInt(btn.dataset.price, 10);
-          var dollars = cents / 100;
-          var formatted = '$' + (dollars % 1 === 0 ? dollars.toFixed(0) : dollars.toFixed(2));
+          var formatted = fmtPrice(parseInt(btn.dataset.price, 10));
           priceEl.textContent = formatted;
           atcBtn.textContent = addToCartLabel + ' · ' + formatted;
         }

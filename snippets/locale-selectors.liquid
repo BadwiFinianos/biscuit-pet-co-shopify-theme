@@ -1,0 +1,10 @@
+{%- comment -%}
+  Usage: {% render 'locale-selectors', section_id: section.id %}
+  Groups the language and currency selectors together. Each renders nothing
+  on its own until the store has 2+ published languages / currencies, so the
+  wrapper can be dropped in anywhere without showing empty UI.
+{%- endcomment -%}
+<div class="locale-selectors">
+  {%- render 'language-selector', section_id: section_id -%}
+  {%- render 'currency-selector', section_id: section_id -%}
+</div>

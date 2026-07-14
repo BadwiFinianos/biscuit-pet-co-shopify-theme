@@ -48,6 +48,7 @@
   <script>
     window.bpcData = {
       cart: {{ cart | json }},
+      shopCurrency: {{ shop.currency | json }},
       routes: {
         cart_add:    '{{ routes.cart_add_url }}.js',
         cart:        '{{ routes.cart_url }}.js',

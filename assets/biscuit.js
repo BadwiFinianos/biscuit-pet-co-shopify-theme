@@ -41,18 +41,34 @@
   }
   window.BPC_STARS = stars;
 
-  /* ---- Price (Shopify cart prices are in cents) ---- */
-  function fmtPrice(cents) {
-    const v = cents / 100;
-    return '$' + (v % 1 === 0 ? v.toFixed(0) : v.toFixed(2));
-  }
-
   /* ---- Cart state ---- */
   const bpc = window.bpcData || {};
   let cart = bpc.cart || { items: [], item_count: 0, total_price: 0 };
   const routes = bpc.routes || {};
   const A = bpc.assets || {};
   const S = bpc.strings || {};
+
+  /* ---- Price (Shopify money values are always integer cents, i.e. amount * 100,
+     regardless of the active currency's real minor unit — dividing by 100 is
+     correct even for 3-decimal currencies like KWD) ---- */
+  function activeCurrency() {
+    const c = cart.currency;
+    if (typeof c === 'string' && c) return c;
+    if (c && c.iso_code) return c.iso_code;
+    return bpc.shopCurrency || 'KWD';
+  }
+  function fmtPrice(cents) {
+    const amount = cents / 100;
+    const currency = activeCurrency();
+    try {
+      return new Intl.NumberFormat(document.documentElement.lang || undefined, {
+        style: 'currency',
+        currency: currency
+      }).format(amount);
+    } catch (e) {
+      return currency + ' ' + amount.toFixed(2);
+    }
+  }
 
   function updateBadge() {
     const c = cart.item_count || 0;

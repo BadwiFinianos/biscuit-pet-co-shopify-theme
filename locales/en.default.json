@@ -9,7 +9,8 @@
     }
   },
   "localization": {
-    "language_label": "Language"
+    "language_label": "Language",
+    "currency_label": "Currency"
   },
   "layout": {
     "navigation": {

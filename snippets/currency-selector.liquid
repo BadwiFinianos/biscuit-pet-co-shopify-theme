@@ -1,0 +1,39 @@
+{%- comment -%}
+  Usage: {% render 'currency-selector', section_id: section.id %}
+  Lists one option per unique currency available across your Shopify Markets
+  (deduplicated, since several countries can share a currency). Renders
+  nothing until 2+ currencies are configured in Settings → Markets.
+{%- endcomment -%}
+{%- assign bpc_seen_currencies = '' -%}
+{%- assign bpc_currency_count = 0 -%}
+{%- for country in localization.available_countries -%}
+  {%- unless bpc_seen_currencies contains country.currency.iso_code -%}
+    {%- assign bpc_seen_currencies = bpc_seen_currencies | append: country.currency.iso_code | append: ',' -%}
+    {%- assign bpc_currency_count = bpc_currency_count | plus: 1 -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- if bpc_currency_count > 1 -%}
+  {%- assign form_id = 'CurrencySelector-' | append: section_id -%}
+  {%- form 'localization', id: form_id, class: 'lang-select currency-select' -%}
+    <input type="hidden" name="return_to" value="{{ request.path }}">
+    <label class="visually-hidden" for="{{ form_id }}-select">{{ 'localization.currency_label' | t }}</label>
+    <select
+      name="country_code"
+      id="{{ form_id }}-select"
+      class="lang-select-input"
+      aria-label="{{ 'localization.currency_label' | t }}"
+      onchange="this.form.submit()"
+    >
+      {%- assign bpc_listed_currencies = '' -%}
+      {%- for country in localization.available_countries -%}
+        {%- unless bpc_listed_currencies contains country.currency.iso_code -%}
+          {%- assign bpc_listed_currencies = bpc_listed_currencies | append: country.currency.iso_code | append: ',' -%}
+          <option
+            value="{{ country.iso_code }}"
+            {%- if country.currency.iso_code == localization.country.currency.iso_code %} selected{% endif -%}
+          >{{ country.currency.iso_code }} ({{ country.currency.symbol }})</option>
+        {%- endunless -%}
+      {%- endfor -%}
+    </select>
+  {%- endform -%}
+{%- endif -%}

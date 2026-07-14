@@ -9,7 +9,8 @@
     }
   },
   "localization": {
-    "language_label": "اللغة"
+    "language_label": "اللغة",
+    "currency_label": "العملة"
   },
   "layout": {
     "navigation": {
