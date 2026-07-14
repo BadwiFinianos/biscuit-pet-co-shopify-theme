@@ -8,6 +8,9 @@
       "admin_link_html": "هل أنت صاحب المتجر؟ <a href=\"/admin\" title=\"إدارة متجرك\">سجّل الدخول من هنا</a>."
     }
   },
+  "localization": {
+    "language_label": "اللغة"
+  },
   "layout": {
     "navigation": {
       "search": "بحث",

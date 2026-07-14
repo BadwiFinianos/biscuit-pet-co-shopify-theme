@@ -1,0 +1,26 @@
+{%- comment -%}
+  Usage: {% render 'language-selector', section_id: section.id %}
+  Renders nothing when the store only has one published language.
+{%- endcomment -%}
+{%- if localization.available_languages.size > 1 -%}
+  {%- assign form_id = 'LanguageSelector-' | append: section_id -%}
+  {%- form 'localization', id: form_id, class: 'lang-select' -%}
+    <input type="hidden" name="return_to" value="{{ request.path }}">
+    <label class="visually-hidden" for="{{ form_id }}-select">{{ 'localization.language_label' | t }}</label>
+    <select
+      name="locale_code"
+      id="{{ form_id }}-select"
+      class="lang-select-input"
+      aria-label="{{ 'localization.language_label' | t }}"
+      onchange="this.form.submit()"
+    >
+      {%- for language in localization.available_languages -%}
+        <option
+          value="{{ language.iso_code }}"
+          lang="{{ language.iso_code }}"
+          {%- if language.iso_code == localization.language.iso_code %} selected{% endif -%}
+        >{{ language.endonym_name | capitalize }}</option>
+      {%- endfor -%}
+    </select>
+  {%- endform -%}
+{%- endif -%}

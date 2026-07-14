@@ -8,6 +8,9 @@
       "admin_link_html": "Are you the store owner? <a href=\"/admin\" title=\"Manage your shop\">Log in here</a>."
     }
   },
+  "localization": {
+    "language_label": "Language"
+  },
   "layout": {
     "navigation": {
       "search": "Search",

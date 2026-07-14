@@ -1,9 +1,14 @@
 <div class="topbar">
-  {%- if section.settings.link != blank -%}
-    <a href="{{ section.settings.link }}" style="color:inherit">{{ section.settings.text }}</a>
-  {%- else -%}
-    {{ section.settings.text }}
-  {%- endif -%}
+  <div class="topbar-inner">
+    <span class="topbar-text">
+      {%- if section.settings.link != blank -%}
+        <a href="{{ section.settings.link }}" style="color:inherit">{{ section.settings.text }}</a>
+      {%- else -%}
+        {{ section.settings.text }}
+      {%- endif -%}
+    </span>
+    {%- render 'language-selector', section_id: section.id -%}
+  </div>
 </div>
 
 {% schema %}
