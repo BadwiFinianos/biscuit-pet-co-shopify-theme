@@ -52,7 +52,6 @@
   let cart = bpc.cart || { items: [], item_count: 0, total_price: 0 };
   const routes = bpc.routes || {};
   const A = bpc.assets || {};
-  const FREE_SHIP = 6000; // cents ($60)
 
   function updateBadge() {
     const c = cart.item_count || 0;
@@ -112,7 +111,6 @@
         '<div class="drawer-head"><h3>Your Cart</h3>' +
           '<button class="close" id="bpc-close" aria-label="Close">' + icon('close') + '</button>' +
         '</div>' +
-        '<div class="ship-bar" id="bpc-ship"></div>' +
         '<div class="drawer-body" id="bpc-body"></div>' +
         '<div class="drawer-foot" id="bpc-foot"></div>' +
       '</aside>';
@@ -143,7 +141,6 @@
     buildDrawer();
     const body = document.getElementById('bpc-body');
     const foot = document.getElementById('bpc-foot');
-    const ship = document.getElementById('bpc-ship');
 
     if (!cart.items || !cart.items.length) {
       body.innerHTML =
@@ -153,21 +150,12 @@
           '<p style="font-size:14px">Treat your companion to something premium.</p>' +
           '<a href="/collections/all" class="btn btn--gold" style="margin-top:22px">Shop the Collection</a>' +
         '</div>';
-      ship.style.display = 'none';
       foot.style.display = 'none';
       return;
     }
 
-    ship.style.display = 'block';
     foot.style.display = 'block';
     const sub = cart.total_price;
-    const remain = Math.max(0, FREE_SHIP - sub);
-
-    ship.innerHTML =
-      (remain > 0
-        ? '<div class="msg">You\'re <b>' + fmtPrice(remain) + '</b> away from free shipping</div>'
-        : '<div class="msg">' + icon('check') + ' You\'ve unlocked <b>free shipping</b></div>') +
-      '<div class="ship-track"><div class="ship-fill" style="width:' + Math.min(100, (sub / FREE_SHIP) * 100) + '%"></div></div>';
 
     body.innerHTML = cart.items.map(item => {
       const img = item.image ? '<img src="' + item.image + '" alt="' + (item.product_title || '') + '">' : '';

@@ -13,13 +13,12 @@
     "color_cream": "#F2EAD3",
     "color_gold": "#D4AF37",
     "color_page_bg": "#FBF7EC",
-    "free_shipping_threshold": 60,
     "social_instagram": "@biscuitpetco",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "text": "Complimentary shipping over $60 · Crafted for pets with standards",
+          "text": "Crafted for pets with standards",
           "link": ""
         }
       },
