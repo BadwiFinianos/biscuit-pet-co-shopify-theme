@@ -3,10 +3,15 @@
   {%- assign bs_collection = collections['all'] -%}
 {%- endif -%}
 
-{%- assign bs_products = bs_collection.products | where_exp: "product", "product.tags contains 'bestseller' or product.tags contains 'new'" -%}
-{%- assign bs_products = bs_products | slice: 0, section.settings.products_count -%}
+{%- assign bs_products_prefilter = bs_collection.products | where_exp: "product", "product.tags contains 'bestseller' or product.tags contains 'new'" -%}
+<!-- BS-DEBUG3: prefilter_size={{ bs_products_prefilter.size }} -->
+{%- for p in bs_products_prefilter -%}
+<!-- BS-DEBUG3-ITEM: title="{{ p.title }}" -->
+{%- endfor -%}
 
-<!-- BS-DEBUG2: size={{ bs_products.size }} -->
+{%- assign bs_products = bs_products_prefilter | slice: 0, section.settings.products_count -%}
+
+<!-- BS-DEBUG2: size={{ bs_products.size }} products_count_setting={{ section.settings.products_count }} -->
 {%- for p in bs_products -%}
 <!-- BS-DEBUG2-ITEM: title="{{ p.title }}" handle="{{ p.handle }}" url="{{ p.url }}" featured_image="{{ p.featured_image }}" vendor="{{ p.vendor }}" -->
 {%- endfor -%}
