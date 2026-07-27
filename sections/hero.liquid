@@ -20,7 +20,6 @@
             {{ section.settings.cta2_text }}
           </a>
         </div>
-        <div class="rate-chip"><span class="stars" id="a-stars"></span><b>4.9</b>&nbsp;{{ section.settings.rating_text }}</div>
       </div>
       <div class="stage">
         <div class="arc"></div>
@@ -71,7 +70,6 @@
           <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--gold btn--lg">{{ section.settings.hero_c_cta1 }}</a>
           <a href="{{ section.settings.cta2_url | default: routes.collections_url | append: '/all' }}" class="btn btn--ghost on-dark btn--lg">{{ section.settings.cta2_text }}</a>
         </div>
-        <div class="rate-chip"><span class="stars" id="c-stars"></span><b>4.9</b>&nbsp;{{ section.settings.hero_c_rating }}</div>
       </div>
       <div class="stage">
         <div class="spot"></div>
@@ -87,16 +85,12 @@
 /* Hero CSS — copied from design system */
 .hero{position:relative;overflow:hidden}
 .hv-b,.hv-c{display:none}
-.rate-chip{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-70)}
-.rate-chip .stars svg{width:15px;height:15px}
-.rate-chip b{color:var(--navy);font-weight:600}
 .hv-a .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;min-height:clamp(560px,82vh,820px);padding-block:40px}
 .hv-a .copy{max-width:540px}
 .hv-a h1{font-size:clamp(46px,6.4vw,88px);line-height:.98;letter-spacing:-.025em;margin:22px 0 0}
 .hv-a h1 em{font-style:italic;font-weight:500}
 .hv-a .lead{margin-top:26px;font-size:18px;color:var(--ink-70);line-height:1.7;max-width:46ch}
 .hv-a .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
-.hv-a .rate-chip{margin-top:30px}
 .hv-a .stage{position:relative;display:grid;place-items:center;height:100%}
 .hv-a .arc{position:absolute;width:min(82%,460px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fff 0%,var(--page-2) 55%,rgba(244,236,218,0) 72%);z-index:0}
 .hv-a .arc-ring{position:absolute;width:min(74%,420px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold);opacity:.4;z-index:0}
@@ -128,8 +122,6 @@
 .hv-c h1 em{font-style:italic;font-weight:500;color:var(--gold-light)}
 .hv-c .lead{margin-top:24px;font-size:18px;color:rgba(242,234,211,.72);line-height:1.7;max-width:44ch}
 .hv-c .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
-.hv-c .rate-chip{margin-top:28px;color:rgba(242,234,211,.7)}
-.hv-c .rate-chip b{color:var(--cream)}
 .hv-c .stage{position:relative;z-index:2;display:grid;place-items:center}
 .hv-c .spot{position:absolute;width:min(80%,440px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,rgba(212,175,55,.22),transparent 60%);z-index:0}
 .hv-c .packshot{position:relative;z-index:2;height:min(70vh,640px);filter:drop-shadow(0 44px 54px rgba(0,0,0,.5))}
@@ -140,7 +132,6 @@
   .hv-a .copy,.hv-c .copy{max-width:none;margin-inline:auto}
   .hv-a .lead,.hv-c .lead{margin-inline:auto}
   .hv-a .cta,.hv-c .cta{justify-content:center}
-  .hv-a .rate-chip,.hv-c .rate-chip{justify-content:center}
   .hv-a .stage,.hv-c .stage{order:-1;min-height:46vh}
   .hv-a .float-note{display:none}
   .hv-a .packshot{height:min(54vh,460px)}
@@ -206,12 +197,6 @@
       "type": "url",
       "id": "cta2_url",
       "label": "Secondary button URL"
-    },
-    {
-      "type": "text",
-      "id": "rating_text",
-      "label": "Rating label",
-      "default": "from 1,200+ pet parents"
     },
     {
       "type": "header",
@@ -314,12 +299,6 @@
       "id": "hero_c_cta1",
       "label": "Primary button text",
       "default": "Shop Bestseller"
-    },
-    {
-      "type": "text",
-      "id": "hero_c_rating",
-      "label": "Rating label",
-      "default": "· 3,000+ five-star reviews"
     }
   ],
   "presets": [
