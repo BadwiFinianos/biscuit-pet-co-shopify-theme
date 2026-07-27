@@ -8,6 +8,17 @@
     "theme_support_email": "support@biscuitpetco.com"
   },
   {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
     "name": "Colors",
     "settings": [
       {
