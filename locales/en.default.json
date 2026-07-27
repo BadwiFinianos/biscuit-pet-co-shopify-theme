@@ -129,6 +129,14 @@
     "bestsellers": {
       "view_all": "View all"
     },
+    "biscuit_difference": {
+      "step1_title": "Thoughtfully Selected",
+      "step1_description": "Every product we introduce is chosen with care, quality, and everyday pet comfort in mind.",
+      "step2_title": "Cleaner Homes",
+      "step2_description": "Our journey begins with premium cat litter designed to support fresher spaces and calmer routines.",
+      "step3_title": "A Higher Standard",
+      "step3_description": "We are building a premium pet lifestyle brand for pets who deserve more than ordinary essentials."
+    },
     "contact_form": {
       "email_label": "Email",
       "phone_label": "Phone",
