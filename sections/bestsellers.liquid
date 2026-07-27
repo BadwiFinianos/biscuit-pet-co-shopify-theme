@@ -5,8 +5,10 @@
 
 {%- assign bs_products = "" | split: "," -%}
 {%- for product in bs_collection.products -%}
+  <!-- BS-LOOP: title="{{ product.title }}" matches={% if product.tags contains 'bestseller' or product.tags contains 'new' %}YES{% else %}NO{% endif %} -->
   {%- if product.tags contains 'bestseller' or product.tags contains 'new' -%}
     {%- assign bs_products = bs_products | push: product -%}
+    <!-- BS-PUSH: size_after_push={{ bs_products.size }} -->
   {%- endif -%}
   {%- if bs_products.size >= section.settings.products_count -%}
     {%- break -%}
