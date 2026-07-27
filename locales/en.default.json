@@ -144,6 +144,24 @@
     "list_collections": {
       "eyebrow": "Shop",
       "title": "All Collections"
+    },
+    "trust_strip": {
+      "clumping": {
+        "label": "Ultra Clumping",
+        "subtext": "Clumps on contact"
+      },
+      "dust": {
+        "label": "99.9% Dust-Free",
+        "subtext": "Clearer air, cleaner floors"
+      },
+      "odour": {
+        "label": "Odour Control",
+        "subtext": "Traps odour for days"
+      },
+      "mineral": {
+        "label": "Natural Mineral",
+        "subtext": "Nothing synthetic, ever"
+      }
     }
   }
 }

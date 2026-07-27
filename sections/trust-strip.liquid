@@ -7,10 +7,12 @@
 <section class="trust">
   <div class="trust-row" style="--count:{{ item_count }}">
     {%- for block in section.blocks -%}
+      {%- assign t_label = 'sections.trust_strip.' | append: block.id | append: '.label' | t -%}
+      {%- assign t_subtext = 'sections.trust_strip.' | append: block.id | append: '.subtext' | t -%}
       <div class="trust-item" {{ block.shopify_attributes }}>
         {%- render 'icon', icon: block.settings.icon -%}
-        <span class="t">{{ block.settings.label }}</span>
-        <span class="s">{{ block.settings.subtext }}</span>
+        <span class="t">{%- if t_label contains 'ranslation missing' -%}{{ block.settings.label }}{%- else -%}{{ t_label }}{%- endif -%}</span>
+        <span class="s">{%- if t_subtext contains 'ranslation missing' -%}{{ block.settings.subtext }}{%- else -%}{{ t_subtext }}{%- endif -%}</span>
       </div>
     {%- else -%}
       <!-- Default trust items (shown until blocks are configured) -->
