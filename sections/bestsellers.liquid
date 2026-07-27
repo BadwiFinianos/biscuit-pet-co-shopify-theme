@@ -3,22 +3,8 @@
   {%- assign bs_collection = collections['all'] -%}
 {%- endif -%}
 
-{%- assign bs_products = "" | split: "," -%}
-{%- for product in bs_collection.products -%}
-  <!-- BS-LOOP: title="{{ product.title }}" matches={% if product.tags contains 'bestseller' or product.tags contains 'new' %}YES{% else %}NO{% endif %} -->
-  {%- if product.tags contains 'bestseller' or product.tags contains 'new' -%}
-    {%- assign bs_products = bs_products | push: product -%}
-    <!-- BS-PUSH: size_after_push={{ bs_products.size }} -->
-  {%- endif -%}
-  {%- if bs_products.size >= section.settings.products_count -%}
-    {%- break -%}
-  {%- endif -%}
-{%- endfor -%}
-
-<!-- BS-DEBUG: setting="{{ section.settings.collection }}" resolved_handle="{{ bs_collection.handle }}" resolved_title="{{ bs_collection.title }}" collection_product_count={{ bs_collection.products_count }} bs_products_size={{ bs_products.size }} -->
-{%- for product in bs_collection.products -%}
-<!-- BS-DEBUG-ITEM: title="{{ product.title }}" tags=[{{ product.tags | join: '|' }}] tags_size={{ product.tags.size }} -->
-{%- endfor -%}
+{%- assign bs_products = bs_collection.products | where_exp: "product", "product.tags contains 'bestseller' or product.tags contains 'new'" -%}
+{%- assign bs_products = bs_products | slice: 0, section.settings.products_count -%}
 
 <section class="section wrap">
   <div class="reviews-head" style="margin-bottom:48px" data-reveal>
