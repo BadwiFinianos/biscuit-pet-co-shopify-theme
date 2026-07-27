@@ -14,6 +14,9 @@
 {%- endfor -%}
 
 <!-- BS-DEBUG: setting="{{ section.settings.collection }}" resolved_handle="{{ bs_collection.handle }}" resolved_title="{{ bs_collection.title }}" collection_product_count={{ bs_collection.products_count }} bs_products_size={{ bs_products.size }} -->
+{%- for product in bs_collection.products -%}
+<!-- BS-DEBUG-ITEM: title="{{ product.title }}" tags=[{{ product.tags | join: '|' }}] tags_size={{ product.tags.size }} -->
+{%- endfor -%}
 
 <section class="section wrap">
   <div class="reviews-head" style="margin-bottom:48px" data-reveal>
