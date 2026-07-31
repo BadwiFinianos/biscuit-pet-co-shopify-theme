@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "packshot": "shopify://shop_images/F71A74ED-7092-49D1-B976-399C76B7A887.png",
         "packshot_alt": "Biscuit Pet Co. Vanilla Bean Cat Litter",
         "eyebrow": "Premium Cat Litter. THOUGHTFULLY DESIGNED",
         "cta1_text": "Shop the COLLECTION",
