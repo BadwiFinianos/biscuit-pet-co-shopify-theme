@@ -50,7 +50,7 @@
       "promo-bar": {
         "type": "promo-bar",
         "settings": {
-          "enabled": false,
+          "enabled": true,
           "text": "Buy 3, get 30% off — automatically applied at checkout",
           "link": ""
         }
