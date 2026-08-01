@@ -34,11 +34,11 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "cta_eyebrow": "Join the household",
-          "cta_heading": "Become Biscuit Approved.",
-          "cta_subtext": "Early access to new scents and restock alerts.",
+          "cta_eyebrow": "",
+          "cta_heading": "Join The Biscuit Family!",
+          "cta_subtext": "Be the first to discover new products, restokes, and exclusive Biscuit updates.",
           "email_placeholder": "you@email.com",
-          "subscribe_text": "Subscribe",
+          "subscribe_text": "Join the family",
           "brand_blurb": "Ultra-premium pet care, crafted in considered detail and held to one standard — Biscuit Approved.",
           "menu_heading": "Shop",
           "footer_menu": "main-menu",
@@ -50,7 +50,7 @@
       "promo-bar": {
         "type": "promo-bar",
         "settings": {
-          "enabled": false,
+          "enabled": true,
           "text": "Buy 3, get 30% off — automatically applied at checkout",
           "link": ""
         }
