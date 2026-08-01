@@ -42,16 +42,16 @@
           "type": "item",
           "settings": {
             "icon": "clump",
-            "label": "Ultra Clumping",
-            "subtext": "Clumps on contact"
+            "label": "Strong Clumping",
+            "subtext": "Forms firm clumps for easier daily scooping."
           }
         },
         "dust": {
           "type": "item",
           "settings": {
             "icon": "dust",
-            "label": "99.9% Dust-Free",
-            "subtext": "Clearer air, cleaner floors"
+            "label": "Low Dust",
+            "subtext": "Designed to reduce airborne dust during everyday use."
           }
         },
         "odour": {
@@ -59,15 +59,15 @@
           "settings": {
             "icon": "odor",
             "label": "Odour Control",
-            "subtext": "Traps odour for days"
+            "subtext": "Helps manage unwanted litter box odours."
           }
         },
         "mineral": {
           "type": "item",
           "settings": {
             "icon": "mineral",
-            "label": "Natural Mineral",
-            "subtext": "Nothing synthetic, ever"
+            "label": "Purposeful Granules",
+            "subtext": "Carefully selected granule sizes for different litter box needs."
           }
         }
       },

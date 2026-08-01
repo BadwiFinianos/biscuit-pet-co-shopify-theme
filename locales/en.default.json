@@ -131,11 +131,11 @@
     },
     "biscuit_difference": {
       "step1_title": "Thoughtfully Selected",
-      "step1_description": "Every product we introduce is chosen with care, quality, and everyday pet comfort in mind.",
+      "step1_description": "Every Biscuit product is developed with quality, function, and everyday pet comfort in mind.",
       "step2_title": "Cleaner Homes",
       "step2_description": "Our journey begins with premium cat litter designed to support fresher spaces and calmer routines.",
       "step3_title": "A Higher Standard",
-      "step3_description": "We are building a premium pet lifestyle brand for pets who deserve more than ordinary essentials."
+      "step3_description": "We believe everyday pet essentials should be thoughtfully designed, beautifully presented, and made to perform."
     },
     "contact_form": {
       "email_label": "Email",
@@ -155,20 +155,20 @@
     },
     "trust_strip": {
       "clumping": {
-        "label": "Ultra Clumping",
-        "subtext": "Clumps on contact"
+        "label": "Strong Clumping",
+        "subtext": "Forms firm clumps for easier daily scooping."
       },
       "dust": {
-        "label": "99.9% Dust-Free",
-        "subtext": "Clearer air, cleaner floors"
+        "label": "Low Dust",
+        "subtext": "Designed to reduce airborne dust during everyday use."
       },
       "odour": {
         "label": "Odour Control",
-        "subtext": "Traps odour for days"
+        "subtext": "Helps manage unwanted litter box odours."
       },
       "mineral": {
-        "label": "Natural Mineral",
-        "subtext": "Nothing synthetic, ever"
+        "label": "Purposeful Granules",
+        "subtext": "Carefully selected granule sizes for different litter box needs."
       }
     }
   }

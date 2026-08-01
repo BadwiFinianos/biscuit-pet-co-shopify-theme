@@ -24,12 +24,7 @@
       <div class="stage">
         <div class="arc"></div>
         <div class="arc-ring"></div>
-        <div class="float-note">
-          {%- render 'icon', icon: 'dust' -%}
-          <div><b>{{ section.settings.hero_a_note_title }}</b>{{ section.settings.hero_a_note_sub }}</div>
-        </div>
         <img class="packshot" src="{{ packshot_url }}" alt="{{ section.settings.packshot_alt | default: shop.name }}">
-        <img class="seal-badge" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved">
       </div>
     </div>
   </div>
@@ -74,7 +69,6 @@
       <div class="stage">
         <div class="spot"></div>
         <img class="packshot" src="{{ packshot_url }}" alt="{{ section.settings.packshot_alt | default: shop.name }}">
-        <img class="seal-badge" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved">
       </div>
     </div>
   </div>
@@ -95,11 +89,6 @@
 .hv-a .arc{position:absolute;width:min(82%,460px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 38%,#fff 0%,var(--page-2) 55%,rgba(244,236,218,0) 72%);z-index:0}
 .hv-a .arc-ring{position:absolute;width:min(74%,420px);aspect-ratio:1;border-radius:50%;border:1px solid var(--gold);opacity:.4;z-index:0}
 .hv-a .packshot{position:relative;z-index:2;height:min(72vh,640px);width:auto;filter:drop-shadow(0 40px 50px rgba(0,0,64,.34))}
-.hv-a .seal-badge{position:absolute;z-index:3;inset-inline-end:6%;bottom:8%;width:118px;animation:bpc-spin 26s linear infinite}
-.hv-a .float-note{position:absolute;z-index:3;inset-inline-start:0;top:14%;background:var(--card);border:1px solid var(--line-soft);border-radius:8px;padding:14px 18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;font-size:13px;max-width:210px}
-.hv-a .float-note svg{width:26px;height:26px;color:var(--gold-deep);flex-shrink:0}
-.hv-a .float-note b{display:block;font-size:14px;color:var(--navy)}
-@keyframes bpc-spin{to{transform:rotate(360deg)}}
 .hv-b{text-align:center;background:radial-gradient(120% 80% at 50% -10%,#fff 0%,var(--page) 60%)}
 .hv-b .inner{position:relative;padding-block:clamp(60px,9vw,96px) 0}
 .hv-b .watermark{position:absolute;top:8%;left:50%;transform:translateX(-50%);width:min(60%,560px);opacity:.05;z-index:0}
@@ -125,7 +114,6 @@
 .hv-c .stage{position:relative;z-index:2;display:grid;place-items:center}
 .hv-c .spot{position:absolute;width:min(80%,440px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,rgba(212,175,55,.22),transparent 60%);z-index:0}
 .hv-c .packshot{position:relative;z-index:2;height:min(70vh,640px);filter:drop-shadow(0 44px 54px rgba(0,0,0,.5))}
-.hv-c .seal-badge{position:absolute;z-index:3;inset-inline-end:4%;bottom:8%;width:116px;animation:bpc-spin 26s linear infinite}
 
 @media(max-width:960px){
   .hv-a .inner,.hv-c .inner{grid-template-columns:1fr;text-align:center}
@@ -133,7 +121,6 @@
   .hv-a .lead,.hv-c .lead{margin-inline:auto}
   .hv-a .cta,.hv-c .cta{justify-content:center}
   .hv-a .stage,.hv-c .stage{order:-1;min-height:46vh}
-  .hv-a .float-note{display:none}
   .hv-a .packshot{height:min(54vh,460px)}
   .hv-b .packshot{height:min(48vh,400px)}
   .hv-c .packshot{height:min(54vh,460px)}
@@ -219,18 +206,6 @@
       "id": "lead",
       "label": "Lead paragraph",
       "default": "Our journey begins with premium cat litter — and continues with thoughtfully selected essentials made for pets who deserve more."
-    },
-    {
-      "type": "text",
-      "id": "hero_a_note_title",
-      "label": "Floating note — title",
-      "default": "99.9% dust-free"
-    },
-    {
-      "type": "text",
-      "id": "hero_a_note_sub",
-      "label": "Floating note — subtext",
-      "default": "clearer air, tidier floors"
     },
     {
       "type": "header",
