@@ -16,9 +16,6 @@
           <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--lg">
             {{ section.settings.cta1_text }} <span class="arw" id="a-arw"></span>
           </a>
-          <a href="{{ section.settings.cta2_url | default: routes.collections_url | append: '/all' }}" class="btn btn--ghost btn--lg">
-            {{ section.settings.cta2_text }}
-          </a>
         </div>
       </div>
       <div class="stage">
@@ -38,7 +35,6 @@
       <p class="lead">{{ section.settings.hero_b_lead }}</p>
       <div class="cta">
         <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--lg">{{ section.settings.cta1_text }}</a>
-        <a href="{{ section.settings.cta2_url | default: routes.collections_url | append: '/all' }}" class="btn btn--ghost btn--lg">{{ section.settings.cta2_text }}</a>
       </div>
       <div class="stage">
         <div class="chips">
@@ -63,7 +59,6 @@
         <p class="lead">{{ section.settings.hero_c_lead }}</p>
         <div class="cta">
           <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--gold btn--lg">{{ section.settings.hero_c_cta1 }}</a>
-          <a href="{{ section.settings.cta2_url | default: routes.collections_url | append: '/all' }}" class="btn btn--ghost on-dark btn--lg">{{ section.settings.cta2_text }}</a>
         </div>
       </div>
       <div class="stage">
@@ -173,17 +168,6 @@
       "type": "url",
       "id": "cta1_url",
       "label": "Primary button URL"
-    },
-    {
-      "type": "text",
-      "id": "cta2_text",
-      "label": "Secondary button text",
-      "default": "Explore All"
-    },
-    {
-      "type": "url",
-      "id": "cta2_url",
-      "label": "Secondary button URL"
     },
     {
       "type": "header",
