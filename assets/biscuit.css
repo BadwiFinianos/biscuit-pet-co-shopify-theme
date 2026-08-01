@@ -348,7 +348,7 @@ p{margin:0}
 .newsletter input:focus{outline:none;border-color:var(--gold)}
 .foot-main{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;
   max-width:var(--maxw);margin:0 auto;padding:clamp(48px,7vw,80px) var(--gutter)}
-.foot-brand img{height:64px;margin-bottom:20px}
+.foot-brand img{margin-bottom:20px}
 .foot-brand p{color:rgba(242,234,211,.62);font-size:14px;line-height:1.7;max-width:34ch}
 .foot-seal{margin-top:24px;width:78px;opacity:.95}
 .foot-col h4{font-family:var(--body);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
