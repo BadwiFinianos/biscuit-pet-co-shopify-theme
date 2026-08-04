@@ -17,10 +17,10 @@
       {%- if section.settings.footer_logo != blank -%}
         {{ section.settings.footer_logo | image_url: height: 140 | image_tag: style: 'height:64px;width:auto;margin-bottom:20px', alt: shop.name }}
       {%- else -%}
-        <img src="{{ 'wordmark-cream.png' | asset_url }}" alt="{{ shop.name }}" style="height:64px;width:auto;margin-bottom:20px">
+        <img src="{{ 'wordmark-cream.png' | asset_url }}" alt="{{ shop.name }}" width="1600" height="1600" style="height:64px;width:auto;margin-bottom:20px">
       {%- endif -%}
       <p>{{ section.settings.brand_blurb }}</p>
-      <img class="foot-seal" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved seal">
+      <img class="foot-seal" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved seal" width="256" height="256">
     </div>
 
     <div class="foot-col foot-connect">
