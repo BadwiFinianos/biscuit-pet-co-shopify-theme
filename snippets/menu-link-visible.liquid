@@ -7,7 +7,7 @@
     endif
   endif
 
-  if link.type == 'collection_link' and link.object != blank and link.object.all_products_count == 0
+  if link.type == 'collection_link' and link.object != blank and link.links.size == 0 and link.object.all_products_count == 0
     assign visible = false
   endif
 -%}
