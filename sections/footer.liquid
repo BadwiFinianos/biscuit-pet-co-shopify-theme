@@ -70,7 +70,15 @@
       <h4>{{ section.settings.menu_heading }}</h4>
       {%- if linklists[section.settings.footer_menu] != blank -%}
         {%- for link in linklists[section.settings.footer_menu].links -%}
+          {%- assign link_hidden = false -%}
+          {%- if link.type == 'product_link' or link.type == 'collection_link' -%}
+            {%- if link.object == blank -%}
+              {%- assign link_hidden = true -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- unless link_hidden -%}
           <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- endunless -%}
         {%- endfor -%}
       {%- endif -%}
     </div>
