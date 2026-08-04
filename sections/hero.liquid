@@ -74,15 +74,16 @@
 /* Hero CSS — copied from design system */
 .hero{position:relative;overflow:hidden}
 .hv-b,.hv-c{display:none}
-.hv-a{position:relative;display:flex;align-items:center;min-height:clamp(560px,82vh,820px);background:var(--navy)}
+.hv-a{position:relative;display:flex;align-items:center;min-height:clamp(560px,82vh,820px);background:var(--navy);direction:ltr;text-align:left}
 .hv-a .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
 .hv-a .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,20,.55) 0%,rgba(0,0,20,.32) 42%,rgba(0,0,20,.12) 68%,rgba(0,0,20,0) 100%)}
 .hv-a .inner{position:relative;z-index:2;width:100%;padding-block:40px}
 .hv-a .copy{max-width:540px}
-.hv-a h1{font-size:clamp(46px,6.4vw,88px);line-height:.98;letter-spacing:-.025em;margin:22px 0 0;color:#fff}
+.hv-a h1{font-size:clamp(38px,5.4vw,72px);line-height:.98;letter-spacing:-.025em;margin:22px 0 0;color:#fff}
 .hv-a h1 em{font-style:italic;font-weight:500}
-.hv-a .lead{margin-top:26px;font-size:18px;color:rgba(255,255,255,.82);line-height:1.7;max-width:46ch}
+.hv-a .lead{margin-top:26px;font-size:17px;color:rgba(255,255,255,.82);line-height:1.7;max-width:46ch}
 .hv-a .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+[dir="rtl"] .hv-a [id*="-arw"] svg{transform:none}
 .hv-b{text-align:center;background:radial-gradient(120% 80% at 50% -10%,#fff 0%,var(--page) 60%)}
 .hv-b .inner{position:relative;padding-block:clamp(60px,9vw,96px) 0}
 .hv-b .watermark{position:absolute;top:8%;left:50%;transform:translateX(-50%);width:min(60%,560px);opacity:.05;z-index:0}
