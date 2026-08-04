@@ -12,7 +12,7 @@
   {%- capture sub_collections_html -%}
     {%- for c in collections -%}
       {%- assign c_prefix = c.handle | slice: 0, sub_prefix_size -%}
-      {%- if c_prefix == sub_prefix -%}
+      {%- if c_prefix == sub_prefix and c.all_products_count > 0 -%}
         {%- render 'collection-card', collection: c -%}
       {%- endif -%}
     {%- endfor -%}

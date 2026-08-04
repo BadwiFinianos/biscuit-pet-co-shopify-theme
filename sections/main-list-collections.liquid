@@ -7,7 +7,9 @@
   {%- paginate collections by section.settings.collections_per_page -%}
     <div class="grid grid-3">
       {%- for collection in collections -%}
-        {%- render 'collection-card', collection: collection -%}
+        {%- if collection.all_products_count > 0 -%}
+          {%- render 'collection-card', collection: collection -%}
+        {%- endif -%}
       {%- endfor -%}
     </div>
 

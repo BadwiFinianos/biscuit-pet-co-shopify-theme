@@ -1,0 +1,14 @@
+{%- liquid
+  assign visible = true
+
+  if link.type == 'product_link' or link.type == 'collection_link'
+    if link.object == blank
+      assign visible = false
+    endif
+  endif
+
+  if link.type == 'collection_link' and link.object != blank and link.object.all_products_count == 0
+    assign visible = false
+  endif
+-%}
+{{- visible -}}

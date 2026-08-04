@@ -10,11 +10,10 @@
 
     <nav class="nav" aria-label="{{ 'layout.navigation.primary' | t }}">
       {%- for link in linklists[section.settings.menu].links -%}
+        {%- capture link_visible %}{% render 'menu-link-visible', link: link %}{% endcapture -%}
         {%- assign link_hidden = false -%}
-        {%- if link.type == 'product_link' or link.type == 'collection_link' -%}
-          {%- if link.object == blank -%}
-            {%- assign link_hidden = true -%}
-          {%- endif -%}
+        {%- if link_visible == 'false' -%}
+          {%- assign link_hidden = true -%}
         {%- endif -%}
         {%- if link.links.size > 0 -%}
           <div class="nav-item has-dropdown" data-nav-item>
@@ -25,25 +24,15 @@
             <div class="nav-dropdown">
               <div class="nav-dropdown-inner">
                 {%- for child in link.links -%}
-                  {%- assign child_hidden = false -%}
-                  {%- if child.type == 'product_link' or child.type == 'collection_link' -%}
-                    {%- if child.object == blank -%}
-                      {%- assign child_hidden = true -%}
-                    {%- endif -%}
-                  {%- endif -%}
-                  {%- unless child_hidden -%}
+                  {%- capture child_visible %}{% render 'menu-link-visible', link: child %}{% endcapture -%}
+                  {%- unless child_visible == 'false' -%}
                   <div class="nav-col">
                     <a href="{{ child.url }}" class="nav-col-heading{% if child.active %} active{% endif %}">{{ child.title }}</a>
                     {%- if child.links.size > 0 -%}
                       <ul class="nav-col-list">
                         {%- for grandchild in child.links -%}
-                          {%- assign grandchild_hidden = false -%}
-                          {%- if grandchild.type == 'product_link' or grandchild.type == 'collection_link' -%}
-                            {%- if grandchild.object == blank -%}
-                              {%- assign grandchild_hidden = true -%}
-                            {%- endif -%}
-                          {%- endif -%}
-                          {%- unless grandchild_hidden -%}
+                          {%- capture grandchild_visible %}{% render 'menu-link-visible', link: grandchild %}{% endcapture -%}
+                          {%- unless grandchild_visible == 'false' -%}
                           <li><a href="{{ grandchild.url }}"{% if grandchild.active %} class="active"{% endif %}>{{ grandchild.title }}</a></li>
                           {%- endunless -%}
                         {%- endfor -%}
@@ -83,13 +72,8 @@
 
 <nav id="mobile-nav" aria-label="{{ 'layout.navigation.mobile' | t }}">
   {%- for link in linklists[section.settings.menu].links -%}
-    {%- assign link_hidden = false -%}
-    {%- if link.type == 'product_link' or link.type == 'collection_link' -%}
-      {%- if link.object == blank -%}
-        {%- assign link_hidden = true -%}
-      {%- endif -%}
-    {%- endif -%}
-    {%- unless link_hidden -%}
+    {%- capture link_visible %}{% render 'menu-link-visible', link: link %}{% endcapture -%}
+    {%- unless link_visible == 'false' -%}
     {%- if link.links.size > 0 -%}
       <div class="mnav-item" data-mnav-item>
         <div class="mnav-row">
@@ -98,13 +82,8 @@
         </div>
         <div class="mnav-sub">
           {%- for child in link.links -%}
-            {%- assign child_hidden = false -%}
-            {%- if child.type == 'product_link' or child.type == 'collection_link' -%}
-              {%- if child.object == blank -%}
-                {%- assign child_hidden = true -%}
-              {%- endif -%}
-            {%- endif -%}
-            {%- unless child_hidden -%}
+            {%- capture child_visible %}{% render 'menu-link-visible', link: child %}{% endcapture -%}
+            {%- unless child_visible == 'false' -%}
             {%- if child.links.size > 0 -%}
               <div class="mnav-subitem" data-mnav-item>
                 <div class="mnav-row">
@@ -113,13 +92,8 @@
                 </div>
                 <div class="mnav-sub">
                   {%- for grandchild in child.links -%}
-                    {%- assign grandchild_hidden = false -%}
-                    {%- if grandchild.type == 'product_link' or grandchild.type == 'collection_link' -%}
-                      {%- if grandchild.object == blank -%}
-                        {%- assign grandchild_hidden = true -%}
-                      {%- endif -%}
-                    {%- endif -%}
-                    {%- unless grandchild_hidden -%}
+                    {%- capture grandchild_visible %}{% render 'menu-link-visible', link: grandchild %}{% endcapture -%}
+                    {%- unless grandchild_visible == 'false' -%}
                     <a href="{{ grandchild.url }}">{{ grandchild.title }}</a>
                     {%- endunless -%}
                   {%- endfor -%}
