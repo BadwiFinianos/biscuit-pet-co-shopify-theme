@@ -1,14 +1,26 @@
+{%- comment -%}
+  link.object does not reliably reflect Online Store sales-channel publication,
+  so re-resolve the handle through the channel-aware global accessors
+  (collections[handle] / all_products[handle]) instead of trusting link.object directly.
+{%- endcomment -%}
 {%- liquid
   assign visible = true
+  assign url = link.url
 
-  if link.type == 'product_link' or link.type == 'collection_link'
-    if link.object == blank
+  if url contains '/collections/'
+    assign handle = url | split: '/collections/' | last | split: '/' | first | split: '?' | first
+    assign resolved_collection = collections[handle]
+    if resolved_collection == blank
+      assign visible = false
+    elsif link.links.size == 0 and resolved_collection.all_products_count == 0
       assign visible = false
     endif
-  endif
-
-  if link.type == 'collection_link' and link.object != blank and link.links.size == 0 and link.object.all_products_count == 0
-    assign visible = false
+  elsif url contains '/products/'
+    assign handle = url | split: '/products/' | last | split: '/' | first | split: '?' | first
+    assign resolved_product = all_products[handle]
+    if resolved_product == blank
+      assign visible = false
+    endif
   endif
 -%}
 {{- visible -}}
