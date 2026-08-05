@@ -7,7 +7,7 @@
   {%- liquid
     assign step_count = section.blocks.size
     if step_count == 0
-      assign step_count = 3
+      assign step_count = 4
     endif
   -%}
   <div class="steps" style="--count:{{ step_count }}">
@@ -28,31 +28,38 @@
       </div>
       <div class="step" data-reveal data-delay="1">
         <div class="num">02</div>
-        <div class="ic">{%- render 'icon', icon: 'leaf' -%}</div>
+        <div class="ic">{%- render 'icon', icon: 'star' -%}</div>
         <h3>{{ 'sections.biscuit_difference.step2_title' | t }}</h3>
         <p>{{ 'sections.biscuit_difference.step2_description' | t }}</p>
       </div>
       <div class="step" data-reveal data-delay="2">
         <div class="num">03</div>
-        <div class="ic">{%- render 'icon', icon: 'shield' -%}</div>
+        <div class="ic">{%- render 'icon', icon: 'leaf' -%}</div>
         <h3>{{ 'sections.biscuit_difference.step3_title' | t }}</h3>
         <p>{{ 'sections.biscuit_difference.step3_description' | t }}</p>
+      </div>
+      <div class="step" data-reveal data-delay="3">
+        <div class="num">04</div>
+        <div class="ic">{%- render 'icon', icon: 'shield' -%}</div>
+        <h3>{{ 'sections.biscuit_difference.step4_title' | t }}</h3>
+        <p>{{ 'sections.biscuit_difference.step4_description' | t }}</p>
       </div>
     {%- endfor -%}
   </div>
 </section>
 
 <style>
-.diff .steps{display:grid;grid-template-columns:repeat(var(--count,4),1fr);gap:24px;margin-top:54px;counter-reset:s}
-.step{position:relative;padding-top:28px}
+.diff.section{padding-block:clamp(40px,6vw,88px)}
+.diff .steps{display:grid;grid-template-columns:repeat(var(--count,4),1fr);gap:24px;margin-top:36px;counter-reset:s}
+.step{position:relative;padding-top:20px}
 .step .num{font-family:var(--display);font-size:15px;color:var(--gold-deep);font-weight:600;letter-spacing:.1em}
-.step .ic{width:58px;height:58px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;margin:14px 0 18px;color:var(--gold-deep)}
-.step .ic svg{width:28px;height:28px}
+.step .ic{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;margin:12px 0 14px;color:var(--gold-deep)}
+.step .ic svg{width:26px;height:26px}
 .step h3{font-size:22px;letter-spacing:-.01em}
-.step p{margin-top:9px;color:var(--ink-70);font-size:14.5px;line-height:1.65}
-.step::after{content:"";position:absolute;top:48px;inset-inline-end:-12px;width:24px;height:1px;background:var(--line)}
+.step p{margin-top:8px;color:var(--ink-70);font-size:14.5px;line-height:1.6}
+.step::after{content:"";position:absolute;top:40px;inset-inline-end:-12px;width:24px;height:1px;background:var(--line)}
 .step:last-child::after{display:none}
-@media(max-width:960px){.diff .steps{grid-template-columns:1fr 1fr;gap:36px 24px}.step::after{display:none}}
+@media(max-width:960px){.diff .steps{grid-template-columns:1fr 1fr;gap:32px 24px}.step::after{display:none}}
 @media(max-width:560px){.diff .steps{grid-template-columns:1fr}}
 </style>
 

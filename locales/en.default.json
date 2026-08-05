@@ -131,11 +131,13 @@
     },
     "biscuit_difference": {
       "step1_title": "Thoughtfully Selected",
-      "step1_description": "Every Biscuit product is developed with quality, function, and everyday pet comfort in mind.",
-      "step2_title": "Cleaner Homes",
-      "step2_description": "Our journey begins with premium cat litter designed to support fresher spaces and calmer routines.",
-      "step3_title": "A Higher Standard",
-      "step3_description": "We believe everyday pet essentials should be thoughtfully designed, beautifully presented, and made to perform."
+      "step1_description": "Every product is carefully selected to combine quality, performance, and purposeful design, elevating the everyday pet care experience.",
+      "step2_title": "Premium Quality",
+      "step2_description": "Premium quality is reflected in every detail, from carefully selected materials to reliable everyday performance.",
+      "step3_title": "Pet Comfort First",
+      "step3_description": "Our products are thoughtfully designed with your pet’s comfort at the heart of every decision, creating a more comfortable everyday experience.",
+      "step4_title": "Cleaner Homes",
+      "step4_description": "Designed to help create a cleaner home by reducing everyday mess and simplifying pet care."
     },
     "contact_form": {
       "email_label": "Email",
