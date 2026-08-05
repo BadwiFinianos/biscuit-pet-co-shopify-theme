@@ -6,21 +6,17 @@
   {%- assign form_id = 'LanguageSelector-' | append: section_id -%}
   {%- form 'localization', id: form_id, class: 'lang-select' -%}
     <input type="hidden" name="return_to" value="{{ request.path }}">
-    <label class="visually-hidden" for="{{ form_id }}-select">{{ 'localization.language_label' | t }}</label>
-    <select
-      name="locale_code"
-      id="{{ form_id }}-select"
-      class="lang-select-input"
-      aria-label="{{ 'localization.language_label' | t }}"
-      onchange="this.form.submit()"
-    >
+    <span class="lang-select-icon" aria-hidden="true">{% render 'icon', icon: 'globe' %}</span>
+    <ul class="lang-select-list" role="list" aria-label="{{ 'localization.language_label' | t }}">
       {%- for language in localization.available_languages -%}
-        <option
-          value="{{ language.iso_code }}"
-          lang="{{ language.iso_code }}"
-          {%- if language.iso_code == localization.language.iso_code %} selected{% endif -%}
-        >{{ language.endonym_name | capitalize }}</option>
+        <li>
+          {%- if language.iso_code == localization.language.iso_code -%}
+            <span aria-current="true" lang="{{ language.iso_code }}">{{ language.endonym_name | capitalize }}</span>
+          {%- else -%}
+            <button type="submit" name="locale_code" value="{{ language.iso_code }}" lang="{{ language.iso_code }}">{{ language.endonym_name | capitalize }}</button>
+          {%- endif -%}
+        </li>
       {%- endfor -%}
-    </select>
+    </ul>
   {%- endform -%}
 {%- endif -%}
