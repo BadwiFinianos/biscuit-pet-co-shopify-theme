@@ -6,7 +6,6 @@
   {%- assign form_id = 'LanguageSelector-' | append: section_id -%}
   {%- form 'localization', id: form_id, class: 'lang-select' -%}
     <input type="hidden" name="return_to" value="{{ request.path }}">
-    <span class="lang-select-icon" aria-hidden="true">{% render 'icon', icon: 'globe' %}</span>
     <ul class="lang-select-list" role="list" aria-label="{{ 'localization.language_label' | t }}">
       {%- for language in localization.available_languages -%}
         <li>

@@ -24,8 +24,7 @@
     star:    '<path d="M12 3l2.6 5.7 6.1.7-4.5 4.2 1.2 6L12 17.8 6.6 19.6l1.2-6L3.3 9.4l6.1-.7L12 3Z" fill="currentColor" stroke="none"/>',
     plus:    '<path d="M12 5v14M5 12h14"/>',
     minus:   '<path d="M5 12h14"/>',
-    arrow:   '<path d="M4 12h15m-6-6 6 6-6 6"/>',
-    globe:   '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.7 4 6.1 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6.1-4-9s1.5-6.3 4-9z"/>'
+    arrow:   '<path d="M4 12h15m-6-6 6 6-6 6"/>'
   };
 
   function icon(name, cls) {
