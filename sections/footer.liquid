@@ -45,20 +45,13 @@
 
     <div class="foot-col">
       <h4>{{ section.settings.service_heading }}</h4>
-      {%- if shop.policies.shipping_policy.url != blank -%}
-        <a href="{{ shop.policies.shipping_policy.url }}">{{ shop.policies.shipping_policy.title }}</a>
-      {%- endif -%}
-      {%- if shop.policies.refund_policy.url != blank -%}
-        <a href="{{ shop.policies.refund_policy.url }}">{{ shop.policies.refund_policy.title }}</a>
-      {%- endif -%}
+      {%- for policy in shop.policies -%}
+        {%- if policy.url != blank -%}
+          <a href="{{ policy.url }}">{{ policy.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
       {%- if section.settings.payment_methods_url != blank -%}
         <a href="{{ section.settings.payment_methods_url }}">{{ section.settings.payment_methods_label }}</a>
-      {%- endif -%}
-      {%- if shop.policies.privacy_policy.url != blank -%}
-        <a href="{{ shop.policies.privacy_policy.url }}">{{ shop.policies.privacy_policy.title }}</a>
-      {%- endif -%}
-      {%- if shop.policies.terms_of_service.url != blank -%}
-        <a href="{{ shop.policies.terms_of_service.url }}">{{ shop.policies.terms_of_service.title }}</a>
       {%- endif -%}
       {%- if section.settings.contact_url != blank -%}
         <a href="{{ section.settings.contact_url }}">{{ section.settings.contact_label }}</a>
