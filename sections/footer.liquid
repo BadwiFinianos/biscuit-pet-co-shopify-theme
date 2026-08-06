@@ -14,9 +14,9 @@
   <div class="foot-main">
     <div class="foot-brand">
       {%- if section.settings.footer_logo != blank -%}
-        {{ section.settings.footer_logo | image_url: height: 200 | image_tag: style: 'height:96px;width:auto;margin-bottom:20px', alt: shop.name }}
+        {{ section.settings.footer_logo | image_url: height: 500 | image_tag: style: 'height:240px;width:auto;margin-bottom:20px', alt: shop.name }}
       {%- else -%}
-        <img src="{{ 'wordmark-cream.png' | asset_url }}" alt="{{ shop.name }}" width="1600" height="1600" style="height:96px;width:auto;margin-bottom:20px">
+        <img src="{{ 'wordmark-cream.png' | asset_url }}" alt="{{ shop.name }}" width="1600" height="1600" style="height:240px;width:auto;margin-bottom:20px">
       {%- endif -%}
       <p>{{ section.settings.brand_blurb }}</p>
       <img class="foot-seal" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved seal" width="256" height="256">
