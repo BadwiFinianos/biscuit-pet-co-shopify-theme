@@ -161,7 +161,7 @@ p{margin:0}
   height:80px;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .brand img{height:200px;width:auto;margin-top:12px}
-.footer-logo{height:240px;width:auto;margin-bottom:20px}
+.footer-logo{height:240px;width:auto;margin-top:-32px;margin-bottom:-32px}
 .nav{display:flex;align-items:center;gap:34px}
 .nav a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink-70);position:relative;padding-block:6px;transition:color .25s}
