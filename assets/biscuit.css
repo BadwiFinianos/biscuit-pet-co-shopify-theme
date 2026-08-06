@@ -161,6 +161,7 @@ p{margin:0}
   height:80px;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
 .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .brand img{height:320px;width:auto}
+.footer-logo{height:240px;width:auto;margin-bottom:20px}
 .nav{display:flex;align-items:center;gap:34px}
 .nav a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink-70);position:relative;padding-block:6px;transition:color .25s}
@@ -467,6 +468,8 @@ a.foot-phone{color:var(--cream);font-size:15px;font-weight:600;letter-spacing:.0
   .nav{display:none}
   .burger{display:grid}
   .grid-3{grid-template-columns:1fr 1fr}
+  .brand img{height:160px}
+  .footer-logo{height:120px}
 }
 
 /* ---- Newsletter + footer stack at mid-size phones ---- */
