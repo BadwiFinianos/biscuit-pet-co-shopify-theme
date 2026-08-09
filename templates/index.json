@@ -19,6 +19,7 @@
         "cta1_url": "shopify://collections/cat-litter",
         "hero_a_bg": "shopify://shop_images/ChatGPT_Image_Jun_21_2026_at_09_36_49_PM.png",
         "hero_a_bg_alt": "Biscuit Pet Co. lifestyle photo",
+        "hero_a_bg_mobile": "shopify://shop_images/Biscuit_Mobile_Hero.jpg",
         "hero_a_h1": "Premium Pet Lifestyle for Pets With",
         "hero_a_em": "Standards.",
         "lead": "Our journey begins with premium cat litter —  thoughtfully designed for cleaner homes, easier routines,  and cats who deserve more.",
@@ -131,7 +132,8 @@
         "quote_em": "standards.",
         "paragraph1": "Biscuit began with a simple conviction: the everyday objects of pet care — the litter, the bowl, the bed — deserve the same craft we give our own homes. So we obsess over mineral sourcing, scent balance, and foil-stamped detail, then hold every batch to one test.",
         "paragraph2": "If it isn't Biscuit Approved, it doesn't ship.",
-        "signature": "— Biscuit Pet Co."
+        "signature": "— Biscuit Pet Co.",
+        "mascot": "shopify://shop_images/Biscuit_Mascot_Transparent.png"
       }
     },
     "bestsellers": {
