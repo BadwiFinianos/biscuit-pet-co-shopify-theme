@@ -1,0 +1,73 @@
+{%- if recommendations.performed -%}
+  {%- if recommendations.products_count > 0 -%}
+    <div class="grid grid-4 product-recs-grid">
+      {%- for rec_product in recommendations.products -%}
+        {%- unless rec_product.tags contains 'bundle' or rec_product.type contains 'Bundle' -%}
+          {%- render 'product-card', product: rec_product -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+{%- else -%}
+  <section class="section wrap product-recs"
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_count }}&intent=related">
+    <div class="section-head" style="margin-bottom:32px">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="section-title" style="margin-top:14px">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="grid grid-4 product-recs-grid" data-reveal></div>
+  </section>
+
+  <script>
+  (function(){
+    var root = document.currentScript.previousElementSibling;
+    if (!root || !root.dataset || !root.dataset.url) return;
+    fetch(root.dataset.url)
+      .then(function(r){ return r.text(); })
+      .then(function(html){
+        var tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        var newGrid = tmp.querySelector('.product-recs-grid');
+        var target = root.querySelector('.product-recs-grid');
+        if (newGrid && newGrid.children.length && target) {
+          target.innerHTML = newGrid.innerHTML;
+          requestAnimationFrame(function(){ target.classList.add('in'); });
+        } else {
+          root.remove();
+        }
+      })
+      .catch(function(){ root.remove(); });
+  })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Customers also bought",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "You may also like"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customers Also Bought"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "label": "Products to show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [{ "name": "Customers also bought" }]
+}
+{% endschema %}

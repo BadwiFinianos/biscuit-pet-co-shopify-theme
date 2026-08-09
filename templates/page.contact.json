@@ -13,19 +13,19 @@
       "type": "page-header",
       "settings": {
         "eyebrow": "Contact",
-        "subtext": "Have a question about an order, a product, or your pet's discerning palate? We're here to help."
+        "subtext": "We're here to help."
       }
     },
     "main": {
       "type": "contact-form",
       "settings": {
-        "eyebrow": "We'd love to hear from you",
-        "heading": "Get in touch.",
-        "description": "Whether you have a question about our products, your order, future availability, or Biscuit Pet Co., our team is here to help.\nPlease fill out the form below and we’ll get back to you as soon as possible.",
+        "eyebrow": "We'd Love to Hear From You",
+        "heading": "We're here to help.",
+        "description": "Whether your enquiry is about one of our products, your order, or product availability, please fill out the form below and we'll get back to you as soon as possible.",
         "email": "info@biscuitpetco.com",
         "phone": "",
         "address": "",
-        "hours": "Mon–Fri, 9am–5pm",
+        "hours": "Sunday to Friday, 9:00 AM – 5:00 PM\nSaturday: Closed",
         "submit_text": "Send Message",
         "success_message": "Thank you — your message has been sent. We'll be in touch soon."
       }

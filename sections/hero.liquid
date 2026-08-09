@@ -3,19 +3,26 @@
   {%- assign packshot_url = 'litter-vanilla-cutout.png' | asset_url -%}
 {%- endunless -%}
 {%- assign hero_a_bg_url = section.settings.hero_a_bg | image_url: width: 2000 -%}
+{%- assign hero_a_bg_mobile_url = section.settings.hero_a_bg_mobile | image_url: width: 1000 -%}
+{%- unless hero_a_bg_mobile_url -%}
+  {%- assign hero_a_bg_mobile_url = hero_a_bg_url -%}
+{%- endunless -%}
 
 <section class="hero">
 
   <!-- Hero A: Full-bleed lifestyle -->
   <div class="hero-variant hv-a">
     {%- if hero_a_bg_url -%}
-      <img class="hero-bg" src="{{ hero_a_bg_url }}" alt="{{ section.settings.hero_a_bg_alt | escape }}" loading="eager">
+      <img class="hero-bg hero-bg-desktop" src="{{ hero_a_bg_url }}" alt="{{ section.settings.hero_a_bg_alt | escape }}" loading="eager">
+    {%- endif -%}
+    {%- if hero_a_bg_mobile_url -%}
+      <img class="hero-bg hero-bg-mobile" src="{{ hero_a_bg_mobile_url }}" alt="{{ section.settings.hero_a_bg_alt | escape }}" loading="eager">
     {%- endif -%}
     <div class="hero-overlay"></div>
     <div class="wrap inner">
       <div class="copy">
         <span class="eyebrow on-dark">{{ section.settings.eyebrow }}</span>
-        <h1>{{ section.settings.hero_a_h1 | newline_to_br }}<br><em>{{ section.settings.hero_a_em }}</em></h1>
+        <h1><span class="hv-a-h1-line1">{{ section.settings.hero_a_h1 | newline_to_br }}</span> <br class="hv-a-break"><em>{{ section.settings.hero_a_em }}</em></h1>
         <p class="lead">{{ section.settings.lead }}</p>
         <div class="cta">
           <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--lg btn--ghost on-dark">
@@ -76,6 +83,7 @@
 .hv-b,.hv-c{display:none}
 .hv-a{position:relative;display:flex;align-items:center;min-height:clamp(560px,82vh,820px);background:var(--navy);direction:ltr;text-align:left}
 .hv-a .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.hv-a .hero-bg-mobile{display:none}
 .hv-a .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,20,.55) 0%,rgba(0,0,20,.32) 42%,rgba(0,0,20,.12) 68%,rgba(0,0,20,0) 100%)}
 .hv-a .inner{position:relative;z-index:2;width:100%;padding-block:40px}
 .hv-a .copy{max-width:540px}
@@ -124,6 +132,10 @@
 @media(max-width:560px){
   .hv-b .chips{display:none}
   .hv-a{min-height:70vh}
+  .hv-a .hero-bg-desktop{display:none}
+  .hv-a .hero-bg-mobile{display:block;object-position:top}
+  .hv-a h1{font-size:clamp(26px,7.5vw,32px);line-height:1.15}
+  .hv-a .hv-a-break{display:none}
   .hv-b .packshot{height:min(40vh,300px)}
   .hv-c .packshot{height:min(44vh,320px)}
   .hv-c .stage{min-height:30vh}
@@ -185,6 +197,12 @@
       "id": "hero_a_bg_alt",
       "label": "Background photo alt text",
       "default": "Biscuit Pet Co. lifestyle photo"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_a_bg_mobile",
+      "label": "Mobile background photo",
+      "info": "Optional. Shown on phones (≤560px) instead of the photo above — use this for a crop where the full subject stays visible on a narrow screen. Leave blank to reuse the photo above."
     },
     {
       "type": "text",

@@ -1,0 +1,35 @@
+{%- liquid
+  assign policy_handle = policy.url | split: '/' | last
+  assign display_title = policy.title
+  if request.locale.iso_code == 'ar' and policy_handle == 'refund-policy'
+    assign display_title = 'سياسة الإرجاع واسترداد المبالغ'
+  endif
+-%}
+
+<section class="page-header">
+  <div class="wrap">
+    <span class="eyebrow on-dark">{{ section.settings.eyebrow }}</span>
+    <h1 class="page-header-title">{{ display_title }}</h1>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="page-content" data-reveal>
+    {{ policy.body }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Policy",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Biscuit Pet Co."
+    }
+  ]
+}
+{% endschema %}

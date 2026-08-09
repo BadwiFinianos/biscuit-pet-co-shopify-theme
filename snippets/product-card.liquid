@@ -13,16 +13,18 @@
       <span class="tag sold">{{ 'products.product.sold_out_tag' | t }}</span>
     {%- endif -%}
 
-    {%- if product.featured_image -%}
-      {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
-    {%- else -%}
-      <img src="{{ 'litter-vanilla-cutout.png' | asset_url }}" alt="{{ product.title }}" loading="lazy">
-    {%- endif -%}
+    <a href="{{ product.url }}" class="pcard-media-link" aria-label="{{ product.title | escape }}">
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
+      {%- else -%}
+        <img src="{{ 'litter-vanilla-cutout.png' | asset_url }}" alt="{{ product.title }}" loading="lazy">
+      {%- endif -%}
+    </a>
 
     <div class="pcard-quick">
       {%- assign first_variant = product.first_available_variant | default: product.variants.first -%}
       <button class="btn btn--block" data-variant-id="{{ first_variant.id }}">
-        {{ 'products.product.add_to_cart' | t }} · {{ first_variant.price | money }}
+        {{ 'products.product.add_to_cart' | t }}
       </button>
     </div>
   </div>

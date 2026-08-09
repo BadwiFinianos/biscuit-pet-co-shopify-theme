@@ -27,7 +27,7 @@
         {%- if section.settings.hours != blank -%}
           <li>
             <span class="label">{{ 'sections.contact_form.hours_label' | t }}</span>
-            <span>{{ section.settings.hours }}</span>
+            <span>{{ section.settings.hours | newline_to_br }}</span>
           </li>
         {%- endif -%}
       </ul>
@@ -140,10 +140,10 @@
       "label": "Address"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "hours",
       "label": "Hours",
-      "default": "Mon–Fri, 9am–5pm"
+      "default": "Sunday to Friday, 9:00 AM – 5:00 PM\nSaturday: Closed"
     },
     {
       "type": "text",
