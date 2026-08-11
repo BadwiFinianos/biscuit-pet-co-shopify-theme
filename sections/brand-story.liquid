@@ -22,7 +22,7 @@
 .story .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,5vw,72px);align-items:center}
 .story .mascot-lg{position:relative;display:grid;place-items:center}
 .story .mascot-lg::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.16),transparent 62%)}
-.story .mascot-lg img{position:relative;height:min(60vh,520px);filter:drop-shadow(0 30px 40px rgba(0,0,0,.4))}
+.story .mascot-lg img{position:relative;height:min(60vh,520px);aspect-ratio:0.63/1;width:auto;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.4))}
 .story blockquote{font-family:var(--display);font-size:clamp(28px,3.6vw,46px);line-height:1.18;letter-spacing:-.015em;color:var(--cream);margin:18px 0 0;font-weight:500}
 .story blockquote em{font-style:italic;color:var(--gold-light)}
 .story p{margin-top:24px;color:rgba(242,234,211,.72);font-size:16px;line-height:1.75;max-width:46ch}
