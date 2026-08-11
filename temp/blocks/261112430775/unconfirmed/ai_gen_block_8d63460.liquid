@@ -1,6 +1,243 @@
+{% doc %}
+  @prompt
+    Collapsible row
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-collapsible-row-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    border-top: 1px solid {{ block.settings.border_color }};
+    border-bottom: 1px solid {{ block.settings.border_color }};
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: {{ block.settings.row_padding }}px 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: {{ block.settings.text_alignment }};
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__title {
+    margin: 0;
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__icon {
+    position: relative;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__icon::before,
+  .ai-collapsible-row-{{ ai_gen_id }}__icon::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 2px;
+    width: 14px;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__icon::after {
+    transform: rotate(90deg);
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}[open] .ai-collapsible-row-{{ ai_gen_id }}__icon::after {
+    transform: rotate(0deg);
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__content {
+    padding: 0 38px {{ block.settings.row_padding }}px 0;
+    font-size: {{ block.settings.body_size }}px;
+    line-height: 1.7;
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__content p {
+    margin: 0;
+  }
+
+  .ai-collapsible-row-{{ ai_gen_id }}__trigger:focus-visible {
+    outline: 2px solid {{ block.settings.focus_color }};
+    outline-offset: 3px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-collapsible-row-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-collapsible-row-{{ ai_gen_id }}__trigger {
+      padding: 18px 0;
+    }
+  }
+{% endstyle %}
+
+<collapsible-row-{{ ai_gen_id }}
+  class="ai-collapsible-row-{{ ai_gen_id }}"
+  {% if block.settings.open_by_default %}open{% endif %}
+  {{ block.shopify_attributes }}
+>
+  <button
+    class="ai-collapsible-row-{{ ai_gen_id }}__trigger"
+    type="button"
+    aria-expanded="{% if block.settings.open_by_default %}true{% else %}false{% endif %}"
+  >
+    <span class="ai-collapsible-row-{{ ai_gen_id }}__title">{{ block.settings.title | escape }}</span>
+    <span class="ai-collapsible-row-{{ ai_gen_id }}__icon" aria-hidden="true"></span>
+  </button>
+  <div class="ai-collapsible-row-{{ ai_gen_id }}__content" {% unless block.settings.open_by_default %}hidden{% endunless %}>
+    {{ block.settings.content }}
+  </div>
+</collapsible-row-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CollapsibleRow{{ ai_gen_id }} extends HTMLElement {
+      connectedCallback() {
+        this.trigger = this.querySelector('.ai-collapsible-row-{{ ai_gen_id }}__trigger');
+        this.content = this.querySelector('.ai-collapsible-row-{{ ai_gen_id }}__content');
+        this.trigger.addEventListener('click', () => {
+          const expanded = this.trigger.getAttribute('aria-expanded') === 'true';
+          this.trigger.setAttribute('aria-expanded', String(!expanded));
+          this.content.hidden = expanded;
+          this.toggleAttribute('open', !expanded);
+        });
+      }
+    }
+    if (!customElements.get('collapsible-row-{{ ai_gen_id }}')) {
+      customElements.define('collapsible-row-{{ ai_gen_id }}', CollapsibleRow{{ ai_gen_id }});
+    }
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Collapsible row",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Product details"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Add helpful information for your customers here.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_by_default",
+      "label": "Open by default",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "row_padding",
+      "label": "Row spacing",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 12,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body size",
+      "min": 12,
+      "max": 22,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FBF7EC"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000040"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Borders",
+      "default": "#D4AF37"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon",
+      "default": "#000040"
+    },
+    {
+      "type": "color",
+      "id": "focus_color",
+      "label": "Focus outline",
+      "default": "#000040"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collapsible row"
+    }
+  ],
+  "tag": null,
+  "class": "collapsible-row-block"
+}
 {% endschema %}
