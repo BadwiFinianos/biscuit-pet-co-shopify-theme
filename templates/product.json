@@ -11,15 +11,98 @@
   "sections": {
     "main": {
       "type": "main-product",
+      "settings": {
+        "promo_message": ""
+      }
+    },
+    "blocks_9jHYUm": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8d63460_TAzPMh": {
+          "type": "ai_gen_block_8d63460",
+          "name": "Collapsible row",
+          "settings": {
+            "title": "KEY BENEFITS",
+            "content": "<p>Add helpful information for your customers here.</p>",
+            "open_by_default": false,
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "row_padding": 20,
+            "title_size": 16,
+            "body_size": 14,
+            "background_color": "#FBF7EC",
+            "text_color": "#000040",
+            "border_color": "#D4AF37",
+            "icon_color": "#000040",
+            "focus_color": "#000040"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_8d63460_BbgtdE": {
+          "type": "ai_gen_block_8d63460",
+          "name": "Collapsible row",
+          "settings": {
+            "title": "HOW TO USE",
+            "content": "<p>Add helpful information for your customers here.</p>",
+            "open_by_default": false,
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "row_padding": 20,
+            "title_size": 16,
+            "body_size": 14,
+            "background_color": "#FBF7EC",
+            "text_color": "#000040",
+            "border_color": "#D4AF37",
+            "icon_color": "#000040",
+            "focus_color": "#000040"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_8d63460_FVEjAK": {
+          "type": "ai_gen_block_8d63460",
+          "settings": {
+            "title": "PRODUCT DETAIL",
+            "content": "<p>Add helpful information for your customers here.</p>",
+            "open_by_default": false,
+            "desktop_width_percent": 100,
+            "text_alignment": "left",
+            "row_padding": 20,
+            "title_size": 16,
+            "body_size": 14,
+            "background_color": "#FBF7EC",
+            "text_color": "#000040",
+            "border_color": "#D4AF37",
+            "icon_color": "#000040",
+            "focus_color": "#000040"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8d63460_TAzPMh",
+        "ai_gen_block_8d63460_BbgtdE",
+        "ai_gen_block_8d63460_FVEjAK"
+      ],
+      "name": "Collapsible row",
       "settings": {}
     },
     "recommendations": {
       "type": "product-recommendations",
+      "settings": {
+        "eyebrow": "You may also like",
+        "heading": "Customers Also Bought",
+        "products_count": 4
+      }
+    },
+    "1786471515db94b0aa": {
+      "type": "_blocks",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "recommendations"
+    "blocks_9jHYUm",
+    "recommendations",
+    "1786471515db94b0aa"
   ]
 }
