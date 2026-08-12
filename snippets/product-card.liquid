@@ -25,23 +25,22 @@
       {%- assign first_variant = product.first_available_variant | default: product.variants.first -%}
       <button class="btn btn--block" data-variant-id="{{ first_variant.id }}">
         {{ 'products.product.add_to_cart' | t }}
+        <span class="pcard-btn-price">
+          {%- if first_variant.compare_at_price > first_variant.price -%}
+            <span class="was">{{ first_variant.compare_at_price | money }}</span>
+          {%- endif -%}
+          {{ first_variant.price | money }}
+        </span>
       </button>
     </div>
   </div>
   <div class="pcard-body">
     <div class="pcard-scent">{{ product.vendor }}</div>
     <h3 class="pcard-name"><a href="{{ product.url }}">{{ product.title }}</a></h3>
-    <div class="pcard-meta">
-      <span class="pcard-price">
-        {%- assign fv = product.first_available_variant | default: product.variants.first -%}
-        {%- if fv.compare_at_price > fv.price -%}
-          <span class="was">{{ fv.compare_at_price | money }}</span>
-        {%- endif -%}
-        {{ fv.price | money }}
-      </span>
-      {%- assign product_rating = product.metafields.reviews.rating.value -%}
-      {%- assign product_rating_count = product.metafields.reviews.rating_count.value | default: 0 -%}
-      {%- if product_rating != blank and product_rating_count > 0 -%}
+    {%- assign product_rating = product.metafields.reviews.rating.value -%}
+    {%- assign product_rating_count = product.metafields.reviews.rating_count.value | default: 0 -%}
+    {%- if product_rating != blank and product_rating_count > 0 -%}
+      <div class="pcard-meta">
         <span class="pcard-rating">
           <span class="stars" style="--r:{{ product_rating.rating }}">
             {%- for i in (1..5) -%}
@@ -52,7 +51,7 @@
           </span>
           <span>{{ product_rating.rating }}</span>
         </span>
-      {%- endif -%}
-    </div>
+      </div>
+    {%- endif -%}
   </div>
 </article>

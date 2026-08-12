@@ -109,6 +109,8 @@ p{margin:0}
 .btn--lg{padding:19px 38px;font-size:14px}
 .btn .arw{transition:transform .35s}
 .btn:hover .arw{transform:translateX(4px)}
+.pcard-btn-price{font-weight:400;opacity:.75}
+.pcard-btn-price .was{text-decoration:line-through;opacity:.7;margin-inline-end:5px}
 
 .link-underline{
   display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13px;
@@ -264,8 +266,6 @@ p{margin:0}
 .pcard-name{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
 .pcard-name a:hover{color:var(--gold-deep)}
 .pcard-meta{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
-.pcard-price{font-size:13px;font-weight:600}
-.pcard-price .was{color:var(--ink-35);text-decoration:line-through;font-weight:400;margin-inline-end:5px}
 .stars{display:inline-flex;gap:2px;color:var(--gold)}
 .stars svg{width:12px;height:12px}
 .pcard-rating{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--ink-50)}
