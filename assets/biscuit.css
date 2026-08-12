@@ -259,16 +259,16 @@ p{margin:0}
 @media(hover:hover){
   .pcard:hover .pcard-quick{transform:none;opacity:1;pointer-events:auto}
 }
-.pcard-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:7px;flex:1}
-.pcard-scent{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)}
-.pcard-name{font-family:var(--display);font-size:21px;font-weight:600;letter-spacing:-.01em}
+.pcard-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.pcard-scent{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.pcard-name{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
 .pcard-name a:hover{color:var(--gold-deep)}
-.pcard-meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
-.pcard-price{font-size:16px;font-weight:600}
-.pcard-price .was{color:var(--ink-35);text-decoration:line-through;font-weight:400;margin-inline-end:7px}
+.pcard-meta{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.pcard-price{font-size:13px;font-weight:600}
+.pcard-price .was{color:var(--ink-35);text-decoration:line-through;font-weight:400;margin-inline-end:5px}
 .stars{display:inline-flex;gap:2px;color:var(--gold)}
-.stars svg{width:14px;height:14px}
-.pcard-rating{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-50)}
+.stars svg{width:12px;height:12px}
+.pcard-rating{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--ink-50)}
 
 /* ---------- Product info rows (collapsible Key Benefits / How to Use / Product Details) ---------- */
 .prow-group{max-width:48ch}
@@ -521,7 +521,7 @@ a.foot-phone{color:var(--cream);font-size:15px;font-weight:600;letter-spacing:.0
   .foot-brand{grid-column:1 / -1;border-inline-end:none;padding-inline-end:0;
     border-bottom:1px solid var(--cream-line);padding-bottom:28px;margin-bottom:8px}
   .btn--lg{padding:16px 22px;font-size:13px}
-  .pcard-name{font-size:16px}
+  .pcard-name{font-size:14px}
   .topbar{font-size:11px;letter-spacing:.05em;padding:8px 16px}
   /* Avoid the language select clashing with centered announcement text on narrow screens — still switchable from the footer */
   .topbar .locale-selectors{display:none}
