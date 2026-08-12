@@ -40,6 +40,17 @@
         </div>
       {%- endif -%}
 
+      {%- assign key_benefits = product.metafields.custom.key_benefits | metafield_tag -%}
+      {%- assign how_to_use = product.metafields.custom.how_to_use | metafield_tag -%}
+      {%- assign product_details = product.metafields.custom.product_details | metafield_tag -%}
+      {%- if key_benefits != blank or how_to_use != blank or product_details != blank -%}
+        <div class="prow-group" style="margin-top:20px">
+          {%- render 'collapsible-row', title: 'Key Benefits', content: key_benefits -%}
+          {%- render 'collapsible-row', title: 'How to Use', content: how_to_use -%}
+          {%- render 'collapsible-row', title: 'Product Details', content: product_details -%}
+        </div>
+      {%- endif -%}
+
       {%- if product.variants.size > 1 -%}
         <div class="vlabel">{{ 'products.product.choose_size' | t }}</div>
         <div class="size-pills">

@@ -11,98 +11,15 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {
-        "promo_message": ""
-      }
-    },
-    "blocks_9jHYUm": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_8d63460_TAzPMh": {
-          "type": "ai_gen_block_8d63460",
-          "name": "Collapsible row",
-          "settings": {
-            "title": "KEY BENEFITS",
-            "content": "",
-            "open_by_default": false,
-            "desktop_width_percent": 100,
-            "text_alignment": "left",
-            "row_padding": 20,
-            "title_size": 16,
-            "body_size": 14,
-            "background_color": "#fbf7ec",
-            "text_color": "#000040",
-            "border_color": "#d4af37",
-            "icon_color": "#000040",
-            "focus_color": "#000040"
-          },
-          "blocks": {}
-        },
-        "ai_gen_block_8d63460_BbgtdE": {
-          "type": "ai_gen_block_8d63460",
-          "name": "Collapsible row",
-          "settings": {
-            "title": "HOW TO USE",
-            "content": "<p>• Fill a clean, dry litter box with approximately 5–7 cm of Biscuit CleanStep LowTrack litter<br/><br/>• Scoop clumps and solid waste daily to maintain a fresh, hygienic litter box<br/><br/>• Top up with fresh litter as needed to maintain the recommended depth<br/><br/>• For best performance, fully replace the litter and clean the litter box regularly<br/><br/>• Store in a cool, dry place and keep the bag sealed between uses</p>",
-            "open_by_default": false,
-            "desktop_width_percent": 100,
-            "text_alignment": "left",
-            "row_padding": 20,
-            "title_size": 16,
-            "body_size": 14,
-            "background_color": "#fbf7ec",
-            "text_color": "#000040",
-            "border_color": "#d4af37",
-            "icon_color": "#000040",
-            "focus_color": "#000040"
-          },
-          "blocks": {}
-        },
-        "ai_gen_block_8d63460_FVEjAK": {
-          "type": "ai_gen_block_8d63460",
-          "settings": {
-            "title": "PRODUCT DETAIL",
-            "content": "<p>• Net Weight: 4 kg<br/><br/>• Type: Premium Clumping Cat Litter<br/><br/>• Scent: Unscented</p><p>• Best For: Everyday litter boxes and homes looking for a cleaner, lower-tracking routine</p>",
-            "open_by_default": false,
-            "desktop_width_percent": 100,
-            "text_alignment": "left",
-            "row_padding": 20,
-            "title_size": 16,
-            "body_size": 14,
-            "background_color": "#fbf7ec",
-            "text_color": "#000040",
-            "border_color": "#d4af37",
-            "icon_color": "#000040",
-            "focus_color": "#000040"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_8d63460_TAzPMh",
-        "ai_gen_block_8d63460_BbgtdE",
-        "ai_gen_block_8d63460_FVEjAK"
-      ],
-      "name": "Collapsible row",
       "settings": {}
     },
     "recommendations": {
       "type": "product-recommendations",
-      "settings": {
-        "eyebrow": "You may also like",
-        "heading": "Customers Also Bought",
-        "products_count": 4
-      }
-    },
-    "1786471515db94b0aa": {
-      "type": "_blocks",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "blocks_9jHYUm",
-    "recommendations",
-    "1786471515db94b0aa"
+    "recommendations"
   ]
 }

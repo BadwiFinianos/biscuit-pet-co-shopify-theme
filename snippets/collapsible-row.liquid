@@ -1,0 +1,17 @@
+{%- comment -%}
+  Renders one collapsible product-info row. Hidden entirely when `content` is blank,
+  so a section only appears once the matching metafield is filled in for a product.
+
+  Accepts:
+    title   -- string, row heading
+    content -- string/rich text HTML, row body
+{%- endcomment -%}
+{%- if content != blank -%}
+  <details class="prow">
+    <summary class="prow-trigger">
+      <span class="prow-title">{{ title | escape }}</span>
+      <span class="prow-icon" aria-hidden="true"></span>
+    </summary>
+    <div class="prow-content">{{ content }}</div>
+  </details>
+{%- endif -%}
