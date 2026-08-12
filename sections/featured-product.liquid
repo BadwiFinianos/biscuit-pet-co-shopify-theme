@@ -86,11 +86,6 @@
 </section>
 
 <style>
-.feature{background:var(--page-2)}
-.feature .inner{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
-.feature .visual{position:relative;display:grid;place-items:center;aspect-ratio:1/1;background:radial-gradient(120% 100% at 50% 20%,#fff,var(--page-2));border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 0 #fff,var(--shadow-sm)}
-.feature .visual img.shot{height:84%;filter:drop-shadow(0 34px 40px rgba(0,0,64,.3))}
-.feature .visual .badge{position:absolute;top:22px;inset-inline-start:22px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:30px}
 .feature h2{font-size:clamp(32px,4.4vw,52px);margin:14px 0 0;letter-spacing:-.02em}
 .feature .price{display:flex;align-items:baseline;gap:12px;margin-top:18px}
 .feature .price .now{font-family:var(--display);font-size:30px;font-weight:700}
@@ -106,12 +101,10 @@
 .feature .ftags svg{width:15px;height:15px;color:var(--gold-deep)}
 .feature .buy{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
 @media(max-width:960px){
-  .feature .inner{grid-template-columns:1fr;text-align:center}
   .feature .desc{margin-inline:auto}
   .feature .buy,.feature .ftags{justify-content:center}
   .feature .vlabel,.feature .price{text-align:center}
   .size-pills{justify-content:center}
-  .feature .visual{aspect-ratio:1/0.7}
 }
 </style>
 
