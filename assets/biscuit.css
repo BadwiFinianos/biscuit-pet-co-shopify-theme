@@ -521,7 +521,6 @@ a.foot-phone{color:var(--cream);font-size:15px;font-weight:600;letter-spacing:.0
   .foot-brand{grid-column:1 / -1;border-inline-end:none;padding-inline-end:0;
     border-bottom:1px solid var(--cream-line);padding-bottom:28px;margin-bottom:8px}
   .btn--lg{padding:16px 22px;font-size:13px}
-  .pcard-name{font-size:16px}
   .topbar{font-size:11px;letter-spacing:.05em;padding:8px 16px}
   /* Avoid the language select clashing with centered announcement text on narrow screens — still switchable from the footer */
   .topbar .locale-selectors{display:none}
