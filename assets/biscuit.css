@@ -286,6 +286,11 @@ p{margin:0}
 .prow-content{padding:0 0 18px;color:var(--ink-70);font-size:15px;line-height:1.7}
 .prow-content p{margin:0 0 12px}
 .prow-content p:last-child{margin-bottom:0}
+.prow-content ul{margin:0 0 12px;padding-left:1.3em;list-style:disc}
+.prow-content ol{margin:0 0 12px;padding-left:1.3em;list-style:decimal}
+.prow-content li{margin-top:.4em}
+.prow-content li::marker{color:var(--gold-deep)}
+.prow-content ul>li:first-child,.prow-content ol>li:first-child{margin-top:0}
 
 /* ---------- Collection card ---------- */
 .ccard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line-soft);border-radius:6px;overflow:hidden;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,border-color .45s}
