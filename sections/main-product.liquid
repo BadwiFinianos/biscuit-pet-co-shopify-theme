@@ -129,16 +129,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<style>
-.feature.inner{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center}
-.feature .visual{position:relative;display:grid;place-items:center;aspect-ratio:1/1;background:radial-gradient(120% 100% at 50% 20%,#fff,var(--page-2));border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 0 #fff,var(--shadow-sm)}
-.feature .visual img.shot{height:84%;filter:drop-shadow(0 34px 40px rgba(0,0,64,.3))}
-@media(max-width:960px){
-  .feature.inner{grid-template-columns:1fr;text-align:center}
-  .feature .visual{aspect-ratio:1/0.7}
-}
-</style>
-
 {% schema %}
 {
   "name": "Product",
