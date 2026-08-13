@@ -19,15 +19,6 @@
 
       {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-      <div class="price" style="margin-top:18px">
-        <span class="now" id="product-price">{{ current_variant.price | money }}</span>
-        {%- if current_variant.compare_at_price > current_variant.price -%}
-          <span class="was">{{ current_variant.compare_at_price | money }}</span>
-          {%- assign savings = current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price -%}
-          <span class="save">{{ 'products.product.save_percent' | t: percentage: savings }}</span>
-        {%- endif -%}
-      </div>
-
       {%- if section.settings.promo_message != blank -%}
         <div style="margin-top:14px;font-size:13px;font-weight:600;color:var(--gold-deep)">
           🎉 {{ section.settings.promo_message }}
@@ -104,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var addToCartLabel = {{ 'products.product.add_to_cart' | t | json }};
   var shopCurrency = {{ shop.currency | json }};
   var pills = document.querySelectorAll('.size-pill');
-  var priceEl = document.getElementById('product-price');
   var atcBtn = document.querySelector('.bpc-atc');
 
   function fmtPrice(cents) {
@@ -123,9 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.classList.add('on');
       if (atcBtn && btn.dataset.variantId) {
         atcBtn.dataset.variantId = btn.dataset.variantId;
-        if (btn.dataset.price && priceEl) {
+        if (btn.dataset.price) {
           var formatted = fmtPrice(parseInt(btn.dataset.price, 10));
-          priceEl.textContent = formatted;
           atcBtn.textContent = addToCartLabel + ' · ' + formatted;
         }
       }
