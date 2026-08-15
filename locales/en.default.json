@@ -97,6 +97,7 @@
       "on_sale": "Sale",
       "save_percent": "Save {{ percentage }}%",
       "choose_size": "Choose your size",
+      "view_image": "View image {{ index }} of {{ title }}",
       "continue_shopping": "Continue Shopping",
       "view_details": "View Details",
       "quantity": {

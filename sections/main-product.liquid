@@ -2,11 +2,25 @@
   <div class="feature inner" style="padding-block:0">
 
     <!-- Product media -->
-    <div class="visual" data-reveal>
-      {%- if product.featured_image -%}
-        {{ product.featured_image | image_url: width: 900 | image_tag: class: 'shot', alt: product.title }}
-      {%- else -%}
-        <img class="shot" src="{{ 'litter-vanilla-cutout.png' | asset_url }}" alt="{{ product.title }}">
+    <div data-reveal>
+      <div class="visual">
+        {%- if product.featured_image -%}
+          {{ product.featured_image | image_url: width: 900 | image_tag: class: 'shot', alt: product.title, id: 'MainProductImage' }}
+        {%- else -%}
+          <img class="shot" id="MainProductImage" src="{{ 'litter-vanilla-cutout.png' | asset_url }}" alt="{{ product.title }}">
+        {%- endif -%}
+      </div>
+
+      {%- if product.images.size > 1 -%}
+        <div class="thumbs" role="list">
+          {%- for image in product.images -%}
+            <button type="button" class="thumb{% if image == product.featured_image %} on{% endif %}" role="listitem"
+              data-full="{{ image | image_url: width: 900 }}"
+              aria-label="{{ 'products.product.view_image' | t: index: forloop.index, title: product.title }}">
+              {{ image | image_url: width: 160 | image_tag: alt: image.alt, loading: 'lazy', widths: '80,160' }}
+            </button>
+          {%- endfor -%}
+        </div>
       {%- endif -%}
     </div>
 
@@ -87,6 +101,11 @@
 <style>
 .visual{position:relative;display:grid;place-items:center;aspect-ratio:1/1;background:radial-gradient(120% 100% at 50% 20%,#fff,var(--page-2));border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 0 #fff,var(--shadow-sm)}
 .visual img.shot{height:84%;object-fit:contain;filter:drop-shadow(0 34px 40px rgba(0,0,64,.3))}
+.thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.thumb{width:64px;height:64px;padding:0;border-radius:8px;border:2px solid var(--line-soft);background:var(--card);overflow:hidden;cursor:pointer;display:grid;place-items:center;transition:border-color .15s ease}
+.thumb img{width:100%;height:100%;object-fit:contain}
+.thumb:hover{border-color:var(--ink-70)}
+.thumb.on{border-color:var(--gold-deep, var(--ink))}
 </style>
 
 <script>
@@ -96,6 +115,18 @@ document.addEventListener('DOMContentLoaded', function() {
   var shopCurrency = {{ shop.currency | json }};
   var pills = document.querySelectorAll('.size-pill');
   var atcBtn = document.querySelector('.bpc-atc');
+  var mainImage = document.getElementById('MainProductImage');
+  var thumbs = document.querySelectorAll('.thumb');
+
+  thumbs.forEach(function(thumb) {
+    thumb.addEventListener('click', function() {
+      if (!mainImage || !thumb.dataset.full || thumb.classList.contains('on')) return;
+      thumbs.forEach(function(t) { t.classList.remove('on'); });
+      thumb.classList.add('on');
+      mainImage.removeAttribute('srcset');
+      mainImage.src = thumb.dataset.full;
+    });
+  });
 
   function fmtPrice(cents) {
     var amount = cents / 100;

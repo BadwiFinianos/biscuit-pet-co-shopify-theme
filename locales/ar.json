@@ -97,6 +97,7 @@
       "on_sale": "تخفيض",
       "save_percent": "وفّر {{ percentage }}٪",
       "choose_size": "اختر الحجم",
+      "view_image": "عرض الصورة {{ index }} من {{ title }}",
       "continue_shopping": "متابعة التسوق",
       "view_details": "عرض التفاصيل",
       "quantity": {
