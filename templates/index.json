@@ -141,7 +141,7 @@
       "settings": {
         "eyebrow": "Most loved",
         "heading": "Bestsellers",
-        "collection": "",
+        "collection": "bestsellers",
         "products_count": 4
       }
     }
