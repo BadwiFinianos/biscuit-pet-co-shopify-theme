@@ -9,6 +9,11 @@
         {%- else -%}
           <img class="shot" id="MainProductImage" src="{{ 'litter-vanilla-cutout.png' | asset_url }}" alt="{{ product.title }}">
         {%- endif -%}
+
+        {%- if product.images.size > 1 -%}
+          <button type="button" class="visual-arrow visual-arrow--prev" data-dir="-1" aria-label="{{ 'products.product.previous_image' | t }}">‹</button>
+          <button type="button" class="visual-arrow visual-arrow--next" data-dir="1" aria-label="{{ 'products.product.next_image' | t }}">›</button>
+        {%- endif -%}
       </div>
 
       {%- if product.images.size > 1 -%}
@@ -101,6 +106,10 @@
 <style>
 .visual{position:relative;display:grid;place-items:center;aspect-ratio:1/1;background:radial-gradient(120% 100% at 50% 20%,#fff,var(--page-2));border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 0 #fff,var(--shadow-sm)}
 .visual img.shot{height:84%;object-fit:contain;filter:drop-shadow(0 34px 40px rgba(0,0,64,.3))}
+.visual-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;border-radius:50%;background:#fff;color:var(--ink);font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:var(--shadow-sm);opacity:.85;transition:opacity .15s ease}
+.visual-arrow:hover{opacity:1}
+.visual-arrow--prev{left:14px}
+.visual-arrow--next{right:14px}
 .thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .thumb{width:64px;height:64px;padding:0;border-radius:8px;border:2px solid var(--line-soft);background:var(--card);overflow:hidden;cursor:pointer;display:grid;place-items:center;transition:border-color .15s ease}
 .thumb img{width:100%;height:100%;object-fit:contain}
@@ -117,14 +126,32 @@ document.addEventListener('DOMContentLoaded', function() {
   var atcBtn = document.querySelector('.bpc-atc');
   var mainImage = document.getElementById('MainProductImage');
   var thumbs = document.querySelectorAll('.thumb');
+  var arrows = document.querySelectorAll('.visual-arrow');
+
+  function showImage(thumb) {
+    if (!mainImage || !thumb || !thumb.dataset.full) return;
+    thumbs.forEach(function(t) { t.classList.remove('on'); });
+    thumb.classList.add('on');
+    mainImage.removeAttribute('srcset');
+    mainImage.src = thumb.dataset.full;
+  }
 
   thumbs.forEach(function(thumb) {
     thumb.addEventListener('click', function() {
-      if (!mainImage || !thumb.dataset.full || thumb.classList.contains('on')) return;
-      thumbs.forEach(function(t) { t.classList.remove('on'); });
-      thumb.classList.add('on');
-      mainImage.removeAttribute('srcset');
-      mainImage.src = thumb.dataset.full;
+      if (thumb.classList.contains('on')) return;
+      showImage(thumb);
+    });
+  });
+
+  arrows.forEach(function(arrow) {
+    arrow.addEventListener('click', function() {
+      if (!thumbs.length) return;
+      var thumbsArr = Array.prototype.slice.call(thumbs);
+      var currentIndex = thumbsArr.findIndex(function(t) { return t.classList.contains('on'); });
+      if (currentIndex === -1) currentIndex = 0;
+      var dir = parseInt(arrow.dataset.dir, 10);
+      var nextIndex = (currentIndex + dir + thumbsArr.length) % thumbsArr.length;
+      showImage(thumbsArr[nextIndex]);
     });
   });
 
