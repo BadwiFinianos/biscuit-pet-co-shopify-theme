@@ -365,7 +365,7 @@ p{margin:0}
 .mnav-toggle::after{width:1.5px;height:14px;transform:translate(-50%,-50%)}
 .mnav-toggle[aria-expanded="true"]::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
 .mnav-sub{max-height:0;overflow:hidden;transition:max-height .35s ease;display:flex;flex-direction:column;padding-inline-start:14px}
-.mnav-item.open > .mnav-sub{max-height:2000px}
+.mnav-item.open > .mnav-sub,.mnav-subitem.open > .mnav-sub{max-height:2000px}
 .mnav-sub a{font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:.02em;
   padding:11px 0;color:var(--ink-70);border-bottom:1px solid var(--line-soft)}
 .mnav-subitem{border-bottom:none}
