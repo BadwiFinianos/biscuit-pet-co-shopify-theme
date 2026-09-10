@@ -20,6 +20,9 @@
       {%- endif -%}
       <p>{{ section.settings.brand_blurb }}</p>
       <img class="foot-seal" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved seal" width="256" height="256">
+      <div class="foot-brand-social">
+        {%- render 'social-icons' -%}
+      </div>
     </div>
 
     <div class="foot-col foot-connect">
