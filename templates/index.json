@@ -43,7 +43,7 @@
           "settings": {
             "icon": "clump",
             "label": "Strong Clumping",
-            "subtext": "Forms firm clumps for easier daily scooping."
+            "subtext": ""
           }
         },
         "dust": {
@@ -51,7 +51,7 @@
           "settings": {
             "icon": "dust",
             "label": "Low Dust",
-            "subtext": "Designed to reduce airborne dust during everyday use."
+            "subtext": ""
           }
         },
         "odour": {
@@ -78,6 +78,15 @@
         "mineral"
       ],
       "settings": {}
+    },
+    "bestsellers": {
+      "type": "bestsellers",
+      "settings": {
+        "eyebrow": "Most loved",
+        "heading": "Bestsellers",
+        "collection": "bestsellers",
+        "products_count": 4
+      }
     },
     "featured-product": {
       "type": "featured-product",
@@ -123,36 +132,14 @@
         "heading": "Why Biscuit Pet Co.?",
         "subheading": ""
       }
-    },
-    "brand-story": {
-      "type": "brand-story",
-      "settings": {
-        "eyebrow": "Our Philosophy",
-        "quote_text": "Premium pet lifestyle for pets with",
-        "quote_em": "standards.",
-        "paragraph1": "Biscuit began with a simple conviction: the everyday objects of pet care — the litter, the bowl, the bed — deserve the same craft we give our own homes. So we obsess over mineral sourcing, scent balance, and foil-stamped detail, then hold every batch to one test.",
-        "paragraph2": "If it isn't Biscuit Approved, it doesn't ship.",
-        "signature": "— Biscuit Pet Co.",
-        "mascot": "shopify://shop_images/Biscuit_Mascot_Transparent_fa57813b-9bb4-4284-8884-a05cee0d7569.png"
-      }
-    },
-    "bestsellers": {
-      "type": "bestsellers",
-      "settings": {
-        "eyebrow": "Most loved",
-        "heading": "Bestsellers",
-        "collection": "bestsellers",
-        "products_count": 4
-      }
     }
   },
   "order": [
     "hero",
     "trust-strip",
+    "bestsellers",
     "featured-product",
     "shop-by-companion",
-    "biscuit-difference",
-    "brand-story",
-    "bestsellers"
+    "biscuit-difference"
   ]
 }
