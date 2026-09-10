@@ -84,6 +84,20 @@
         "products_count": 4
       }
     },
+    "cleanstep-banner": {
+      "type": "collection-banner",
+      "settings": {
+        "bg_image": "shopify://shop_images/ChatGPT_Image_Jun_21_2026_at_09_36_49_PM.png",
+        "bg_alt": "The Biscuit CleanStep Collection",
+        "eyebrow": "The Biscuit",
+        "heading": "CleanStep Collection",
+        "heading_em": "",
+        "lead": "Three formulas. One higher standard of clean.",
+        "collection": "cat-litter",
+        "cta_url": "",
+        "cta_text": "Shop the Collection"
+      }
+    },
     "featured-product": {
       "type": "featured-product",
       "disabled": true,
@@ -119,19 +133,6 @@
         "tile3_desc": "Heirloom bowls and bouclé beds.",
         "tile3_cta": "Shop Home",
         "tile3_url": ""
-      }
-    },
-    "cleanstep-banner": {
-      "type": "collection-banner",
-      "settings": {
-        "bg_image": "shopify://shop_images/ChatGPT_Image_Jun_21_2026_at_09_36_49_PM.png",
-        "bg_alt": "The Biscuit CleanStep Collection",
-        "eyebrow": "The Biscuit",
-        "heading": "CleanStep",
-        "heading_em": "Collection",
-        "lead": "Three formulas. One higher standard of clean.",
-        "collection": "clean-step",
-        "cta_text": "Shop the Collection"
       }
     },
     "biscuit-difference": {
