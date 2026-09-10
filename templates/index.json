@@ -121,6 +121,19 @@
         "tile3_url": ""
       }
     },
+    "cleanstep-banner": {
+      "type": "collection-banner",
+      "settings": {
+        "bg_image": "shopify://shop_images/ChatGPT_Image_Jun_21_2026_at_09_36_49_PM.png",
+        "bg_alt": "The Biscuit CleanStep Collection",
+        "eyebrow": "The Biscuit",
+        "heading": "CleanStep",
+        "heading_em": "Collection",
+        "lead": "Three formulas. One higher standard of clean.",
+        "collection": "clean-step",
+        "cta_text": "Shop the Collection"
+      }
+    },
     "biscuit-difference": {
       "type": "biscuit-difference",
       "settings": {
@@ -134,6 +147,7 @@
     "hero",
     "trust-strip",
     "bestsellers",
+    "cleanstep-banner",
     "featured-product",
     "shop-by-companion",
     "biscuit-difference"

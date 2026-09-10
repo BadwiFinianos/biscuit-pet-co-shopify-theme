@@ -1,0 +1,134 @@
+{%- assign banner_collection = collections[section.settings.collection] -%}
+{%- assign cta_url = section.settings.cta_url -%}
+{%- if cta_url == blank and banner_collection != blank -%}
+  {%- assign cta_url = banner_collection.url -%}
+{%- endif -%}
+{%- assign bg_url = section.settings.bg_image | image_url: width: 2000 -%}
+{%- assign bg_mobile_url = section.settings.bg_image_mobile | image_url: width: 1000 -%}
+{%- unless bg_mobile_url -%}
+  {%- assign bg_mobile_url = bg_url -%}
+{%- endunless -%}
+
+<section class="col-banner">
+  {%- if bg_url -%}
+    <img class="cb-bg cb-bg-desktop" src="{{ bg_url }}" alt="{{ section.settings.bg_alt | escape }}" loading="lazy">
+  {%- endif -%}
+  {%- if bg_mobile_url -%}
+    <img class="cb-bg cb-bg-mobile" src="{{ bg_mobile_url }}" alt="{{ section.settings.bg_alt | escape }}" loading="lazy">
+  {%- endif -%}
+  <div class="cb-overlay"></div>
+  <div class="wrap inner">
+    <div class="cb-copy" data-reveal>
+      <span class="eyebrow on-dark">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}<br><em>{{ section.settings.heading_em }}</em></h2>
+      <p class="lead">{{ section.settings.lead }}</p>
+      {%- if cta_url != blank -%}
+        <div class="cta">
+          <a href="{{ cta_url }}" class="btn btn--lg btn--ghost on-dark">
+            {{ section.settings.cta_text }} <span class="arw">{%- render 'icon', icon: 'arrow' -%}</span>
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+.col-banner{position:relative;overflow:hidden;min-height:clamp(440px,64vh,640px);display:flex;align-items:center;background:var(--navy)}
+.col-banner .cb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+.col-banner .cb-bg-mobile{display:none}
+.col-banner .cb-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(0,0,20,.6) 0%,rgba(0,0,20,.35) 42%,rgba(0,0,20,.12) 68%,rgba(0,0,20,0) 100%)}
+[dir="rtl"] .col-banner .cb-overlay{background:linear-gradient(270deg,rgba(0,0,20,.6) 0%,rgba(0,0,20,.35) 42%,rgba(0,0,20,.12) 68%,rgba(0,0,20,0) 100%)}
+.col-banner .inner{position:relative;z-index:2;width:100%;padding-block:40px}
+.col-banner .cb-copy{max-width:520px}
+.col-banner h2{font-size:clamp(34px,4.8vw,58px);line-height:1.02;letter-spacing:-.02em;margin:20px 0 0;color:#fff}
+.col-banner h2 em{font-style:italic;font-weight:500;color:var(--gold-light)}
+.col-banner .lead{margin-top:22px;font-size:17px;color:rgba(255,255,255,.82);line-height:1.7;max-width:44ch}
+.col-banner .cta{margin-top:32px}
+@media(max-width:960px){
+  .col-banner{text-align:center}
+  .col-banner .cb-copy{max-width:none;margin-inline:auto}
+  .col-banner .lead{margin-inline:auto}
+  .col-banner .cta{display:flex;justify-content:center}
+}
+@media(max-width:560px){
+  .col-banner{min-height:70vh}
+  .col-banner .cb-bg-desktop{display:none}
+  .col-banner .cb-bg-mobile{display:block;object-position:top}
+  .col-banner h2{font-size:clamp(28px,7.5vw,34px)}
+  .col-banner .inner{padding-block:32px}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background photo"
+    },
+    {
+      "type": "text",
+      "id": "bg_alt",
+      "label": "Background photo alt text",
+      "default": "Biscuit Pet Co. collection photo"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Mobile background photo",
+      "info": "Optional. Shown on phones (≤560px) instead of the photo above. Leave blank to reuse the photo above."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Biscuit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "CleanStep"
+    },
+    {
+      "type": "text",
+      "id": "heading_em",
+      "label": "Heading italic (line 2)",
+      "default": "Collection"
+    },
+    {
+      "type": "textarea",
+      "id": "lead",
+      "label": "Lead paragraph",
+      "default": "Three formulas. One higher standard of clean."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Used for the button link if no custom URL is set below."
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL (optional)",
+      "info": "Overrides the collection link above."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Shop the Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Banner"
+    }
+  ]
+}
+{% endschema %}
