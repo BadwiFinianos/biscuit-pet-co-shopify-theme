@@ -14,7 +14,7 @@
       "settings": {
         "packshot": "shopify://shop_images/F71A74ED-7092-49D1-B976-399C76B7A887.png",
         "packshot_alt": "Biscuit Pet Co. Vanilla Bean Cat Litter",
-        "eyebrow": "Premium Cat Litter. THOUGHTFULLY DESIGNED",
+        "eyebrow": "",
         "cta1_text": "Shop Cat Litter",
         "cta1_url": "shopify://collections/cat-litter",
         "hero_a_bg": "shopify://shop_images/ChatGPT_Image_Jun_21_2026_at_09_36_49_PM.png",
@@ -22,7 +22,7 @@
         "hero_a_bg_mobile": "shopify://shop_images/Biscuit_Mobile_Hero.jpg",
         "hero_a_h1": "Premium Pet Lifestyle for Pets With",
         "hero_a_em": "Standards.",
-        "lead": "Our journey begins with premium cat litter —  thoughtfully designed for cleaner homes, easier routines,  and cats who deserve more.",
+        "lead": "",
         "hero_b_eyebrow": "For pets with standards",
         "hero_b_h1": "THE COLLECTION",
         "hero_b_em": "refined.",
@@ -31,7 +31,7 @@
         "hero_b_chip2_text": "Odour locked",
         "hero_c_h1": "Premium care,",
         "hero_c_em": "head to paw.",
-        "hero_c_lead": "From ultra-clumping vanilla litter to slow-cooked cuisine — a considered collection for the pets who run the household.",
+        "hero_c_lead": "",
         "hero_c_cta1": "Shop Bestseller"
       }
     },
