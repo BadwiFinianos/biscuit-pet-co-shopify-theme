@@ -218,7 +218,6 @@ p{margin:0}
 .trust-item:last-child{border-inline-end:none}
 .trust-item svg{width:34px;height:34px;color:var(--gold-light)}
 .trust-item .t{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--cream)}
-.trust-item .s{font-size:12px;color:rgba(242,234,211,.55);letter-spacing:.04em}
 
 /* ---------- Page header (Page & Policy templates) ---------- */
 .page-header{background:var(--navy);color:var(--cream);padding-block:clamp(56px,8vw,96px);text-align:center}
@@ -493,8 +492,9 @@ a.foot-phone{color:var(--cream);font-size:15px;font-weight:600;letter-spacing:.0
   .grid-4{grid-template-columns:repeat(2,1fr)}
   .foot-main{grid-template-columns:1fr 1fr 1fr}
   .trust-row{grid-template-columns:repeat(2,1fr)}
-  .trust-item:nth-child(2){border-inline-end:none}
   .trust-item{border-bottom:1px solid var(--cream-line)}
+  .trust-item:nth-child(2n){border-inline-end:none}
+  .trust-item:last-child{border-bottom:none}
 }
 
 /* ---- iPad portrait / large phone landscape (≤820px) ---- */
@@ -525,25 +525,13 @@ a.foot-phone{color:var(--cream);font-size:15px;font-weight:600;letter-spacing:.0
   .topbar{font-size:11px;letter-spacing:.05em;padding:8px 16px}
   /* Avoid the language select clashing with centered announcement text on narrow screens — still switchable from the footer */
   .topbar .locale-selectors{display:none}
-  /* Trust strip → horizontally scrollable row */
-  .trust-row{
-    display:flex;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-    gap:0;
-  }
-  .trust-row::-webkit-scrollbar{display:none}
+  /* Trust strip → keep the 2-column grid, just tighten it so every item fits without scrolling */
   .trust-item{
-    min-width:150px;
-    flex-shrink:0;
-    border-inline-end:1px solid var(--cream-line);
-    border-bottom:none;
-    padding:26px 14px;
+    padding:22px 10px;
+    gap:8px;
   }
-  /* Reset the nth-child(2) rule from 1024px */
-  .trust-item:nth-child(2){border-inline-end:1px solid var(--cream-line)}
-  .trust-item:last-child{border-inline-end:none}
+  .trust-item svg{width:28px;height:28px}
+  .trust-item .t{font-size:11px}
   /* Toast → full-width pill */
   .toast{
     left:16px;right:16px;width:auto;
