@@ -161,8 +161,8 @@ p{margin:0}
 .site-header.scrolled{box-shadow:0 8px 30px -18px rgba(0,0,64,.30);background:rgba(251,247,236,.94)}
 .header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;
   height:80px;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
-.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-.brand img{height:170px;width:auto}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0;height:100%}
+.brand img{height:100%;width:auto;aspect-ratio:2/1;object-fit:contain}
 .footer-logo{height:240px;width:auto;margin-top:-44px;margin-bottom:-44px}
 .nav{display:flex;align-items:center;gap:34px}
 .nav a{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
@@ -504,7 +504,6 @@ a.foot-phone{color:var(--cream);font-size:15px;font-weight:600;letter-spacing:.0
   .nav{display:none}
   .burger{display:grid}
   .grid-3{grid-template-columns:1fr 1fr}
-  .brand img{height:150px;margin-top:0}
   .footer-logo{height:180px;margin-top:-30px;margin-bottom:-30px}
 }
 
