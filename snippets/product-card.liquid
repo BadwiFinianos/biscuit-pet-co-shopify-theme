@@ -6,7 +6,7 @@
     {%- if product.metafields.custom.tag != blank -%}
       <span class="tag">{{ product.metafields.custom.tag }}</span>
     {%- elsif product.tags contains 'bestseller' -%}
-      <span class="tag">{{ 'products.product.bestseller_tag' | t }}</span>
+      <span class="tag bestseller">{{ 'products.product.bestseller_tag' | t }}</span>
     {%- elsif product.tags contains 'new' -%}
       <span class="tag">{{ 'products.product.new_tag' | t }}</span>
     {%- elsif product.available == false -%}
