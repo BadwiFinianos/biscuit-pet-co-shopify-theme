@@ -72,6 +72,8 @@ p{margin:0}
   font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.28em;
   text-transform:uppercase;color:var(--gold-deep);
 }
+a.eyebrow{text-decoration:none}
+a.eyebrow:hover{text-decoration:underline}
 .eyebrow.on-dark{color:var(--gold-light)}
 .foil-text{
   background:var(--foil);-webkit-background-clip:text;background-clip:text;
