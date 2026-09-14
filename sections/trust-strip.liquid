@@ -1,7 +1,7 @@
 {%- liquid
   assign item_count = section.blocks.size
   if item_count == 0
-    assign item_count = 5
+    assign item_count = 4
   endif
 -%}
 <section class="trust">
@@ -14,11 +14,10 @@
       </div>
     {%- else -%}
       <!-- Default trust items (shown until blocks are configured) -->
-      <div class="trust-item">{%- render 'icon', icon: 'clump' -%}<span class="t">Ultra Clumping</span></div>
-      <div class="trust-item">{%- render 'icon', icon: 'dust' -%}<span class="t">99.9% Dust-Free</span></div>
-      <div class="trust-item">{%- render 'icon', icon: 'absorb' -%}<span class="t">Super Absorbent</span></div>
+      <div class="trust-item">{%- render 'icon', icon: 'clump' -%}<span class="t">Fast Clumping</span></div>
+      <div class="trust-item">{%- render 'icon', icon: 'dust' -%}<span class="t">Low Dust</span></div>
       <div class="trust-item">{%- render 'icon', icon: 'odor' -%}<span class="t">Odour Control</span></div>
-      <div class="trust-item">{%- render 'icon', icon: 'mineral' -%}<span class="t">Natural Mineral</span></div>
+      <div class="trust-item">{%- render 'icon', icon: 'mineral' -%}<span class="t">Smart Granules</span></div>
     {%- endfor -%}
   </div>
 </section>

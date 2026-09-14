@@ -534,13 +534,17 @@ a.foot-phone{color:var(--cream);font-size:15px;font-weight:600;letter-spacing:.0
   .topbar{font-size:11px;letter-spacing:.05em;padding:8px 16px}
   /* Avoid the language select clashing with centered announcement text on narrow screens — still switchable from the footer */
   .topbar .locale-selectors{display:none}
-  /* Trust strip → keep the 2-column grid, just tighten it so every item fits without scrolling */
+  /* Trust strip → single row of 4, evenly spaced, with a smaller label to fit */
+  .trust-row{grid-template-columns:repeat(4,1fr)}
   .trust-item{
-    padding:22px 10px;
-    gap:8px;
+    padding:16px 6px;
+    gap:6px;
+    border-bottom:none;
   }
-  .trust-item svg{width:28px;height:28px}
-  .trust-item .t{font-size:11px}
+  .trust-item:nth-child(2n){border-inline-end:1px solid var(--cream-line)}
+  .trust-item:last-child{border-inline-end:none}
+  .trust-item svg{width:22px;height:22px}
+  .trust-item .t{font-size:7px}
   /* Toast → full-width pill */
   .toast{
     left:16px;right:16px;width:auto;

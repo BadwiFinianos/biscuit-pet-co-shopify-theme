@@ -42,7 +42,7 @@
           "type": "item",
           "settings": {
             "icon": "clump",
-            "label": "Strong Clumping"
+            "label": "Fast Clumping"
           }
         },
         "dust": {
@@ -63,7 +63,7 @@
           "type": "item",
           "settings": {
             "icon": "mineral",
-            "label": "Purposeful Granules"
+            "label": "Smart Granules"
           }
         }
       },
