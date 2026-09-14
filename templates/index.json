@@ -12,14 +12,14 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "packshot": "shopify://shop_images/F71A74ED-7092-49D1-B976-399C76B7A887.png",
+        "packshot": "shopify://shop_images/Cat_Portrait_No_Text_No_Necklace_Print_Ready.png",
         "packshot_alt": "Biscuit Pet Co. Vanilla Bean Cat Litter",
         "eyebrow": "Designed for better pet living",
         "cta1_text": "Shop Cat Litter",
         "cta1_url": "shopify://collections/cat-litter",
-        "hero_a_bg": "shopify://shop_images/ChatGPT_Image_Jun_21_2026_at_09_36_49_PM.png",
+        "hero_a_bg": "shopify://shop_images/Cat_Portrait_No_Text_No_Necklace_Print_Ready.png",
         "hero_a_bg_alt": "Biscuit Pet Co. lifestyle photo",
-        "hero_a_bg_mobile": "shopify://shop_images/Biscuit_Mobile_Hero.jpg",
+        "hero_a_bg_mobile": "shopify://shop_images/WhatsApp_Image_2026-09-10_at_14.15.59.jpg",
         "hero_a_h1": "Premium Pet Lifestyle. For Pets With",
         "hero_a_em": "Standards.",
         "lead": "",
