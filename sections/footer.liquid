@@ -1,7 +1,7 @@
 <footer class="site-footer">
   <!-- Newsletter CTA -->
   <div class="foot-cta">
-    <span class="eyebrow">{{ section.settings.cta_eyebrow }}</span>
+    <span class="eyebrow on-dark">{{ section.settings.cta_eyebrow }}</span>
     <h2 style="margin-top:14px">{{ section.settings.cta_heading }}</h2>
     <p class="lead">{{ section.settings.cta_subtext }}</p>
     <form class="newsletter" id="footer-newsletter">
@@ -13,15 +13,17 @@
   <!-- Main footer columns -->
   <div class="foot-main">
     <div class="foot-brand">
-      <div class="foot-brand-head">
-        {%- if section.settings.footer_logo != blank -%}
-          {{ section.settings.footer_logo | image_url: height: 500 | image_tag: class: 'footer-logo', alt: shop.name }}
-        {%- else -%}
-          <img class="footer-logo" src="{{ 'wordmark-navy.png' | asset_url }}" alt="{{ shop.name }}" width="1600" height="1600">
-        {%- endif -%}
+      <div class="foot-brand-grid">
+        <div class="foot-brand-logo">
+          {%- if section.settings.footer_logo != blank -%}
+            {{ section.settings.footer_logo | image_url: height: 500 | image_tag: class: 'footer-logo', alt: shop.name }}
+          {%- else -%}
+            <img class="footer-logo" src="{{ 'wordmark-navy.png' | asset_url }}" alt="{{ shop.name }}" width="1600" height="1600">
+          {%- endif -%}
+        </div>
+        <p class="foot-brand-text">{{ section.settings.brand_blurb }}</p>
         <img class="foot-seal" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved seal" width="256" height="256">
       </div>
-      <p>{{ section.settings.brand_blurb }}</p>
     </div>
 
     <div class="foot-col foot-connect">
