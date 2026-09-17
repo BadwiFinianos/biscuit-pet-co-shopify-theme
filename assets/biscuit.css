@@ -529,6 +529,7 @@ a.foot-phone{color:var(--ink);font-size:15px;font-weight:600;letter-spacing:.02e
     border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:4px}
   .foot-brand-head{flex-direction:row;align-items:center;justify-content:space-between;gap:16px}
   .foot-seal{width:96px;height:96px}
+  .foot-shop{display:none}
   .btn--lg{padding:16px 22px;font-size:13px}
   .pcard-name{font-size:14px}
   .topbar{font-size:11px;letter-spacing:.05em;padding:8px 16px}
