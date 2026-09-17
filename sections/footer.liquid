@@ -13,16 +13,15 @@
   <!-- Main footer columns -->
   <div class="foot-main">
     <div class="foot-brand">
-      {%- if section.settings.footer_logo != blank -%}
-        {{ section.settings.footer_logo | image_url: height: 500 | image_tag: class: 'footer-logo', alt: shop.name }}
-      {%- else -%}
-        <img class="footer-logo" src="{{ 'wordmark-navy.png' | asset_url }}" alt="{{ shop.name }}" width="1600" height="1600">
-      {%- endif -%}
-      <p>{{ section.settings.brand_blurb }}</p>
-      <img class="foot-seal" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved seal" width="256" height="256">
-      <div class="foot-brand-social">
-        {%- render 'social-icons' -%}
+      <div class="foot-brand-head">
+        {%- if section.settings.footer_logo != blank -%}
+          {{ section.settings.footer_logo | image_url: height: 500 | image_tag: class: 'footer-logo', alt: shop.name }}
+        {%- else -%}
+          <img class="footer-logo" src="{{ 'wordmark-navy.png' | asset_url }}" alt="{{ shop.name }}" width="1600" height="1600">
+        {%- endif -%}
+        <img class="foot-seal" src="{{ 'seal.png' | asset_url }}" alt="Biscuit Approved seal" width="256" height="256">
       </div>
+      <p>{{ section.settings.brand_blurb }}</p>
     </div>
 
     <div class="foot-col foot-connect">
