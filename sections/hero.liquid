@@ -22,7 +22,9 @@
     <div class="wrap inner">
       <div class="copy">
         <span class="eyebrow on-dark">{{ section.settings.eyebrow }}</span>
-        <h1><span class="hv-a-h1-line1">{{ section.settings.hero_a_h1 | newline_to_br }}</span> <em>{{ section.settings.hero_a_em }}</em></h1>
+        {%- assign h1_last_word = section.settings.hero_a_h1 | split: ' ' | last -%}
+        {%- assign h1_head = section.settings.hero_a_h1 | remove_last: h1_last_word -%}
+        <h1><span class="hv-a-h1-line1">{{ h1_head | newline_to_br }}</span><span class="hv-a-h1-tail">{{ h1_last_word }} <em>{{ section.settings.hero_a_em }}</em></span></h1>
         <p class="lead">{{ section.settings.lead }}</p>
         <div class="cta">
           <a href="{{ section.settings.cta1_url | default: routes.collections_url }}" class="btn btn--lg btn--ghost on-dark">
@@ -91,6 +93,10 @@
 .hv-a h1 em{display:block;font-style:italic;font-weight:500;color:var(--gold-light)}
 .hv-a .lead{margin-top:26px;font-size:17px;color:rgba(255,255,255,.82);line-height:1.7;max-width:46ch}
 .hv-a .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+@media(min-width:961px){
+  .hv-a .hv-a-h1-tail{white-space:nowrap}
+  .hv-a h1 em{display:inline}
+}
 [dir="rtl"] .hv-a [id*="-arw"] svg{transform:none}
 .hv-b{text-align:center;background:radial-gradient(120% 80% at 50% -10%,#fff 0%,var(--page) 60%)}
 .hv-b .inner{position:relative;padding-block:clamp(60px,9vw,96px) 0}
